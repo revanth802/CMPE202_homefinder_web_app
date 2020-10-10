@@ -15,6 +15,7 @@ user_fav_properties
 Transactions
 Applications
 
+
 Tasks for next meeting(10/13): 
 Thanmai - Come up with wireframes for pages for Buyer
 Prasanna - Come up with wireframes for pages for Seller and Admin 
