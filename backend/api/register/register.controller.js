@@ -17,7 +17,7 @@ module.exports = {
                 }
                 else {
                   var newUserDetails = new User({
-                      email: body.remail, password: body.rpassword, name:body.rname, role:body.role
+                      email: body.remail, password: body.rpassword, name:body.rname, role:body.role,status:"Approved"
                   });
               
                   newUserDetails.save((error, data) => {

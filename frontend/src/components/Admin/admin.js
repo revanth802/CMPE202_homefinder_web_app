@@ -13,7 +13,8 @@ class admin extends Component {
     super(props);
     this.state = {
      users:[],
-     flag1:false
+     msgr:""
+    //  this.handleRemove=this.handleRemove.bind();
     };
 
   }
@@ -51,7 +52,7 @@ class admin extends Component {
           if (response.data=="success") {
             console.log("Success")
             this.setState({
-              flag1: true,
+              msgr: "User successfully removed",
             });
           } else {
             this.setState({
@@ -64,8 +65,79 @@ class admin extends Component {
             showLoginError: true,
           });
         });
-    
+        
+        this.componentDidMount();  
   };
+
+
+  async handleApprove(e) {
+    //prevent page from refresh
+  //   e.preventDefault();
+    console.log(e);
+    const data = {
+     uname: e
+    };
+    //set the with credentials to true
+    axios.defaults.withCredentials = true;
+    //make a post request with the user data
+    console.log("req.body", data);
+    await axios
+      .post(`${backendServer}/admin/approve`, data)
+      .then((response) => {
+        console.log(response);
+        if (response.data=="success") {
+          console.log("Success")
+         
+        } else {
+          this.setState({
+            showLoginError: true,
+          });
+        }
+      })
+      .catch((ex) => {
+        this.setState({
+          showLoginError: true,
+        });
+      });
+      
+      this.componentDidMount();  
+};
+
+async handleReject(e) {
+    //prevent page from refresh
+  //   e.preventDefault();
+    console.log(e);
+    const data = {
+     uname: e
+    };
+    //set the with credentials to true
+    axios.defaults.withCredentials = true;
+    //make a post request with the user data
+    console.log("req.body", data);
+    await axios
+      .post(`${backendServer}/admin/reject`, data)
+      .then((response) => {
+        console.log(response);
+        if (response.data=="success") {
+          console.log("Success")
+        //   this.setState({
+        //     msgr: "User successfully removed",
+        //   });
+        } else {
+          this.setState({
+            showLoginError: true,
+          });
+        }
+      })
+      .catch((ex) => {
+        this.setState({
+          showLoginError: true,
+        });
+      });
+      
+      this.componentDidMount();  
+};
+
   render() {
     
     let candr = this.state.users.map((msg) => {
@@ -87,9 +159,9 @@ class admin extends Component {
               <p style={{color:"black"}}>Present Status: {msg.status}</p>
               </Card.Text>
               <ButtonGroup style={{marginLeft:"450px",marginTop:"-80px"}} className="mb-2">
-    <Button>Approve</Button>
+    <Button onClick={(e)=> this.handleApprove(msg.email)}>Approve</Button>
     &nbsp;
-    <Button>Reject</Button>
+    <Button onClick={(e)=> this.handleReject(msg.email)}>Reject</Button>
     &nbsp;
     <Button onClick={(e)=> this.handleRemove(msg.email)}>Remove</Button>
   </ButtonGroup>
@@ -105,6 +177,7 @@ class admin extends Component {
       });
       return (
         <div>
+        <p style={{color:"red"}}>{this.state.msgr}</p>
         {/* <div class="card-deck"> */}
           {candr}
           {/* </div> */}
