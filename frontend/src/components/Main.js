@@ -2,28 +2,35 @@ import React, { Component, Fragment } from 'react';
 import { Route } from 'react-router-dom';
 // import { admin } from '../../../backend/api/admin/admin.service';
 
+import Navbar from '../components/navbar';
 import Login from './Login/Login';
 import admin from './Admin/admin';
 
 //Create a Main Component
 class Main extends Component {
     render() {
-        // let navRoute = <Navbar />
+        let navRoute = <Navbar />
         // let footer = <Footer />
 
     
         return (
             <div>
-            
-               
+                {localStorage.getItem('id') &&
+            <Fragment>
+            {navRoute}
+            </Fragment>
+                 }
+               {!localStorage.getItem('id') &&
                     <Fragment>
                     
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/admin-dashboard" component={admin} />
+                
+                        <Route exact path="/" component={Login} />
                         {/* <Route exact path="/signup" component={SignUp} /> */}
                     </Fragment>
         
-               
+                 }
 
             </div>
         )
