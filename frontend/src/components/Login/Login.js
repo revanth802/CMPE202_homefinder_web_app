@@ -21,11 +21,14 @@ class Login extends Component {
       loginFlag: false,
       showerrormessage: false,
       redirecttohome: false,
+      showRegistrationError:false,
+      regFlag : false
     };
     this.emailChangeHandler = this.emailChangeHandler.bind(this);
     this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
   }
 
   componentWillMount() {
@@ -136,17 +139,18 @@ class Login extends Component {
             });
           } else {
             this.setState({
-              showLoginError: true,
+              showRegistrationError: true,
             });
           }
         })
         .catch((ex) => {
           this.setState({
-            showLoginError: true,
+            showRegistrationError: true,
           });
         });
     
   };
+  
   render() {
     let redirectVar = null;
 
@@ -160,6 +164,38 @@ class Login extends Component {
         <div>
           <a href="/login">{redirectVar}</a>
         </div>
+
+        {this.state.regFlag && (
+            <div>
+              <i></i>
+              <div>
+                <ul>
+                  <li>
+                    <span>
+                      Registration Successfull!!
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          )}
+      
+          {this.state.showRegistrationError && (
+            <div>
+              <h4>Important Message!</h4>
+              <i></i>
+              <div>
+                <ul>
+                  <li>
+                    <span>
+                      Registration Unsuccessful!!Please Try Again
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          )}
+          
 
         <div>
           {this.state.showLoginError && (
