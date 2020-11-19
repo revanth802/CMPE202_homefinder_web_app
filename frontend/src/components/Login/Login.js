@@ -13,6 +13,10 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
+      remail: "",
+      rpassword: "",
+      rname:"",
+      role:"",
       persona: "seller",
       loginFlag: false,
       showerrormessage: false,
@@ -108,6 +112,41 @@ class Login extends Component {
     }
   };
 
+  handleRegister = (e) => {
+      //prevent page from refresh
+      e.preventDefault();
+      const data = {
+        rname:this.state.rname,
+        remail:this.state.remail,
+        rpassword: this.state.rpassword,
+        role:this.state.role
+      };
+      //set the with credentials to true
+      axios.defaults.withCredentials = true;
+      //make a post request with the user data
+      console.log("req.body", data);
+      axios
+        .post(`${backendServer}/register/`, data)
+        .then((response) => {
+          console.log(response);
+          if (response) {
+            
+            this.setState({
+              regFlag: true,
+            });
+          } else {
+            this.setState({
+              showLoginError: true,
+            });
+          }
+        })
+        .catch((ex) => {
+          this.setState({
+            showLoginError: true,
+          });
+        });
+    
+  };
   render() {
     let redirectVar = null;
 
@@ -144,7 +183,7 @@ class Login extends Component {
             <div className="login-wrap">
         <div className="login-html">
           <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked /><label htmlFor="tab-1" className="tab">Sign In</label>
-          <input id="tab-2" type="radio" name="tab" className="for-pwd" /><label htmlFor="tab-2" className="tab">Forgot Password</label>
+          <input id="tab-2" type="radio" name="tab" className="for-pwd" /><label htmlFor="tab-2" className="tab">Register</label>
           <div className="login-form">
             <div className="sign-in-htm">
               <div className="group">
@@ -161,12 +200,24 @@ class Login extends Component {
               <div className="hr" />
             </div>
             <div className="for-pwd-htm">
-              <div className="group">
-                <label htmlFor="user" className="label">Username or Email</label>
-                <input id="user" type="text" className="input" />
+            <div className="group">
+                <label htmlFor="user" className="label">Full Name</label>
+                <input id="user" type="text" className="input" name="rname" onChange={this.handleChange}/>
               </div>
               <div className="group">
-                <input type="submit" className="button" defaultValue="Reset Password" />
+                <label htmlFor="user" className="label">Role ? </label>
+                <input id="user" type="text" className="input" name="role" onChange={this.handleChange} />
+              </div>
+              <div className="group">
+                <label htmlFor="user" className="label">Username or Email</label>
+                <input id="user" type="text" className="input" name="remail" onChange={this.handleChange}/>
+              </div>
+              <div className="group">
+                <label htmlFor="user" className="label">Password</label>
+                <input id="user" type="password" className="input" name="rpassword" onChange={this.handleChange}/>
+              </div>
+              <div className="group">
+                <input type="submit" className="button" defaultValue="Reset Password" onClick={this.handleRegister}/>
               </div>
               <div className="hr" />
             </div>
