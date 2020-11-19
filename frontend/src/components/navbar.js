@@ -164,7 +164,7 @@ class Navbar extends Component {
             navLinks = (
                 <ul className="nav navbar-nav navbar-right">
                     <li><Link to="/seller/profile">{this.state.name}</Link></li>
-                    <li><a onClick={this.handleLogout}>Logout</a></li>
+                    <li><a href="#" onClick={this.handleLogout}>Logout</a></li>
                 </ul>
             );
 
@@ -203,6 +203,7 @@ class Navbar extends Component {
         if(this.state.logoutRedirect){
             logoutRedirect = <Redirect to="/login"/>
         }
+       
         return (
             // <div className="nopadding">
             //     {redirectVar}
@@ -246,8 +247,10 @@ class Navbar extends Component {
             </div>
             <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Page 1</a></li>
             <li><a href="#">Page 2</a></li>
+            <li><Link to="/homelistings">Buy</Link></li>
+            <li><a href="#" onClick={this.handleLogout}>Logout</a></li>
+
             </ul>
             <form class="navbar-form navbar-left" action="/action_page.php">
             <div class="form-group">
