@@ -60,6 +60,7 @@ mongoose.connect(mongoDB, options, (err, res) => {
 app.use(express.json());
 var loginRouter = require('./api/login/login.router');
 var registerRouter = require('./api/register/register.router');
+var emailRouter = require('./api/email/email.router')
 
 var adminRouter = require('./api/admin/admin.router');
 var homeListingRouter =  require('./api/homelistings/homelisting.router');
@@ -70,6 +71,7 @@ app.use('/login', loginRouter);
 app.use('/register',registerRouter);
 app.use('/admin',adminRouter);
 app.use('/homelistings',homeListingRouter);
+app.use('/email',emailRouter);
 
 // app.use('/category', categoryRouter);
 // app.use('/card', cardRouter);
