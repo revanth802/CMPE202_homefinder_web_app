@@ -19,13 +19,14 @@ class HomeListings extends Component {
           .then((response) => {
             console.log("Pro are::", response.data);
             this.setState({
-              users: response.data,
+              homes: response.data,
             });
-            console.log("Pro are::", this.state.users);
+            console.log("Pro are::", this.state.homes);
           });
       }
 
-    render(){
+    render()
+    {
         let candr = this.state.homes.map((msg) => {
             return (
             <div>
@@ -40,24 +41,26 @@ class HomeListings extends Component {
                 style={{width:"100px",height:"120px"}}
               // id="avatar-image"
             />
-                  <p style={{color:"black"}}>Email/Username: {msg.email}</p> 
-                  <p style={{color:"black"}}>Present Status: {msg.status}</p>
+                  <p style={{color:"black"}}>Address: {msg.address}</p> 
+                  <p style={{color:"black"}}>Type : {msg.type}</p>
+                  <p style={{color:"black"}}>Price : {msg.price}</p>
+                  <p style={{color:"black"}}>Area : {msg.area}</p>
+
+
                   </Card.Text>
                   <ButtonGroup style={{marginLeft:"450px",marginTop:"-80px"}} className="mb-2">
-        <Button>Approve</Button>
+        {/* <Button>Approve</Button>
+        &nbsp; */}
+        <Button>Schedule Tour</Button>
         &nbsp;
-        <Button>Reject</Button>
-        &nbsp;
-        <Button onClick={(e)=> this.handleRemove(msg.email)}>Remove</Button>
+        <Button onClick={(e)=> this.handleRemove(msg.email)}>Buy</Button>
+
       </ButtonGroup>
                 </Card.Body>
               </Card>
               
                   &nbsp;
               </div>
-           
-         
-    
             );
           });
           return (

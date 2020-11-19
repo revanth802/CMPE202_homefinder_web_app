@@ -15,7 +15,7 @@ var homelistingsSchema = new Schema({
     hometype : {type : String},
     parking : {type:String},
     amenities : {type:Array},
-    year_built : {type:string}
+    year_built : {type:String}
 },
 {
     versionKey: false

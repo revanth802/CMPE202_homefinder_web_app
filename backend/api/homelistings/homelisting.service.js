@@ -1,4 +1,4 @@
-const User = require("../../models/usermodel.js");
+const Homelistings = require("../../models/homelistings.js");
 
 
 module.exports = {
@@ -6,9 +6,9 @@ module.exports = {
     displayhomes: (req, res) => {
       
         // console.log("query here",req);
-        User.find({}, (error, result) => {
+        Homelistings.find({}, (error, result) => {
         // res.end(result);
-          console.log("users",result);
+          console.log("homelistings",result);
           res.send(result);
           res.end();
         });

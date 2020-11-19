@@ -1,6 +1,6 @@
 const {
     displayhomes
-} = require("./admin.service");
+} = require("./homelisting.service");
 module.exports = {
     displayhomes: (req, res) => {
         console.log("in admin controller")
