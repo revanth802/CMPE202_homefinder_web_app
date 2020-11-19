@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Route } from 'react-router-dom';
+// import { admin } from '../../../backend/api/admin/admin.service';
 
 import Login from './Login/Login';
+import admin from './Admin/admin';
 
 //Create a Main Component
 class Main extends Component {
@@ -17,6 +19,7 @@ class Main extends Component {
                     <Fragment>
                     
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/admin-dashboard" component={admin} />
                         {/* <Route exact path="/signup" component={SignUp} /> */}
                     </Fragment>
         

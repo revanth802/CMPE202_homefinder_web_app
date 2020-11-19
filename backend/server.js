@@ -61,12 +61,13 @@ app.use(express.json());
 var loginRouter = require('./api/login/login.router');
 var registerRouter = require('./api/register/register.router');
 
-var userRouter = require('./api/seller/seller.router');
+var adminRouter = require('./api/admin/admin.router');
+
 // var categoryRouter = require('./api/category/category.router');
 // var cardRouter = require('./api/card/card.router');
-app.use('/seller', userRouter);
 app.use('/login', loginRouter);
 app.use('/register',registerRouter);
+app.use('/admin',adminRouter);
 
 // app.use('/category', categoryRouter);
 // app.use('/card', cardRouter);
