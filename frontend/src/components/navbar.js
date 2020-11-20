@@ -34,49 +34,49 @@ class Navbar extends Component {
         window.location.href="/login";
     }
 
-    componentDidMount() {
-        axios.get(`${backendServer}/user/getUserDetails/${localStorage.getItem('id')}`)
-            .then(response => {
-                let data = response.data.data;
-                if(localStorage.getItem('type')==='Customer'){
-                    this.setState({
-                        addresses: data.addresses,
-                        cards: data.cards,
-                        cart: data.cart,
-                    })
-                }
-                this.setState({
-                   name: data.name
-                })
+    // componentDidMount() {
+    //     axios.get(`${backendServer}/user/getUserDetails/${localStorage.getItem('id')}`)
+    //         .then(response => {
+    //             let data = response.data.data;
+    //             if(localStorage.getItem('type')==='Customer'){
+    //                 this.setState({
+    //                     addresses: data.addresses,
+    //                     cards: data.cards,
+    //                     cart: data.cart,
+    //                 })
+    //             }
+    //             this.setState({
+    //                name: data.name
+    //             })
                
-            }
-            ).catch(ex => {
-                alert(ex);
-            });
-            if(localStorage.getItem('type')==='Customer'){
-                axios.get(`${backendServer}/category/getAllCategories`)
-                .then(response => {
-                        this.setState({
-                            categories : response.data.data
-                        })
-                    }
-                ).catch( ex =>{
-                   alert(ex);
-                });
-            }
-            else if(localStorage.getItem('type')==='Seller'){
-                axios.get(`${backendServer}/category/getAllCategories`)
-                .then(response => {
-                        this.setState({
-                            categories : response.data.data
-                        })
-                    }
-                ).catch( ex =>{
-                   alert(ex);
-                });
-            }
+    //         }
+    //         ).catch(ex => {
+    //             alert(ex);
+    //         });
+    //         if(localStorage.getItem('type')==='Customer'){
+    //             axios.get(`${backendServer}/category/getAllCategories`)
+    //             .then(response => {
+    //                     this.setState({
+    //                         categories : response.data.data
+    //                     })
+    //                 }
+    //             ).catch( ex =>{
+    //                alert(ex);
+    //             });
+    //         }
+    //         else if(localStorage.getItem('type')==='Seller'){
+    //             axios.get(`${backendServer}/category/getAllCategories`)
+    //             .then(response => {
+    //                     this.setState({
+    //                         categories : response.data.data
+    //                     })
+    //                 }
+    //             ).catch( ex =>{
+    //                alert(ex);
+    //             });
+    //         }
             
-    }
+    // }
 
     componeneDidUpdate() {
         if (this.stat.redirect) {

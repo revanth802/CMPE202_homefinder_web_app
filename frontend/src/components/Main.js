@@ -6,6 +6,7 @@ import Navbar from '../components/navbar';
 import HomeListings from '../components/homelistings';
 import Login from './Login/Login';
 import admin from './Admin/admin';
+import Search from './Search/Search';
 
 //Create a Main Component
 class Main extends Component {
@@ -20,6 +21,7 @@ class Main extends Component {
             <Fragment>
             {navRoute}
             <Route exact path="/admin-dashboard" component={admin} />
+            <Route exact path="/search" component={Search} />
             <Route exact path="/homelistings" component={HomeListings} />
             </Fragment>
                  }
