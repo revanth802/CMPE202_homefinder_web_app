@@ -6,6 +6,8 @@ import Navbar from '../components/navbar';
 import HomeListings from '../components/homelistings';
 import Login from './Login/Login';
 import admin from './Admin/admin';
+import RentalListings from '../components/rentalListings'
+import LeaseApplication from '../components/leaseApplication'
 
 //Create a Main Component
 class Main extends Component {
@@ -21,6 +23,8 @@ class Main extends Component {
             {navRoute}
             <Route exact path="/admin-dashboard" component={admin} />
             <Route exact path="/homelistings" component={HomeListings} />
+            <Route exact path = "/rentalListings" component = {RentalListings}/>
+            <Route path = "/leaseApplication/:id" component = {LeaseApplication}/>
             </Fragment>
                  }
                {!localStorage.getItem('id') &&
