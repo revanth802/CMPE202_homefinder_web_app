@@ -249,6 +249,7 @@ class Navbar extends Component {
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Page 2</a></li>
             <li><Link to="/homelistings">Buy</Link></li>
+            <li><Link to="/rentalListings">Rent</Link></li>
             <li><a href="#" onClick={this.handleLogout}>Logout</a></li>
 
             </ul>
