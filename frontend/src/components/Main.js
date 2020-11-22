@@ -9,6 +9,7 @@ import admin from './Admin/admin';
 import Search from './Search/Search';
 import RentalListings from '../components/rentalListings'
 import LeaseApplication from '../components/leaseApplication'
+import Sell from './Sell/sell';
 
 //Create a Main Component
 class Main extends Component {
@@ -24,6 +25,7 @@ class Main extends Component {
             {navRoute}
             <Route exact path="/admin-dashboard" component={admin} />
             <Route exact path="/search" component={Search} />
+            <Route exact path="/sell" component={Sell} />
             <Route exact path="/homelistings" component={HomeListings} />
             <Route exact path = "/rentalListings" component = {RentalListings}/>
             <Route path = "/leaseApplication/:id" component = {LeaseApplication}/>
