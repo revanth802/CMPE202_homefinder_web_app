@@ -164,7 +164,7 @@ class Search extends Component {
     <Card.Body>
       <Card.Title style={{color:"black"}}>{msg.addressLine1}
       &nbsp;
-      <button>Favourite<i class="icon-heart"></i></button>
+      <button><i class="fas fa-heart fa-sm" style={{color:"red"}}></i></button>
       </Card.Title>
       <Card.Text>
       <h4 data-v-dabe9ba4="" class="text-primary mb-0">
@@ -289,7 +289,9 @@ class Search extends Component {
                                 className="input-group-prepend d-none d-md-flex"
                                 data-v-0bf4be34
                               >
-                                <span className="input-group-text icon-search" />
+                               <center><span className="fas fa-search fa-3x"  /></center>
+                               
+                                {/* <i class=""></i> */}
                               </div>{" "}
                               <input
                                 type="search"
