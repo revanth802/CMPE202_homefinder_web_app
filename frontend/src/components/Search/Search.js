@@ -159,7 +159,7 @@ class Search extends Component {
     let candr = this.state.listings.map((msg) => {
       return (
         // <CardDeck>
-  <Card border="primary" style={{padding:"10px",width:"400px",height:"480px"}} >
+  <Card border="primary" style={{padding:"10px",width:"380px",height:"480px",marginLeft:"20px"}} >
     <Card.Img variant="top" src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620" style={{width:"350px",height:"280px"}} />
     <Card.Body>
       <Card.Title style={{color:"black"}}>{msg.addressLine1}
@@ -582,7 +582,7 @@ class Search extends Component {
           </div>
         
         &nbsp;
-        <CardColumns style={{ columnCount:"3"}}>
+        <CardColumns style={{ columnCount:"1"}}>
    
         {candr}
 

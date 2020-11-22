@@ -9,6 +9,7 @@ import admin from './Admin/admin';
 import Search from './Search/Search';
 import RentalListings from '../components/rentalListings'
 import LeaseApplication from '../components/leaseApplication'
+import Sell from './Sell/sell';
 
 //Create a Main Component
 class Main extends Component {
@@ -26,6 +27,8 @@ class Main extends Component {
             <Route exact path="/search" component={Search} />
             <Route exact path="/" component={Login} />
 
+            <Route exact path="/sell" component={Sell} />
+           
             </Fragment>
                  }
                {localStorage.getItem('role') != "admin" && localStorage.getItem('role') &&
