@@ -17,14 +17,13 @@ var homelistingsSchema = new Schema({
     flooring : {type : String},
     hometype : {type : String},
     parking : {type:String},
-    amenities : {type:Array},
+    amenities : {type:String},
     year_built : {type:Number},
     leaseTerms:{type:String},
     securityDeposit:{type:String},
     availableDate:{type:Date},
     representedBy:{type:String,required:true},
-    isOwnerRepresented:{type:Boolean, required:true},
-    otherAmenities:{type:String}
+    isOwnerRepresented:{type:Boolean, required:true}
 },
 {
     versionKey: false

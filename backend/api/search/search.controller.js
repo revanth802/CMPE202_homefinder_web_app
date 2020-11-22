@@ -25,9 +25,9 @@ module.exports = {
             { bathrooms: { $gte: body.baths } },
             { flooring: { $regex: body.floor, $options: "i" } },
             { hometype: { $regex: body.propertyTypes, $options: "i" } },
-            { parkingType: { $regex:body.parking, $options: "i" } },
+            { parking: { $regex:body.parking, $options: "i" } },
             { year_built: { $gte: body.year } },
-            { otherAmenities: { $regex: body.other, $options: "i" } }
+            { amenities: { $regex: body.other, $options: "i" } }
             ]
         }, (error, properties) => {
             if (error) {
@@ -37,6 +37,7 @@ module.exports = {
                 console.log("error", error)
                 res.end();
             }
+            // console.log(properties);
             res.status(200).json(properties);
         });
     },

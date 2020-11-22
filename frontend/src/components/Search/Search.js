@@ -3,10 +3,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
 import { backendServer } from "../../webconfig.js";
-// import "../Search/search.css";
-import { Button, ButtonGroup } from "react-bootstrap";
+import "../Search/search.css";
+import { MDBIcon,MDBBtn} from 'mdbreact';
+
+
+import {  ButtonGroup,CardGroup,Card,Button, CardColumns, CardDeck } from "react-bootstrap";
+// import { Button,Card, Image } from 'semantic-ui-react'
 
 import { Link } from "react-router-dom";
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
 class Search extends Component {
   constructor(props) {
@@ -24,6 +29,7 @@ class Search extends Component {
       year:0,
       floor:"",
       parking:"",
+      listings:[],
       loginFlag: false,
       showerrormessage: false,
       redirecttohome: false,
@@ -32,6 +38,7 @@ class Search extends Component {
       type: "sale",
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSearch=this.handleSearch.bind(this);
   }
 
   componentWillMount() {
@@ -94,22 +101,10 @@ class Search extends Component {
         .post(`${backendServer}/search/`, data)
         .then((response) => {
           if (response) {
-            console.log(response);
-            // localStorage.setItem("token", response.data.token);
-            // localStorage.setItem("id", response.data._id);
-            // localStorage.setItem("name", response.data.name);
-            // localStorage.setItem("type", response.data.userType);
-            // if (response.data.userType === "buyer") {
-            //   window.location.href = "/userdashboard";
-            // } else if (response.data.userType === "Seller") {
-            //   window.location.href = "/sellerinventory";
-            // } else {
-            //   window.location.href = "/admin-dashboard";
-            // }
-            // this.setState({ redirectToHome: true });
-            // this.setState({
-            //   authFlag: true,
-            // });
+            console.log(response.data);
+            this.setState({
+              listings: response.data
+            })
           } else {
             this.setState({
               showLoginError: true,
@@ -155,13 +150,71 @@ class Search extends Component {
   };
 
   render() {
-    let msg,
-      redirectVar = null;
+    let msg,redirectVar = null;
     if (this.state.type == "sale") msg = <p>Find Your New Home!</p>;
     else msg = <p>Find Homes for Rent</p>;
-    if (this.state.redirectToHome) {
-      redirectVar = <Redirect push to="/somewhere/else" />;
-    }
+    // if (this.state.redirectToHome) {
+    //   redirectVar = <Redirect push to="/somewhere/else" />;
+    // }
+    let candr = this.state.listings.map((msg) => {
+      return (
+        // <CardDeck>
+  <Card border="primary" style={{padding:"10px",width:"400px",height:"480px"}} >
+    <Card.Img variant="top" src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620" style={{width:"350px",height:"280px"}} />
+    <Card.Body>
+      <Card.Title style={{color:"black"}}>{msg.addressLine1}
+      &nbsp;
+      <button>Favourite<i class="icon-heart"></i></button>
+      </Card.Title>
+      <Card.Text>
+      <h4 data-v-dabe9ba4="" class="text-primary mb-0">
+          ${msg.price}
+          {/* <MDBBtn rounded size="lg" color="info" >Button<MDBIcon icon="heart" className="ml-2" /></MDBBtn> */}
+
+          &nbsp;
+         <span class="scope-label text-for-sale small" style={{color:"red"}}>House For {msg.type}</span></h4>
+         <div data-v-dabe9ba4="" class="text-muted">
+    {msg.bedrooms} Bd | {msg.bathrooms} bath
+    <span data-v-dabe9ba4="">| {msg.area} sqft</span></div>
+      </Card.Text>
+    </Card.Body>
+    <Card.Footer>
+      <small className="text-muted">Last updated 3 mins ago</small>
+      {/* <MDBBtn floating size="lg" gradient="purple"><MDBIcon icon="bolt" /></MDBBtn> */}
+    </Card.Footer>
+  </Card>
+       
+  //        <Card >
+  //   <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/matthew.png" />
+  //   <Card.Body style={{width:"491.06px"}}>
+  //     <Card.Title>Card title that wraps to a new line</Card.Title>
+  //     <Card.Text>
+  //       This is a longer card with supporting text below as a natural lead-in to
+  //       additional content. This content is a little bit longer.
+  //     </Card.Text>
+  //   </Card.Body>
+  //   &nbsp
+  // </Card>
+//   <div className="py-2 p-md-2 col-md-6"><a data-v-dabe9ba4 href="/property/453961815/Shasta-San-Jose-CA-95126" target className="listing-tile d-block prime-listing"><div data-v-dabe9ba4 className="photo-box"><div data-v-dabe9ba4 className="listing-ribbons"><div className="listing-ribbon listing-ribbon-primary">
+//   Featured
+// </div> <div className="listing-ribbon" style={{display: 'none'}}><span>Open House</span>
+// </div></div> <img data-v-dabe9ba4 src="https://img5.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620" srcSet="https://img1.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/400 400w, https://img5.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/500 500w, https://img5.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620 620w" className="pic img-fluid v-lazy-image v-lazy-image-loaded unlazy" alt="Shasta, San Jose, CA 95126" title="Shasta, San Jose, CA 95126" sizes="(max-width: 575px) 100vw,
+// (max-width: 767px) 490px,
+// (max-width: 991px) 310px,
+// (max-width: 1199px) 272px,
+// (max-width: 1519px) 362px,
+// 532px" /> <div data-v-dabe9ba4 className="strip"><h5 data-v-dabe9ba4 itemProp="name" className="addr-component mb-0">
+//   Shasta,
+// </h5> <div data-v-dabe9ba4 className="addr-component">
+//   San Jose, CA 95126
+// </div> <meta data-v-dabe9ba4 itemProp="streetAddress" content="Shasta" /> <meta data-v-dabe9ba4 itemProp="addressLocality" content="listing.city" /> <meta data-v-dabe9ba4 itemProp="addressRegion" content="listing.state" /> <meta data-v-dabe9ba4 itemProp="postalCode" content="listing.zip" /> <meta data-v-dabe9ba4 itemProp="addressCountry" content="United States" /></div></div> <div data-v-dabe9ba4 className="attributes">{/**/} <div data-v-dabe9ba4 className="row"><div data-v-dabe9ba4 className="col px-0"><h4 data-v-dabe9ba4 className="text-primary mb-0">
+//     $9,335
+//     <span data-v-dabe9ba4>/mo</span> <span data-v-dabe9ba4 className="scope-label text-rentals small">Rent to Own</span></h4></div></div></div> <div data-v-dabe9ba4 className="text-muted">
+// 5 Bd | 1 bath
+// <span data-v-dabe9ba4>| 3,052 sqft</span></div> {/**/} <footer data-v-dabe9ba4 className="row align-items-end no-gutters small text-muted"><div data-v-dabe9ba4 className="col party-label mr-2"><img data-v-dabe9ba4 src="/images/partners/hf-rto-logo.png" alt="provider logo" /> {/**/}</div> <div data-v-dabe9ba4 className="col-auto"><span data-v-dabe9ba4 className="btn btn-sm btn-primary">View Details</span></div></footer></a></div>
+ 
+);
+    });
     return (
       <div>
         <center>
@@ -413,7 +466,7 @@ class Search extends Component {
                               className="custom-select custom-select-sm"
                               onChange={this.handleChange}
                             >
-                              <option value={""}>Beds</option>
+                              <option value={0}>Beds</option>
                               <option value={1}>1+ Beds</option>
                               <option value={2}>2+ Beds</option>
                               <option value={3}>3+ Beds</option>
@@ -432,7 +485,7 @@ class Search extends Component {
                               className="custom-select custom-select-sm"
                               onChange={this.handleChange}
                             >
-                              <option value={""}>Baths</option>
+                              <option value={0}>Baths</option>
                               <option value={1}>1+ Baths</option>
                               <option value={2}>2+ Baths</option>
                               <option value={3}>3+ Baths</option>
@@ -525,6 +578,17 @@ class Search extends Component {
               </div>
             </header>
           </div>
+        
+        &nbsp;
+        <CardColumns style={{ columnCount:"3"}}>
+   
+        {candr}
+
+        </CardColumns>
+
+        {/* <CardDeck style={{ columnCount:"2",columnGap:"0px"}}>
+          {candr}
+        </CardDeck> */}
         </center>
       </div>
     );
