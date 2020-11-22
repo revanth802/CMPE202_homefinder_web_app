@@ -5,6 +5,7 @@ module.exports = {
  
     login: (req, res) => {
       User.findOne({ email: req.body.email, password: req.body.password }, (error, result) => {
+        console.log(req.body)
         console.log("in login")
         if (error) {
           console.log(error);

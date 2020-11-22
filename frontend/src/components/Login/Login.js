@@ -4,9 +4,6 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { backendServer } from "../../webconfig.js";
 import "../Login/login.css";
-
-import { Link } from "react-router-dom";
-
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +31,10 @@ class Login extends Component {
   componentWillMount() {
     this.setState({
       authFlag: false,
+    });
+     this.setState({
+      showLoginError: false,
+      showRegistrationError : false
     });
   }
 
@@ -86,17 +87,19 @@ class Login extends Component {
         .post(`${backendServer}/login/`, data)
         .then((response) => {
           if (response) {
-            localStorage.setItem("token", response.data.token);
-            localStorage.setItem("id", response.data._id);
+            console.log(response.data);
+            localStorage.setItem("role", response.data.role);
+            localStorage.setItem("status", response.data.status);
             localStorage.setItem("name", response.data.name);
-            localStorage.setItem("type", response.data.userType);
-            if (response.data.userType === "buyer") {
-              window.location.href = "/userdashboard";
-            } else if (response.data.userType === "Seller") {
-              window.location.href = "/sellerinventory";
-            } else {
+            localStorage.setItem("email", response.data.email);
+            if (response.data.role === "admin") {
               window.location.href = "/admin-dashboard";
             }
+            //  else if (response.data.userType === "Seller") {
+            //   window.location.href = "/sellerinventory";
+            // } else {
+            //   window.location.href = "/admin-dashboard";
+            // }
             this.setState({ redirectToHome: true });
             this.setState({
               authFlag: true,
@@ -116,6 +119,11 @@ class Login extends Component {
   };
 
   handleRegister = (e) => {
+    this.setState({
+      showLoginError: false,
+      showRegistrationError : false
+    });
+
       //prevent page from refresh
       e.preventDefault();
       const data = {
@@ -124,6 +132,15 @@ class Login extends Component {
         rpassword: this.state.rpassword,
         role:this.state.role
       };
+
+      if(this.state.rname.length === 0 || this.state.remail.length === 0 || this.state.rpassword.length === 0 || this.state.role === 0)
+      {
+        console.log("fields not validated")
+        this.setState({
+          showRegistrationError: true,
+        });
+        return 0;
+      }
       //set the with credentials to true
       axios.defaults.withCredentials = true;
       //make a post request with the user data
@@ -132,14 +149,15 @@ class Login extends Component {
         .post(`${backendServer}/register/`, data)
         .then((response) => {
           console.log(response);
-          if (response) {
-            
-            this.setState({
-              regFlag: true,
-            });
-          } else {
+          if (response.data === "error") {
+            console.log("error")
             this.setState({
               showRegistrationError: true,
+            });
+           
+          } else if("success") {
+            this.setState({
+              regFlag: true,
             });
           }
         })
@@ -167,51 +185,48 @@ class Login extends Component {
 
         {this.state.regFlag && (
             <div>
-              <i></i>
-              <div>
-                <ul>
-                  <li>
-                    <span>
+              <center>
+              <li>
+             
+                    <span style={{color:"black"}}>
                       Registration Successfull!!
                     </span>
                   </li>
-                </ul>
-              </div>
+               </center>
             </div>
           )}
       
           {this.state.showRegistrationError && (
             <div>
-              <h4>Important Message!</h4>
+              <center>
+              <h4 style={{color:"black"}}>Important Message!</h4>
               <i></i>
               <div>
-                <ul>
-                  <li>
-                    <span>
+                
+                    <span  style={{color:"black"}}>
                       Registration Unsuccessful!!Please Try Again
                     </span>
-                  </li>
-                </ul>
+                  
               </div>
+              </center>
             </div>
           )}
           
 
         <div>
           {this.state.showLoginError && (
-            <div>
-              <h4>Important Message!</h4>
-              <i></i>
-              <div>
-                <ul>
-                  <li>
+            <div style={{color:"black"}}>
+              <center>
+                              <h4>Important Message!</h4>
+           
+            
+             
                     <span>
                       Invalid credentials. Please check your username and
                       password.
                     </span>
-                  </li>
-                </ul>
-              </div>
+                  
+            </center>
             </div>
           )}
           <div>
@@ -224,11 +239,11 @@ class Login extends Component {
             <div className="sign-in-htm">
               <div className="group">
                 <label htmlFor="user" className="label">Username or Email</label>
-                <input id="user" type="text" className="input" onChange={this.handleChange} required name="email"/>
+                <input id="user" type="text" className="input" onChange={this.handleChange}  name="email"/>
               </div>
               <div className="group">
                 <label htmlFor="pass" className="label">Password</label>
-                <input id="pass" type="password" className="input" data-type="password" onChange={this.handleChange} required name="password"/>
+                <input id="pass" type="password" className="input" data-type="password" onChange={this.handleChange} requied name="password"/>
               </div>
               <div className="group">
                 <input type="submit" className="button" defaultValue="Sign In" onClick={this.handleLogin} />
@@ -238,22 +253,28 @@ class Login extends Component {
             <div className="for-pwd-htm">
             <div className="group">
                 <label htmlFor="user" className="label">Full Name</label>
-                <input id="user" type="text" className="input" name="rname" onChange={this.handleChange}/>
+                <input id="user" type="text" className="input" name="rname"  onChange={this.handleChange} />
               </div>
               <div className="group">
                 <label htmlFor="user" className="label">Role ? </label>
-                <input id="user" type="text" className="input" name="role" onChange={this.handleChange} />
-              </div>
+                <select className="input" name="role" onChange={this.handleChange} >
+                            <option style={{color:"black"}} value="" >Select</option>
+                            <option style={{color:"black"}} value="user" >User</option>
+                            <option style={{color:"black"}} value="realtor" >Realtor </option>
+                            <option style={{color:"black"}} value="admin" >Admin </option>
+                          </select>              
+                          </div>
+            
               <div className="group">
                 <label htmlFor="user" className="label">Username or Email</label>
-                <input id="user" type="text" className="input" name="remail" onChange={this.handleChange}/>
+                <input id="user" type="text" className="input" name="remail" onChange={this.handleChange} />
               </div>
               <div className="group">
                 <label htmlFor="user" className="label">Password</label>
-                <input id="user" type="password" className="input" name="rpassword" onChange={this.handleChange}/>
+                <input id="user" type="password" className="input" name="rpassword" onChange={this.handleChange} />
               </div>
               <div className="group">
-                <input type="submit" className="button" defaultValue="Reset Password" onClick={this.handleRegister}/>
+                <input type="submit" className="button" defaultValue="Reset Password" onClick={this.handleRegister} />
               </div>
               <div className="hr" />
             </div>

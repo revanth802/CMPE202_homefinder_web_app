@@ -13,7 +13,7 @@ module.exports = {
                 }
                 else if (result && result != null){
                   console.log('Registration Successfull');
-                  res.end("Registration Successfull");
+                  res.end("success");
                 }
                 else {
                   var newUserDetails = new User({
@@ -24,7 +24,7 @@ module.exports = {
                     if (error) {
                       console.log('error', error);
                       
-                      res.end();
+                      res.end("error");
                     }
                     else {
                       console.log('data', data);
