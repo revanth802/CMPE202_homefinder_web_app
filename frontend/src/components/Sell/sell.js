@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-// import { Form } from "react-bootstrap";
+import React, { Component, Fragment } from "react";
 import axios from "axios";
-import { Redirect } from "react-router";
+import { makeStyles } from '@material-ui/core/styles';
 import { backendServer } from "../../webconfig.js";
 import "../Sell/sell.css";
-import {Form,Button,Col} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
+import Icon from '@material-ui/core/Icon';
 
 import { Link } from "react-router-dom";
 
+
 class Sell extends Component {
+   
   constructor(props) {
     super(props);
     this.state = {
@@ -83,6 +85,8 @@ class Sell extends Component {
   };
 
   render() {
+ 
+
   
       return (
       
@@ -154,7 +158,8 @@ class Sell extends Component {
                             </select>
               </div>
               <div className="form-group">
-                <input type="submit" name="btnSubmit" className="btnContact"  />
+              <Button variant="outline-primary">Add Listing!</Button>{' '}
+             
               </div>
             </div>
             <div className="col-md-6">
