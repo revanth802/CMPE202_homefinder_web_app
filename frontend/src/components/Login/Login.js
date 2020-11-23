@@ -95,11 +95,11 @@ class Login extends Component {
             if (response.data.role === "admin") {
               window.location.href = "/admin-dashboard";
             }
-            //  else if (response.data.userType === "Seller") {
-            //   window.location.href = "/sellerinventory";
-            // } else {
-            //   window.location.href = "/admin-dashboard";
-            // }
+             else if (response.data.role === "realtor") {
+              window.location.href = "/sell";
+            } else {
+              window.location.href = "/search";
+            }
             this.setState({ redirectToHome: true });
             this.setState({
               authFlag: true,

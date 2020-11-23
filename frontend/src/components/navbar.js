@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 // import cookie from 'react-cookies';
 import { Redirect } from 'react-router';
 import axios from 'axios';
-import {backendServer} from '../webconfig'
+import {backendServer} from '../webconfig';
+import "../assets/homefindericon.png";
 
 //create the Navbar Component
 class Navbar extends Component {
@@ -24,14 +25,11 @@ class Navbar extends Component {
     }
     //handle logout to destroy the cookie
     handleLogout = () => {
-        localStorage.removeItem('id');
-        localStorage.removeItem('type');
-        localStorage.removeItem('token');
-        localStorage.removeItem('name');
+        localStorage.clear();
         this.setState({
             logoutRedirect : true
         })
-        window.location.href="/login";
+        window.location.href="/";
     }
 
     // componentDidMount() {
@@ -201,7 +199,7 @@ class Navbar extends Component {
 
         let logoutRedirect=null;
         if(this.state.logoutRedirect){
-            logoutRedirect = <Redirect to="/login"/>
+            logoutRedirect = <Redirect to="/"/>
         }
        
         return (
@@ -243,6 +241,8 @@ class Navbar extends Component {
             <nav class="navbar navbar-inverse">
             <div class="container-fluid">
             <div class="navbar-header">
+
+            {/* <img 	style={{image:("../../assets/house2.jpg")}}/> */}
             <a class="navbar-brand" href="/search">WebSiteName</a>
             </div>
             <ul class="nav navbar-nav">
@@ -253,12 +253,12 @@ class Navbar extends Component {
             <li><a href="#" onClick={this.handleLogout}>Logout</a></li>
 
             </ul>
-            <form class="navbar-form navbar-left" action="/action_page.php">
+            {/* <form class="navbar-form navbar-left" action="/action_page.php">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search"/>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+            </form> */}
             </div>
             </nav>
             </div>
