@@ -33,7 +33,7 @@ class Navbar extends Component {
         this.setState({
             logoutRedirect : true
         })
-        window.location.href="/";
+        window.location.href="/login";
     }
 
     // componentDidMount() {

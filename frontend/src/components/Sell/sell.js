@@ -213,7 +213,7 @@ class Sell extends Component {
                 <textarea name="amenities" className="form-control" placeholder="Amenities" style={{width: '100%', height: '150px'}} onChange={this.handleChange} />
               </div>
             <div className="form-group">
-                <input type="number" name="price" className="form-control" placeholder="Price in $" />
+                <input type="number" name="price" className="form-control" placeholder="Price in $" onChange={this.handleChange} />
               </div>
               <div className="form-group">
                 <textarea name="terms" className="form-control" placeholder="Terms *" style={{width: '100%', height: '150px'}} onChange={this.handleChange}  />
