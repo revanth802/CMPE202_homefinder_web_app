@@ -10,6 +10,7 @@ module.exports = {
         // console.log("query here",req);
         Homelistings.find({type:"sale"}, (error, result) => {
         // res.end(result);
+        console.log("sales homes")
           console.log("homelistings",result);
           res.send(result);
           res.end();

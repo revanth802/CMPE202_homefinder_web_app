@@ -145,11 +145,10 @@ class Navbar extends Component {
                 <div className="container-fluid">
                 <div className="col-sm-offset-2 col-sm-7">
                     <ul className="nav navbar-nav navbar-right">
-                        <li><Link to="/homelistings">Dashboard</Link></li>
+                        <li><Link to="/search">Dashboard</Link></li>
                         <li><Link to="/rentalListings">Rent</Link></li>
-                        <li><Link to="/leaseApplication/:id">Buy</Link></li>
+                        <li><Link to="/homelistings">Buy</Link></li>
                         <li><Link to="/sell">Sell</Link></li>
-                        <li><Link to="/search">Search</Link></li>
                         <li><Link to="/" onClick={this.handleLogout}>Logout</Link></li>
 
                     </ul>
@@ -188,7 +187,7 @@ class Navbar extends Component {
             
            
         
-            <div>
+            <div style={{color:"black"}}>
                                         {navLinks}
 
             <nav class="navbar navbar-inverse">
@@ -199,10 +198,7 @@ class Navbar extends Component {
             <a class="navbar-brand" href="/search">WebSiteName</a>
             </div>
             <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><Link to="/sell">Sell</Link></li>
-            <li><Link to="/homelistings">Buy</Link></li>
-            <li><Link to="/rentalListings">Rent</Link></li>
+            
             <li><a href="/" onClick={this.handleLogout}>Logout</a></li>
 
             </ul>
