@@ -9,6 +9,7 @@ import Icon from '@material-ui/core/Icon';
 import { Link } from "react-router-dom";
 
 
+
 class Sell extends Component {
    
   constructor(props) {
@@ -27,13 +28,15 @@ class Sell extends Component {
     year:0,
     price:0,
     terms:"",
-    amenities:""
-    
-    //  this.handleRemove=this.handleRemove.bind();
+    amenities:"",
+    parking:"",
+    successmsg:""
+    };
+     this.handleChange=this.handleChange.bind(this);
+     this.handleAdd=this.handleAdd.bind(this);
     };
 
-  }
-
+  
   async componentDidMount() {
     // axios
     //   .post(`${backendServer}/admin/`)
@@ -47,45 +50,73 @@ class Sell extends Component {
   }
 
  
+  handleChange = (e) => {
+    console.log("e", e.target.name," ", e.target.value);
+    
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
 
-
- async handleRemove(e) {
-      //prevent page from refresh
-    //   e.preventDefault();
-      console.log(e);
+  handleAdd = (e) => {
+      let boo=false;
+    if(localStorage.getItem("role")=="user")
+        boo=true;
+      e.preventDefault();
       const data = {
-       uname: e
+        add1:this.state.add1,
+     add2: this.state.add2,
+     city:this.state.city,
+    statex:this.state.statex,
+    zipcode: this.state.zipcode,
+    area: this.state.area,
+    beds: this.state.beds,
+    baths: this.state.baths,
+    propertyTypes: this.state.propertyTypes,
+    floor: this.state.floor,
+    year: this.state.year,
+    price: this.state.price,
+    terms: this.state.terms,
+    amenities: this.state.amenities,
+    boo:this.state.boo,
+    person: localStorage.getItem("email"),
+    parking:this.state.parking,
+    boo: boo
       };
+
       //set the with credentials to true
       axios.defaults.withCredentials = true;
       //make a post request with the user data
       console.log("req.body", data);
-      await axios
-        .post(`${backendServer}/admin/remove`, data)
+      axios
+        .post(`${backendServer}/sell/`, data)
         .then((response) => {
           console.log(response);
-          if (response.data=="success") {
-            console.log("Success")
+          if (response.data === "error") {
+            console.log("error")
             this.setState({
-              msgr: "User successfully removed",
+              showRegistrationError: true,
             });
-          } else {
+           
+          } else if(response.data === "success") {
             this.setState({
-              showLoginError: true,
+              successmsg: "success",
             });
           }
         })
         .catch((ex) => {
           this.setState({
-            showLoginError: true,
+            showRegistrationError: true,
           });
         });
-        
-        this.componentDidMount();  
+    
   };
-
+  
   render() {
- 
+    let msgshow=null
+    if(this.state.successmsg=="success")
+    msgshow=<p>Listing Successfully posted</p>
+
 
   
       return (
@@ -96,32 +127,33 @@ class Sell extends Component {
         </div>
         <form method="post">
           <h3>Add a new Listing for Sale!</h3>
+          {msgshow}
           <div className="row">
             <div className="col-md-6">
               <div className="form-group">
-                <input type="text" name="add1" className="form-control" placeholder="Address Line 1 *" />
+                <input type="text" name="add1" className="form-control" placeholder="Address Line 1 *" required onChange={this.handleChange}/>
               </div>
               <div className="form-group">
-                <input type="text" name="add2" className="form-control" placeholder="Address Line 2 " />
+                <input type="text" name="add2" className="form-control" placeholder="Address Line 2 " onChange={this.handleChange} />
               </div>
               <div className="form-group">
-                <input type="text" name="city" className="form-control" placeholder="City" />
+                <input type="text" name="city" className="form-control" placeholder="City" onChange={this.handleChange}/>
               </div>
               <div className="form-group">
-                <input type="text" name="statex" className="form-control" placeholder="State" />
+                <input type="text" name="statex" className="form-control" placeholder="State" onChange={this.handleChange}/>
               </div>
               <div className="form-group">
-                <input type="text" name="zipcode" className="form-control" placeholder="Zipcode (Eg: 95126)" />
+                <input type="text" name="zipcode" className="form-control" placeholder="Zipcode (Eg: 95126)" onChange={this.handleChange}/>
               </div>
               
               <div className="form-group">
-                <input type="number" name="area" className="form-control" placeholder="Area in sqft" />
+                <input type="number" name="area" className="form-control" placeholder="Area in sqft" onChange={this.handleChange}/>
               </div>
               <div className="form-group">
-                <input type="number" name="beds" className="form-control" placeholder="Number of bedrooms" />
+                <input type="number" name="beds" className="form-control" placeholder="Number of bedrooms" onChange={this.handleChange}/>
               </div>
               <div className="form-group">
-                <input type="text" name="baths" className="form-control" placeholder="Number of bathrooms" />
+                <input type="number" name="baths" className="form-control" placeholder="Number of bathrooms" onChange={this.handleChange}/>
               </div>
               <div className="form-group">
               <select
@@ -158,21 +190,33 @@ class Sell extends Component {
                             </select>
               </div>
               <div className="form-group">
-              <Button variant="outline-primary">Add Listing!</Button>{' '}
+              <select
+                              name="parking"
+                              className="custom-select custom-select-sm"
+                              onChange={this.handleChange}
+                            >
+                              <option value={""}>Parking Type</option>
+                              <option value={"open"}>Open Parking</option>
+                              <option value={"closed"}>Closed Parking</option>
+                              
+                            </select>
+              </div>
+              <div className="form-group">
+              <Button variant="outline-primary" onClick={this.handleAdd}>Add Listing!</Button>
              
               </div>
             </div>
             <div className="col-md-6">
             <div className="form-group">
-            <input type="number" name="year" className="form-control" placeholder="Year Built" />              </div>
+            <input type="number" name="year" className="form-control" placeholder="Year Built" onChange={this.handleChange}/>              </div>
             <div className="form-group">
-                <textarea name="amenities" className="form-control" placeholder="Amenities" style={{width: '100%', height: '150px'}} defaultValue={""} />
+                <textarea name="amenities" className="form-control" placeholder="Amenities" style={{width: '100%', height: '150px'}} onChange={this.handleChange} />
               </div>
             <div className="form-group">
                 <input type="number" name="price" className="form-control" placeholder="Price in $" />
               </div>
               <div className="form-group">
-                <textarea name="terms" className="form-control" placeholder="Terms *" style={{width: '100%', height: '150px'}} defaultValue={""} />
+                <textarea name="terms" className="form-control" placeholder="Terms *" style={{width: '100%', height: '150px'}} onChange={this.handleChange}  />
               </div>
             </div>
           </div>

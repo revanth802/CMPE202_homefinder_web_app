@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
 import { backendServer } from "../../webconfig.js";
-import "../Login/login.css";
+import "../Admin/admin.css";
 import {Card,Button,ButtonGroup,ListGroupItem} from 'react-bootstrap';
 
 import { Link } from "react-router-dom";

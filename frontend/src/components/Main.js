@@ -25,27 +25,29 @@ class Main extends Component {
             {navRoute}
             <Route exact path="/admin-dashboard" component={admin} />
             <Route exact path="/search" component={Search} />
-            <Route exact path="/" component={Login} />
+            <Route exact path="/login" component={Login} />
 
-            <Route exact path="/sell" component={Sell} />
+            
            
             </Fragment>
                  }
                {localStorage.getItem('role') != "admin" && localStorage.getItem('role') &&
                     <Fragment>
+                    {navRoute}
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/homelistings" component={HomeListings} />
                         <Route exact path = "/rentalListings" component = {RentalListings}/>
                         <Route path = "/leaseApplication/:id" component = {LeaseApplication}/>
-                
-                        <Route exact path="/" component={Login} />
+                        <Route exact path="/search" component={Search} />
+                        <Route exact path="/sell" component={Sell} />
+                        {/* <Route exact path="/" component={Login} /> */}
                     </Fragment>
         
                  }
 
                 
                     <Fragment>
-                        <Route exact path="/" component={Login} />
+                        <Route exact path="/login" component={Login} />
                    
                     </Fragment>
         

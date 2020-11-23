@@ -19,7 +19,8 @@ class Login extends Component {
       showerrormessage: false,
       redirecttohome: false,
       showRegistrationError:false,
-      regFlag : false
+      regFlag : false,
+      rejectstatus:""
     };
     this.emailChangeHandler = this.emailChangeHandler.bind(this);
     this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
@@ -86,7 +87,7 @@ class Login extends Component {
       axios
         .post(`${backendServer}/login/`, data)
         .then((response) => {
-          if (response) {
+          if (response && response.data.status!="Rejected") {
             console.log(response.data);
             localStorage.setItem("role", response.data.role);
             localStorage.setItem("status", response.data.status);
@@ -95,16 +96,19 @@ class Login extends Component {
             if (response.data.role === "admin") {
               window.location.href = "/admin-dashboard";
             }
-            //  else if (response.data.userType === "Seller") {
-            //   window.location.href = "/sellerinventory";
-            // } else {
-            //   window.location.href = "/admin-dashboard";
-            // }
+            if(response.data.role==="user"){
+              window.location.href = "/search";
+            }
+            
+        
+            
             this.setState({ redirectToHome: true });
             this.setState({
               authFlag: true,
             });
-          } else {
+          }
+          
+          else {
             this.setState({
               showLoginError: true,
             });
@@ -170,15 +174,23 @@ class Login extends Component {
   };
   
   render() {
-    let redirectVar = null;
+    let redirectVar,rejct = null;
 
-    if (this.state.redirectToHome) {
-      redirectVar = <Redirect push to="/somewhere/else" />;
-    }
+    // if (this.state.redirectToHome && this.state.role=="admin") {
+    //   redirectVar = <Redirect push to="/admin-dashboard" />;
+    
+    // }
+    // if (this.state.redirectToHome && this.state.role=="user") {
+    //   redirectVar = <Redirect push to="/search" />;
+    
+    // }
+
+    if(this.state.rejectstatus)
+    rejct= <p> Account has been rejected by the admin </p>
     return (
       <div>
         {redirectVar}
-
+        {rejct}
         <div>
           <a href="/login">{redirectVar}</a>
         </div>

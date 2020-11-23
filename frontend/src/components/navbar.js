@@ -24,9 +24,9 @@ class Navbar extends Component {
     }
     //handle logout to destroy the cookie
     handleLogout = () => {
-        localStorage.removeItem('id');
-        localStorage.removeItem('type');
-        localStorage.removeItem('token');
+        localStorage.removeItem('role');
+        localStorage.removeItem('status');
+        localStorage.removeItem('email');
         localStorage.removeItem('name');
         this.setState({
             logoutRedirect : true

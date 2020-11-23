@@ -21,7 +21,7 @@ body {
 	color:#edf3ff;
 	background:#c8c8c8;
 	/* background-image: "../"; */
-	background-image: url("../../assets/house2.jpg"); /* The image used */
+	 background-image: url("../../assets/house2.jpg"); 
 	width:"100%";
 	height:"100%";
 	background-size: cover;

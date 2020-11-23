@@ -1,11 +1,11 @@
 const router = require("express").Router();
 
 const {
-    login,
-} = require("./login.service");
+    sell
+} = require("./sell.service");
 
 
 
-router.post("/", login);
+router.post("/", sell);
 
 module.exports = router;
