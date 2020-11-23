@@ -25,16 +25,13 @@ class Main extends Component {
             {navRoute}
             <Route exact path="/admin-dashboard" component={admin} />
             <Route exact path="/search" component={Search} />
-            <Route exact path="/login" component={Login} />
-
-            
-           
+            <Route exact path="/" component={Login} />
             </Fragment>
                  }
                {localStorage.getItem('role') != "admin" && localStorage.getItem('role') &&
                     <Fragment>
                     {navRoute}
-                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/" component={Login} />
                         <Route exact path="/homelistings" component={HomeListings} />
                         <Route exact path = "/rentalListings" component = {RentalListings}/>
                         <Route path = "/leaseApplication/:id" component = {LeaseApplication}/>
@@ -47,7 +44,7 @@ class Main extends Component {
 
                 {!localStorage.getItem('role') &&
                     <Fragment>
-                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/" component={Login} />
                    
                     </Fragment>
                 }

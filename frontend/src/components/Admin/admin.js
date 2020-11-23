@@ -13,7 +13,8 @@ class admin extends Component {
     super(props);
     this.state = {
      users:[],
-     msgr:""
+     msgr:"",
+     pagetype:"admindashboard"
     //  this.handleRemove=this.handleRemove.bind();
     };
 
@@ -31,7 +32,15 @@ class admin extends Component {
       });
   }
 
- 
+ async handlePage(e){
+    console.log(e+"in current page")
+    const data = {
+      type: e
+     };
+     this.setState({
+     pagetype: e
+     });
+  }
 
 
  async handleRemove(e) {
@@ -139,11 +148,12 @@ async handleReject(e) {
 };
 
   render() {
+    let redirectVar = null;
     
     let candr = this.state.users.map((msg) => {
         return (
         <div>
-        &nbsp;
+              &nbsp;
             <Card style={{width:"50%",marginLeft:"100px",height:"80%"}}>
             <Card.Header style={{color:"black"}}>{msg.name}</Card.Header>
             <Card.Body>
@@ -177,6 +187,7 @@ async handleReject(e) {
       });
       return (
         <div>
+     
         <p style={{color:"red"}}>{this.state.msgr}</p>
         {/* <div class="card-deck"> */}
           {candr}

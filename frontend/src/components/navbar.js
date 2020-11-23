@@ -33,7 +33,7 @@ class Navbar extends Component {
         this.setState({
             logoutRedirect : true
         })
-        window.location.href="/login";
+        window.location.href="/";
     }
 
     // componentDidMount() {
@@ -112,49 +112,46 @@ class Navbar extends Component {
     render() {
         let navLinks = null;
         let navLinkBottom = null;
-        if (localStorage.getItem('type') === 'Customer') {
+        if (localStorage.getItem('role') === 'admin') {
             navLinks = (
                 <ul className="nav navbar-nav navbar-right">
-                    <li><Link to="/customer/profile">{this.state.name}</Link></li>
-                    <li><a onClick={this.handleLogout}>Logout</a></li>
+                    <li><Link to="/search">Search</Link></li>
+                    <li><Link  to="/" onClick={this.handleLogout}>Logout</Link></li>
                     {/* <li><Link to="/carthome"><span><i className="icon-shopping-cart icon-2x"></i></span><span className="badge badge-light">{this.state.cart.length}</span></Link></li> */}
-                    <li><Link to="/carthome"><span><i className="icon-shopping-cart icon-2x"></i></span></Link></li>
+                    <li><Link to="/admin-dashboard"><span><i className="icon-shopping-cart icon-2x">Dashboard</i></span></Link></li>
                 </ul>
             );
 
-            navLinkBottom = (
-                <div className="row">
-            <div className="col-sm-2 white">
-                <span><i className="glyphicon glyphicon-map-marker"></i> Deliver to <b> {this.state.addresses.length > 0 ? this.state.addresses[0].city+ " " +this.state.addresses[0].zipcode : "No address added" } </b></span>
-            </div>
-                <div className="col-sm-7">
-                    <ul className="nav navbar-nav xshop">
-                         <li><Link to="/product-search">Dashboard</Link></li>
-                        <li><Link to="/orders">Orders</Link></li>
-                        <li><Link to="/payment">Cards</Link></li>
-                        <li><Link to="/address">Address</Link></li>
-                    </ul>
-                </div>
-                <div className="col-sm-3">&nbsp;</div>
-                </div>
-            );
+            // navLinkBottom = (
+            //     <div className="row">
+            // <div className="col-sm-2 white">
+            //     <span><i className="glyphicon glyphicon-map-marker"></i> Deliver to <b> {this.state.addresses.length > 0 ? this.state.addresses[0].city+ " " +this.state.addresses[0].zipcode : "No address added" } </b></span>
+            // </div>
+            //     <div className="col-sm-7">
+            //         <ul className="nav navbar-nav xshop">
+            //              <li><Link to="/product-search">Dashboard</Link></li>
+            //             <li><Link to="/orders">Orders</Link></li>
+            //             <li><Link to="/payment">Cards</Link></li>
+            //             <li><Link to="/address">Address</Link></li>
+            //         </ul>
+            //     </div>
+            //     <div className="col-sm-3">&nbsp;</div>
+            //     </div>
+            // );
         }
-        else if(localStorage.getItem('type')==='Admin'){
+        else {
+         
             navLinks = (
-                <ul className="nav navbar-nav navbar-right">
-                    <li><Link to="/admin-dashboard">{this.state.name}</Link></li>
-                    <li><a onClick={this.handleLogout}>Logout</a></li>
-                </ul>
-            );
-
-            navLinkBottom = (
                 <div className="container-fluid">
                 <div className="col-sm-offset-2 col-sm-7">
-                    <ul className="nav navbar-nav xshop">
-                        <li><Link to="/admin-dashboard">Dashboard</Link></li>
-                        <li><Link to="/admin-category">categories</Link></li>
-                        <li><Link to="/list-sellers">Sellers</Link></li>
-                        <li><Link to="/admin-orders">Orders</Link></li>
+                    <ul className="nav navbar-nav navbar-right">
+                        <li><Link to="/homelistings">Dashboard</Link></li>
+                        <li><Link to="/rentalListings">Rent</Link></li>
+                        <li><Link to="/leaseApplication/:id">Buy</Link></li>
+                        <li><Link to="/sell">Sell</Link></li>
+                        <li><Link to="/search">Search</Link></li>
+                        <li><Link to="/" onClick={this.handleLogout}>Logout</Link></li>
+
                     </ul>
                 </div>
                 <div className="col-sm-3">&nbsp;</div>
@@ -162,27 +159,8 @@ class Navbar extends Component {
             )
 
         }
-        else{
-            navLinks = (
-                <ul className="nav navbar-nav navbar-right">
-                    <li><Link to="/seller/profile">{this.state.name}</Link></li>
-                    <li><a href="#" onClick={this.handleLogout}>Logout</a></li>
-                </ul>
-            );
-
-            navLinkBottom = (
-                <div className="container-fluid">
-                <div className="col-sm-offset-2 col-sm-7">
-                    <ul className="nav navbar-nav xshop">
-                        <li><Link to="/sellerinventory">Inventory</Link></li>
-                        <li><Link to="/seller-orders">Orders</Link></li>
-                        <li><Link to="/sellerstatistics">Reports</Link></li>
-                    </ul>
-                </div>
-                <div className="col-sm-3">&nbsp;</div>
-                </div>
-            )
-        }
+       
+        
 
 
         let redirectVar = null;
@@ -207,41 +185,12 @@ class Navbar extends Component {
         }
        
         return (
-            // <div className="nopadding">
-            //     {redirectVar}
-            //     {logoutRedirect}
-            //     <nav className="navbar navbar-top">
-            //         <div className="container-fluid">
-            //             <div className="navbar-header col-sm-2 nopadding">
-            //                 <a className="navbar-brand " href="#"><img className="navbar-brand__logo-full" src="../images/amazon-logo.png" /></a>
-            //             </div>
-            //             <div className="navbar-header col-sm-7">
-            //                 <div className="input-group">
-            //                     <div className="input-group-btn search-panel">
-            //                         <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            //                             <span id="search_concept">{this.state.selectedCategory}</span> <span className="caret"></span>
-            //                         </button>
-            //                         <ul className="dropdown-menu" role="menu">
-            //                             {categoriesDropDownOptions}
-            //                         </ul>
-            //                     </div>
-            //                     <input type="text" className="form-control searchbox" placeholder="Search term..." onChange={this.searchChangeHandler} value={this.state.searchValue} />
-            //                     <span className="input-group-btn">
-            //                         <button className="btn btn-default searchbutton" type="button" onClick={this.submitSearch}><span className="glyphicon glyphicon-search"></span></button>
-            //                     </span>
-            //                 </div>
-
-            //                 {/* <select onChange={this.categoriesChangeHandler} className="form-control departments">{categoriesDropDownOptions}</select>
-            //     <input className="form-control searchbox" type="search" placeholder="Search" aria-label="Search" />
-            //     <button className="btn btn-outline-white btn-md my-2 my-sm-0 ml-3 searchbutton" type="submit">Search</button>
-            // </form> */}
-            //             </div>
-            //             {navLinks}
-            //             {navLinkBottom}
-            //         </div>
-            //     </nav>
-            // </div>
+            
+           
+        
             <div>
+                                        {navLinks}
+
             <nav class="navbar navbar-inverse">
             <div class="container-fluid">
             <div class="navbar-header">
@@ -254,7 +203,7 @@ class Navbar extends Component {
             <li><Link to="/sell">Sell</Link></li>
             <li><Link to="/homelistings">Buy</Link></li>
             <li><Link to="/rentalListings">Rent</Link></li>
-            <li><a href="#" onClick={this.handleLogout}>Logout</a></li>
+            <li><a href="/" onClick={this.handleLogout}>Logout</a></li>
 
             </ul>
             {/* <form class="navbar-form navbar-left" action="/action_page.php">

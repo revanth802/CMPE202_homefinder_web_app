@@ -94,14 +94,12 @@ class Login extends Component {
             localStorage.setItem("name", response.data.name);
             localStorage.setItem("email", response.data.email);
             if (response.data.role === "admin") {
+
               window.location.href = "/admin-dashboard";
             }
-            if(response.data.role==="user"){
+            else if(response.data.role==="user"){
               window.location.href = "/search";
             }
-            
-        
-            
              else if (response.data.role === "realtor") {
               window.location.href = "/sell";
             } else {
