@@ -45,11 +45,13 @@ class Main extends Component {
         
                  }
 
-                
+                {!localStorage.getItem('role') &&
                     <Fragment>
                         <Route exact path="/login" component={Login} />
                    
                     </Fragment>
+                }
+                    
         
                  
 

@@ -289,10 +289,11 @@ class Search extends Component {
                                 className="input-group-prepend d-none d-md-flex"
                                 data-v-0bf4be34
                               >
-                               <center><span className="fas fa-search fa-3x"  /></center>
+                              
                                
                                 {/* <i class=""></i> */}
                               </div>{" "}
+                              <center><span className="fas fa-search fa-3x"  /></center>
                               <input
                                 type="search"
                                 name="term"

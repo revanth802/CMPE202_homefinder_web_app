@@ -102,6 +102,11 @@ class Login extends Component {
             
         
             
+             else if (response.data.role === "realtor") {
+              window.location.href = "/sell";
+            } else {
+              window.location.href = "/search";
+            }
             this.setState({ redirectToHome: true });
             this.setState({
               authFlag: true,
