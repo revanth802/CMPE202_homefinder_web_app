@@ -12,6 +12,15 @@ class mylistings extends Component {
          flag1:false
         };
         this.handleRemove=this.handleRemove.bind(this);
+        this.handleUpdate=this.handleUpdate.bind(this);
+
+    }
+
+    handleUpdate(id){
+        console.log("in here")
+        this.setState({
+            redirect:`/currentlisting/${id}`
+        })
     }
 
     async componentDidMount() {
@@ -66,6 +75,10 @@ class mylistings extends Component {
 
     render()
     {
+        let redirectVar = null;
+        if (this.state.redirect) {
+            redirectVar = <Redirect push to={this.state.redirect} />;
+          }
         let candr = this.state.homes.map((msg) => {
             return (
               // <CardDeck>
@@ -91,7 +104,7 @@ class mylistings extends Component {
           </Card.Body>
           <Card.Footer>
           <ButtonGroup>
-          <Button>Update Listing</Button>
+          <Button onClick={(e)=> this.handleUpdate(msg._id)}>Update Listing</Button>
             <Button onClick={(e)=> this.handleRemove(msg._id)}>Remove Listing</Button>
             </ButtonGroup>
             {/* <MDBBtn floating size="lg" gradient="purple"><MDBIcon icon="bolt" /></MDBBtn> */}
@@ -104,6 +117,7 @@ class mylistings extends Component {
             <div>
               <CardColumns style={{ columnCount:"1"}}>
               {candr}
+              {redirectVar}
               </CardColumns>
              
       

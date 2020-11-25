@@ -12,6 +12,7 @@ import RentalListings from "../components/rentalListings";
 import LeaseApplication from "../components/leaseApplication";
 import Sell from "./Sell/sell";
 import mylistings from "./Mylistings/mylistings";
+import currentlisting from "./Mylistings/currentlisting";
 
 //Create a Main Component
 class Main extends Component {
@@ -39,6 +40,10 @@ class Main extends Component {
               <Route
                 path="/leaseApplication/:id"
                 component={LeaseApplication}
+              />
+               <Route
+                path="/currentlisting/:id"
+                component={currentlisting}
               />
               <Route exact path="/search" component={Search} />
               <Route exact path="/sell" component={Sell} />

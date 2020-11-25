@@ -3,6 +3,7 @@ const router = require("express").Router();
 const {
     myhomelistings,
     remove,
+    update
     // approve,
     // reject
 } = require("./myhomelistings.service");
@@ -11,7 +12,7 @@ const {
 
 router.post("/", myhomelistings);
 router.post("/remove",remove);
-// router.post("/approve",approve);
+router.post("/update",update);
 // router.post("/reject",reject);
 
 module.exports = router;

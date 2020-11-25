@@ -26,17 +26,33 @@ module.exports = {
         });
       },
 
-    //   reject: (req, res) => {
+      update: (req, res) => {
       
-    //     // console.log("query here",req);
-    //     console.log("remove user", req.body)
-    //     User.findOneAndUpdate({email:req.body.uname},{status:"Rejected"} ,(error, result) => {
-    //     // res.end(result);
-    //       console.log("users",result);
-    //       res.send("success");
-    //       res.end();
-    //     });
-    //   },
+        // console.log("query here",req);
+        console.log("UPDATE LISTING", req.body)
+        body=req.body
+        Homelistings.findOneAndUpdate({_id:body.listingId},{addressLine1: body.add1,
+          addressLine2: body.add2, 
+          city:body.city,
+           state:body.statex,
+           zipcode:body.zipcode,
+           area:body.area,
+         bedrooms:body.beds,
+         bathrooms:body.baths,
+          hometype:body.propertyTypes,
+           flooring:body.floor,
+            year_built: body.year,
+         amenities:body.amenities
+         ,price:body.price,
+         leaseTerms:body.terms,
+        
+         parking:body.parking,} ,(error, result) => {
+        // res.end(result);
+          // console.log("users",result);
+          res.send("success");
+          res.end();
+        });
+      },
 
     //   approve: (req, res) => {
       
