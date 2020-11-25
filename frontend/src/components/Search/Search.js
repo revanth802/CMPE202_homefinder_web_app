@@ -39,6 +39,7 @@ class Search extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch=this.handleSearch.bind(this);
+    this.handlefavourite=this.handlefavourite.bind(this);
   }
 
   componentWillMount() {
@@ -77,10 +78,38 @@ class Search extends Component {
     });
   };
 
+  async handlefavourite(e){
+    // console.log(e);
+    const data = {
+      userid: localStorage.getItem("email"),
+     houseid: e
+    };
+    await axios
+        .post(`${backendServer}/search/addToFavourites`, data)
+        .then((response) => {
+          console.log(response);
+          if (response.data=="success") {
+            console.log("Success")
+            this.setState({
+              msgr: "User successfully removed",
+            });
+          } else {
+            this.setState({
+              showLoginError: true,
+            });
+          }
+        })
+
+
+
+
+  }
+
   handleSearch = (e) => {
       //prevent page from refresh
       e.preventDefault();
       const data = {
+        email:localStorage.getItem("email"),
         type:this.state.type,
         term: this.state.term,
         minPrice: this.state.minPrice,
@@ -164,7 +193,8 @@ class Search extends Component {
     <Card.Body>
       <Card.Title style={{color:"black"}}>{msg.addressLine1}
       &nbsp;
-      <button><i class="fas fa-heart fa-sm" style={{color:"red"}}></i></button>
+      <button  onClick={(e)=> this.handlefavourite(msg._id)}>Favr8</button>
+      {/* <i class="fas fa-heart fa-sm" style={{color:"red"}}></i> */}
       </Card.Title>
       <Card.Text>
       <h4 data-v-dabe9ba4="" class="text-primary mb-0">
