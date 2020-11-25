@@ -11,6 +11,7 @@ import Search from "./Search/Search";
 import RentalListings from "../components/rentalListings";
 import LeaseApplication from "../components/leaseApplication";
 import Sell from "./Sell/sell";
+import mylistings from "./Mylistings/mylistings";
 
 //Create a Main Component
 class Main extends Component {
@@ -41,7 +42,7 @@ class Main extends Component {
               />
               <Route exact path="/search" component={Search} />
               <Route exact path="/sell" component={Sell} />
-              {/* <Route exact path="/" component={Login} /> */}
+              <Route exact path="/mylistings" component={mylistings} />
             </Fragment>
           )}
 

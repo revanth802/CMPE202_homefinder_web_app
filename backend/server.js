@@ -66,6 +66,7 @@ var adminRouter = require('./api/admin/admin.router');
 var homeListingRouter =  require('./api/homelistings/homelisting.router');
 var searchRouter= require('./api/search/search.router');
 var sellRouter=  require('./api/sell/sell.router');
+var myhomelistingRouter= require('./api/myhomelistings/myhomelistings.router');
 
 app.use('/login', loginRouter);
 app.use('/register',registerRouter);
@@ -74,6 +75,7 @@ app.use('/homelistings',homeListingRouter);
 app.use('/email',emailRouter);
 app.use('/search',searchRouter);
 app.use('/sell',sellRouter);
+app.use('/myhomelistings',myhomelistingRouter);
 
 //start your server on port 3001
 module.exports = app.listen(3001);

@@ -23,7 +23,9 @@ var homelistingsSchema = new Schema({
     securityDeposit:{type:String},
     availableDate:{type:Date},
     representedBy:{type:String,required:true},
-    isOwnerRepresented:{type:Boolean, required:true}
+    owner: {type:String},
+    isOwnerRepresented:{type:Boolean, required:true},
+    status:{type:String}
 },
 {
     versionKey: false

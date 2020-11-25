@@ -116,7 +116,7 @@ class Navbar extends Component {
             navLinks = (
                 <ul className="nav navbar-nav navbar-right">
                     <li><Link to="/search">Search</Link></li>
-                    <li><Link  to="/" onClick={this.handleLogout}>Logout</Link></li>
+                    {/* <li><Link  to="/" onClick={this.handleLogout}>Logout</Link></li> */}
                     {/* <li><Link to="/carthome"><span><i className="icon-shopping-cart icon-2x"></i></span><span className="badge badge-light">{this.state.cart.length}</span></Link></li> */}
                     <li><Link to="/admin-dashboard"><span><i className="icon-shopping-cart icon-2x">Dashboard</i></span></Link></li>
                 </ul>
@@ -149,6 +149,7 @@ class Navbar extends Component {
                         <li><Link to="/rentalListings">Rent</Link></li>
                         <li><Link to="/homelistings">Buy</Link></li>
                         <li><Link to="/sell">Sell</Link></li>
+                        <li><Link to="/mylistings">Manage Listings</Link></li>
                         <li><Link to="/" onClick={this.handleLogout}>Logout</Link></li>
 
                     </ul>
