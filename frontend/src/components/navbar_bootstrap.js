@@ -5,7 +5,7 @@ import { Redirect } from "react-router";
 import axios from "axios";
 import { backendServer } from "../webconfig";
 import "../assets/homefindericon.png";
-
+import '../../src/assets/homefindericon.png';
 //create the Navbar Component
 class Navbar extends Component {
   constructor(props) {
@@ -113,11 +113,17 @@ class Navbar extends Component {
               Sell
             </Link>
           </li>
-          {/* <li class="nav-item">
-            <Link class="nav-link" to="/" onClick={this.handleLogout}>
-              Logout
+          <li class="nav-item">
+            <Link class="nav-link" to="/mylistings">
+            Manage Listings
             </Link>
-          </li> */}
+          </li>
+         
+          <Link class="nav-link" to="/myfavorites">
+          My Favorites<li width="100px" height="200px"class="fas fa-heart fa-lg" style={{color:"red"}}></li>
+            </Link>
+        
+         
         </ul>
       );
     }

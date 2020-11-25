@@ -151,8 +151,8 @@ class Search extends Component {
 
   render() {
     let msg,redirectVar = null;
-    if (this.state.type == "sale") msg = <p>Find Your New Home!</p>;
-    else msg = <p>Find Homes for Rent</p>;
+    if (this.state.type == "sale") msg = <p>  <i class="fas fa-home fa-lg"></i> Find Your New Home!</p>;
+    else msg = <p> <i class="fas fa-home fa-lg"></i>Find Homes for Rent</p>;
     // if (this.state.redirectToHome) {
     //   redirectVar = <Redirect push to="/somewhere/else" />;
     // }
@@ -221,10 +221,7 @@ class Search extends Component {
           <div className="search">
             <header className="container mt-4">
               <h1 className="search-title mb-3 mb-md-0">
-                <img
-                  src="/images/logo-door.svg"
-                  className="logo-door d-none d-md-inline"
-                />
+             
                 <span
                   className="d-inline-block"
                   style={{ minWidth: "288px", background: "#00294D80" }}
