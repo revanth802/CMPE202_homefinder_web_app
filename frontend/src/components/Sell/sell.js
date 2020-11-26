@@ -24,7 +24,7 @@ class Sell extends Component {
       amenities: "",
       parking: "",
       successmsg: "",
-      type: "",
+      type: "sale",
       availableDate: "",
       securityDeposit: "",
     };
