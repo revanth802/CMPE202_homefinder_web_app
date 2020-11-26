@@ -4,7 +4,7 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { backendServer } from "../../webconfig.js";
 import {Card,Carousel} from 'react-bootstrap';
-
+import "../myfavourites/myfavourites.css";
 import { Link } from "react-router-dom";
 
 class myfavorites extends Component {
@@ -75,11 +75,13 @@ class myfavorites extends Component {
      
         <p style={{color:"red"}}>{this.state.msgr}</p>
         {/* <div class="card-deck"> */}
-        <h3 style={{color:"red"}}>Your favourites:</h3>
+        <center>
+        <h3 style={{color:"black"}}>Your favourites:</h3>
+        
         <Carousel>
           {candr}
           </Carousel>
-         
+          </center>
   
           </div>
            
