@@ -39,6 +39,7 @@ class Search extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch=this.handleSearch.bind(this);
+    this.handlefavourite=this.handlefavourite.bind(this);
   }
 
   componentWillMount() {
@@ -77,10 +78,38 @@ class Search extends Component {
     });
   };
 
+  async handlefavourite(e){
+    // console.log(e);
+    const data = {
+      userid: localStorage.getItem("email"),
+     houseid: e
+    };
+    await axios
+        .post(`${backendServer}/search/addToFavourites`, data)
+        .then((response) => {
+          console.log(response);
+          if (response.data=="success") {
+            console.log("Success")
+            this.setState({
+              msgr: "User successfully removed",
+            });
+          } else {
+            this.setState({
+              showLoginError: true,
+            });
+          }
+        })
+
+
+
+
+  }
+
   handleSearch = (e) => {
       //prevent page from refresh
       e.preventDefault();
       const data = {
+        email:localStorage.getItem("email"),
         type:this.state.type,
         term: this.state.term,
         minPrice: this.state.minPrice,
@@ -142,7 +171,7 @@ class Search extends Component {
     axios.defaults.withCredentials = true;
     {
       this.setState({
-        type: "rental",
+        type: "rent",
         x1: "active",
         x2: "",
       });
@@ -162,9 +191,10 @@ class Search extends Component {
   <Card border="primary" style={{padding:"10px",width:"380px",height:"480px",marginLeft:"20px"}} >
     <Card.Img variant="top" src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620" style={{width:"350px",height:"280px"}} />
     <Card.Body>
-      <Card.Title style={{color:"black"}}>{msg.addressLine1}
+      <Card.Title style={{color:"black",height:"54px"}}>{msg.addressLine1}
       &nbsp;
-      <button><i class="fas fa-heart fa-sm" style={{color:"red"}}></i></button>
+      <button  onClick={(e)=> this.handlefavourite(msg._id)}>Favr8</button>
+      {/* <i class="fas fa-heart fa-sm" style={{color:"red"}}></i> */}
       </Card.Title>
       <Card.Text>
       <h4 data-v-dabe9ba4="" class="text-primary mb-0">
@@ -184,35 +214,6 @@ class Search extends Component {
     </Card.Footer>
   </Card>
        
-  //        <Card >
-  //   <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/matthew.png" />
-  //   <Card.Body style={{width:"491.06px"}}>
-  //     <Card.Title>Card title that wraps to a new line</Card.Title>
-  //     <Card.Text>
-  //       This is a longer card with supporting text below as a natural lead-in to
-  //       additional content. This content is a little bit longer.
-  //     </Card.Text>
-  //   </Card.Body>
-  //   &nbsp
-  // </Card>
-//   <div className="py-2 p-md-2 col-md-6"><a data-v-dabe9ba4 href="/property/453961815/Shasta-San-Jose-CA-95126" target className="listing-tile d-block prime-listing"><div data-v-dabe9ba4 className="photo-box"><div data-v-dabe9ba4 className="listing-ribbons"><div className="listing-ribbon listing-ribbon-primary">
-//   Featured
-// </div> <div className="listing-ribbon" style={{display: 'none'}}><span>Open House</span>
-// </div></div> <img data-v-dabe9ba4 src="https://img5.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620" srcSet="https://img1.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/400 400w, https://img5.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/500 500w, https://img5.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620 620w" className="pic img-fluid v-lazy-image v-lazy-image-loaded unlazy" alt="Shasta, San Jose, CA 95126" title="Shasta, San Jose, CA 95126" sizes="(max-width: 575px) 100vw,
-// (max-width: 767px) 490px,
-// (max-width: 991px) 310px,
-// (max-width: 1199px) 272px,
-// (max-width: 1519px) 362px,
-// 532px" /> <div data-v-dabe9ba4 className="strip"><h5 data-v-dabe9ba4 itemProp="name" className="addr-component mb-0">
-//   Shasta,
-// </h5> <div data-v-dabe9ba4 className="addr-component">
-//   San Jose, CA 95126
-// </div> <meta data-v-dabe9ba4 itemProp="streetAddress" content="Shasta" /> <meta data-v-dabe9ba4 itemProp="addressLocality" content="listing.city" /> <meta data-v-dabe9ba4 itemProp="addressRegion" content="listing.state" /> <meta data-v-dabe9ba4 itemProp="postalCode" content="listing.zip" /> <meta data-v-dabe9ba4 itemProp="addressCountry" content="United States" /></div></div> <div data-v-dabe9ba4 className="attributes">{/**/} <div data-v-dabe9ba4 className="row"><div data-v-dabe9ba4 className="col px-0"><h4 data-v-dabe9ba4 className="text-primary mb-0">
-//     $9,335
-//     <span data-v-dabe9ba4>/mo</span> <span data-v-dabe9ba4 className="scope-label text-rentals small">Rent to Own</span></h4></div></div></div> <div data-v-dabe9ba4 className="text-muted">
-// 5 Bd | 1 bath
-// <span data-v-dabe9ba4>| 3,052 sqft</span></div> {/**/} <footer data-v-dabe9ba4 className="row align-items-end no-gutters small text-muted"><div data-v-dabe9ba4 className="col party-label mr-2"><img data-v-dabe9ba4 src="/images/partners/hf-rto-logo.png" alt="provider logo" /> {/**/}</div> <div data-v-dabe9ba4 className="col-auto"><span data-v-dabe9ba4 className="btn btn-sm btn-primary">View Details</span></div></footer></a></div>
- 
 );
     });
     return (

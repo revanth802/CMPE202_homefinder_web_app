@@ -6,7 +6,7 @@ module.exports = {
     admin: (req, res) => {
       
         // console.log("query here",req);
-        User.find({}, (error, result) => {
+        User.find({"role" : { "$in": ["user", "realtor","User","Realtor"] }}, (error, result) => {
         // res.end(result);
           console.log("users",result);
           res.send(result);
