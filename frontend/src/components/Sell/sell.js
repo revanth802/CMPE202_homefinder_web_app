@@ -24,8 +24,8 @@ class Sell extends Component {
       amenities: "",
       parking: "",
       successmsg: "",
-      listingType: "",
-      availabilityDate: "",
+      type: "",
+      availableDate: "",
       securityDeposit: "",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -54,7 +54,7 @@ class Sell extends Component {
 
   handleOnChangeListingType = (e) => {
     this.setState({
-      listingType: e.target.value,
+      type: e.target.value,
     });
   };
 
@@ -81,8 +81,8 @@ class Sell extends Component {
       person: localStorage.getItem("email"),
       parking: this.state.parking,
       boo: boo,
-      listingType: this.state.listingType,
-      availabilityDate: this.state.availabilityDate,
+      type: this.state.type,
+      availableDate: this.state.availableDate,
       securityDeposit: this.state.securityDeposit,
     };
 
@@ -312,7 +312,7 @@ class Sell extends Component {
                 />
               </div>
 
-              {this.state.listingType == "rent" ? (
+              {this.state.type == "rent" ? (
                 <div>
                   <div className="form-group">
                     <input
@@ -326,10 +326,10 @@ class Sell extends Component {
                   <label for="date"> Available Date</label>
                   <input
                     type="date"
-                    name="date"
+                    name="availableDate"
                     id="date"
                     value={this.state.date}
-                    onChange={this.onChange}
+                    onChange={this.handleChange}
                     class="form-control"
                     required
                   />
