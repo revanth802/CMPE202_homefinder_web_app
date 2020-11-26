@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import axios from "axios";
 import { backendServer } from "../webconfig";
-import "../assets/homefindericon.png";
-import '../../src/assets/homefindericon.png';
+import "./navbar.css";
 //create the Navbar Component
 class Navbar extends Component {
   constructor(props) {
@@ -173,12 +172,12 @@ class Navbar extends Component {
     return (
       <div style={{ color: "black" }}>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <Link class="navbar-brand" to="/search">
+          {/* <Link class="navbar-brand" to="/search">
             Home Finder
-          </Link>
-          {/* <a class="navbar-brand" href="#">
-            <img src="http://placehold.it/150x50?text=Logo" alt="" />
-          </a> */}
+          </Link> */}
+        
+
+          <a class="navbar-brand " href="#"><i class="fas fa-home fa-lg"></i></a>
           {navLinks}
           {/* <li class="nav-item"> */}
           <Link class="nav-link" to="/" onClick={this.handleLogout}>
