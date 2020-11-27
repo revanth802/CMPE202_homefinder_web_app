@@ -82,8 +82,8 @@ class mylistings extends Component {
         let candr = this.state.homes.map((msg) => {
             return (
               // <CardDeck>
-        <Card border="primary" style={{padding:"10px",width:"380px",height:"520px",marginLeft:"20px"}} >
-          <Card.Img variant="top" src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620" style={{width:"358px",height:"280px"}} />
+        <Card border="primary" style={{padding:"10px",width:"470px",height:"520px",marginLeft:"20px"}} >
+          <Card.Img variant="top" src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620" style={{width:"450px",height:"280px"}} />
           <Card.Body>
             <Card.Title style={{color:"black",height:"54px"}}>{msg.addressLine1} 
             {/* &nbsp; */}
@@ -103,10 +103,16 @@ class mylistings extends Component {
             </Card.Text>
           </Card.Body>
           <Card.Footer>
+          <center>
           <ButtonGroup>
           <Button onClick={(e)=> this.handleUpdate(msg._id)}>Update Listing</Button>
+          &nbsp;
             <Button onClick={(e)=> this.handleRemove(msg._id)}>Remove Listing</Button>
+            &nbsp;
+            <Button>View Applications</Button>
+            
             </ButtonGroup>
+            </center>
             {/* <MDBBtn floating size="lg" gradient="purple"><MDBIcon icon="bolt" /></MDBBtn> */}
           </Card.Footer>
         </Card>

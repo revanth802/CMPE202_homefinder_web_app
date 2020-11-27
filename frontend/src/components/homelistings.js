@@ -14,8 +14,11 @@ class HomeListings extends Component {
     }
 
     async componentDidMount() {
+      const data = {
+        email: localStorage.getItem("email")
+      };
         axios
-          .post(`${backendServer}/homelistings/`)
+          .post(`${backendServer}/homelistings/`,data)
           .then((response) => {
             console.log("Pro are::", response.data);
             this.setState({

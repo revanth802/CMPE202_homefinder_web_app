@@ -8,7 +8,7 @@ module.exports = {
     displayhomes: (req, res) => {
       
         // console.log("query here",req);
-        Homelistings.find({type:"sale"}, (error, result) => {
+        Homelistings.find({type:"sale",owner: { $ne: req.body.email }}, (error, result) => {
         // res.end(result);
         console.log("sales homes")
           console.log("homelistings",result);

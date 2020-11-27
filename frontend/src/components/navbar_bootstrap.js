@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import axios from "axios";
 import { backendServer } from "../webconfig";
-import "./navbar.css";
+// import "./navbar.css";
 import "../assets/homefindericon.png";
 import "../../src/assets/homefindericon.png";
 //create the Navbar Component

@@ -42,6 +42,22 @@ class Search extends Component {
     this.handlefavourite=this.handlefavourite.bind(this);
   }
 
+  async componentDidMount() {
+    const data = {
+      email: localStorage.getItem("email")
+    };
+    axios
+      .post(`${backendServer}/homelistings/`,data)
+      .then((response) => {
+        console.log("Pro are::", response.data);
+        this.setState({
+          listings: response.data,
+        });
+        console.log("Pro are::", this.state.homes);
+      });
+  }
+
+
   componentWillMount() {
     this.setState({
       authFlag: false,
