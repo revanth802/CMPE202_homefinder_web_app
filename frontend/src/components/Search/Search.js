@@ -177,21 +177,35 @@ class Search extends Component {
         x1: "",
       });
     }
+    this.componentDidMount();
   };
 
   handleMsg2 = (e) => {
     //prevent page from refresh
     e.preventDefault();
+    const data = {
+      email: localStorage.getItem("email")
+    };
 
     //set the with credentials to true
     axios.defaults.withCredentials = true;
-    {
+    axios
+          .get(`${backendServer}/homelistings/rentalListings/`,data)
+          .then((response) => {
+            // console.log("Pro are::", response.data);
+            this.setState({
+             listings: response.data,
+            });
+            // console.log("Pro are::", this.state.homes);
+          });
       this.setState({
         type: "rent",
         x1: "active",
         x2: "",
       });
-    }
+    
+
+
   };
 
   render() {

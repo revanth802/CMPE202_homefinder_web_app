@@ -20,8 +20,11 @@ class RentalListings extends Component {
     }
 
     async componentDidMount() {
+      const data = {
+        email: localStorage.getItem("email")
+      };
         axios
-          .get(`${backendServer}/homelistings/rentalListings/`)
+          .get(`${backendServer}/homelistings/rentalListings/`,data)
           .then((response) => {
             console.log("Pro are::", response.data);
             this.setState({

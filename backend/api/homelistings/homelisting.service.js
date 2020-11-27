@@ -20,7 +20,7 @@ module.exports = {
       rentalListings: (req, res) => {
       
         // console.log("query here",req);
-        Homelistings.find({type:"rent"}, (error, result) => {
+        Homelistings.find({type:"rent",owner: { $ne: req.body.email }}, (error, result) => {
         // res.end(result);
           console.log("homelistings",result);
           res.send(result);
