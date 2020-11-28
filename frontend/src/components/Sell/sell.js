@@ -27,21 +27,24 @@ class Sell extends Component {
       type: "sale",
       availableDate: "",
       securityDeposit: "",
+      userrole : localStorage.getItem("role"),
+      owners : [],
+      owner : ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
   }
 
   async componentDidMount() {
-    // axios
-    //   .post(`${backendServer}/admin/`)
-    //   .then((response) => {
-    //     console.log("Pro are::", response.data);
-    //     this.setState({
-    //       users: response.data,
-    //     });
-    //     console.log("Pro are::", this.state.users);
-    //   });
+    axios
+      .get(`${backendServer}/sell/getOwners`)
+      .then((response) => {
+        console.log("Pro are::", response.data);
+        this.setState({
+          owners: response.data,
+        });
+        console.log("Pro are::", this.state.owners);
+      });
   }
 
   handleChange = (e) => {
@@ -50,6 +53,7 @@ class Sell extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+    // console.log(owner, "owner")
   };
 
   handleOnChangeListingType = (e) => {
@@ -60,7 +64,7 @@ class Sell extends Component {
 
   handleAdd = (e) => {
     let boo = false;
-    if (localStorage.getItem("role") == "user") boo = true;
+    if (localStorage.getItem("role") == "user" ) boo = true;
     e.preventDefault();
     const data = {
       add1: this.state.add1,
@@ -84,6 +88,7 @@ class Sell extends Component {
       type: this.state.type,
       availableDate: this.state.availableDate,
       securityDeposit: this.state.securityDeposit,
+      owner : this.state.owner
     };
 
     //set the with credentials to true
@@ -116,7 +121,9 @@ class Sell extends Component {
     let msgshow = null;
     if (this.state.successmsg == "success")
       msgshow = <p>Listing Successfully posted</p>;
-
+      let optionItems = this.state.owners.map((owner) =>
+      <option key={owner}>{owner}</option>
+  );
     return (
       <div className="container contact-form">
         <div className="contact-image">
@@ -140,6 +147,10 @@ class Sell extends Component {
                   onChange={this.handleChange}
                 />
               </div>
+              <div>
+             
+             
+         </div>
               <div className="form-group">
                 <input
                   type="text"
@@ -258,7 +269,7 @@ class Sell extends Component {
                   value="sale"
                   onChange={this.handleOnChangeListingType}
                 />
-                <label class="form-check-label" for="inlineRadio1">
+                <label class="form-check-label" style={{color:"black"}} for="inlineRadio1">
                   For Sale
                 </label>
               </div>
@@ -271,7 +282,7 @@ class Sell extends Component {
                   value="rent"
                   onChange={this.handleOnChangeListingType}
                 />
-                <label class="form-check-label" for="inlineRadio2">
+                <label class="form-check-label" style={{color:"black"}} for="inlineRadio2">
                   For Rent
                 </label>
               </div>
@@ -312,6 +323,7 @@ class Sell extends Component {
                 />
               </div>
 
+<div>
               {this.state.type == "rent" ? (
                 <div>
                   <div className="form-group">
@@ -323,6 +335,7 @@ class Sell extends Component {
                       onChange={this.handleChange}
                     />{" "}
                   </div>
+                  <div>
                   <label for="date"> Available Date</label>
                   <input
                     type="date"
@@ -333,10 +346,33 @@ class Sell extends Component {
                     class="form-control"
                     required
                   />
+                  </div>
                 </div>
               ) : (
                 ""
               )}
+              </div>
+<div>
+             {this.state.userrole == "realtor" ? (
+                  
+                
+                  <div>
+                    <label for="date" style={{color:"black"}}>On behalf of Seller</label>
+                                <select
+                  name="owner"
+                  className="custom-select custom-select-sm"
+                  onChange={this.handleChange}>
+                  <option value="">Select</option>
+   {optionItems}
+                </select>
+                </div>
+                   
+                 
+              
+              ) : (
+                ""
+              )}
+            </div>
             </div>
           </div>
         </form>

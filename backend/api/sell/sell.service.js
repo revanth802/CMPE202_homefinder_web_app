@@ -1,10 +1,17 @@
 const User = require("../../models/usermodel.js");
 const Property = require("../../models/homelistings.js");
 const { brotliDecompress } = require("zlib");
+const Homelistings = require("../../models/homelistings.js");
 
 module.exports = {
   sell: (req, res) => {
     body = req.body;
+    var owner;
+    if(req.body.owner == "")
+    {
+      req.body.owner = req.body.person
+    }
+    console.log(req.body);
     var newUserDetails = new Property({
       type: body.type,
       addressLine1: body.add1,
@@ -21,7 +28,7 @@ module.exports = {
       amenities: body.amenities,
       price: body.price,
       leaseTerms: body.terms,
-      owner: body.person,
+      owner: body.owner,
       representedBy: body.person,
       isOwnerRepresented: body.boo,
       parking: body.parking,
@@ -30,6 +37,7 @@ module.exports = {
     });
 
     newUserDetails.save((error, data) => {
+      
       if (error) {
         console.log("error", error);
 
@@ -40,5 +48,18 @@ module.exports = {
         res.end();
       }
     });
+  },
+
+
+  getOwners : (req, res) => {
+    body = req.body;
+    User.distinct("email", {role:"user"} ,(error, result) => {
+      // res.end(result);
+      console.log("my homelistings",result);
+      res.send(result);
+      res.end();
+    });
+    // Homelistings.distinct("owner",{},)
+    // res.send();
   },
 };
