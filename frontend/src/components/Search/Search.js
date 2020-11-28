@@ -53,7 +53,7 @@ class Search extends Component {
         this.setState({
           listings: response.data,
         });
-        console.log("Pro are::", this.state.homes);
+        // console.log("Pro are::", this.state.homes);
       });
   }
 
