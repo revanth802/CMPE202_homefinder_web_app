@@ -32,10 +32,11 @@ module.exports = {
                 res.writeHead(500, {
                     'Content-Type': 'text/plain'
                 })
-                // console.log("error", error)
+               
                 res.end();
             }
-            // console.log(properties);
+        
+            if(body.role==="user"){
             let ids_homes = properties.map(({ _id }) => _id)
             for(let i=0;i<ids_homes.length;i++)
             {
@@ -44,12 +45,9 @@ module.exports = {
               {user:body.email,homeId:ids_homes[i]},
               { $inc: { frequency: 1 }},{upsert:true},
               (error, result) => {
-                // res.end(result);
-                // console.log("users",result);
-                // res.send("success");
-                // res.end();
+            
               }
-            );}
+            );}}
             res.status(200).json(properties);
         });
     },

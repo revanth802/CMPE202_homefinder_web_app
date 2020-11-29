@@ -91,7 +91,7 @@ class Navbar extends Component {
           </li>
         </ul>
       );
-    } else {
+    } else if (localStorage.getItem("role") === "user"){
       navLinks = (
         <ul className="navbar-nav mr-auto">
           <li class="nav-item">
@@ -131,6 +131,40 @@ class Navbar extends Component {
           </Link>
         </ul>
       );
+    }
+    else{
+      navLinks = (
+        <ul className="navbar-nav mr-auto">
+          <li class="nav-item">
+            <Link class="nav-link" to="/search">
+              Dashboard
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" to="/rentalListings">
+              Rent
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" to="/homelistings">
+              Buy
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" to="/sell">
+              List Your Property
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" to="/mylistings">
+              Manage Listings
+            </Link>
+          </li>
+
+         
+        </ul>
+      );
+    
     }
 
     let redirectVar = null;

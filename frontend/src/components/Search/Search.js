@@ -126,6 +126,7 @@ class Search extends Component {
       e.preventDefault();
       const data = {
         email:localStorage.getItem("email"),
+        role:localStorage.getItem("role"),
         type:this.state.type,
         term: this.state.term,
         minPrice: this.state.minPrice,
@@ -223,8 +224,19 @@ class Search extends Component {
     <Card.Body>
       <Card.Title style={{color:"black",height:"54px"}}>{msg.addressLine1}
       &nbsp;
-      <button  onClick={(e)=> this.handlefavourite(msg._id)}>Favr8</button>
-      {/* <i class="fas fa-heart fa-sm" style={{color:"red"}}></i> */}
+      {/* <div> */}
+             {localStorage.getItem("role") == "user" ? (
+                  
+                
+                  <button  onClick={(e)=> this.handlefavourite(msg._id)}>Favr8</button>
+            
+                   
+                 
+              
+              ) : (
+                ""
+              )}
+    {/* </div> */}
       </Card.Title>
       <Card.Text>
       <h4 data-v-dabe9ba4="" class="text-primary mb-0">
