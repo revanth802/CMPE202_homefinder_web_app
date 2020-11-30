@@ -281,7 +281,7 @@ class Search extends Component {
       );
     });
     return (
-      <div>
+      <div className="search-page">
         <center>
           <div className="search">
             <header className="container mt-4">
