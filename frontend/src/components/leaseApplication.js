@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
 import { backendServer } from "../webconfig";
-// import "./leaseApplication.css";
+import "./leaseApplication.css";
 import { Card, Button, ButtonGroup, Form } from "react-bootstrap";
 
 class LeaseApplication extends Component {
@@ -75,6 +75,9 @@ class LeaseApplication extends Component {
         <div className="lease-application">
           <div className="container lease-app-form">
             <div className="card applications-end">
+              <div className="card-head">
+                <h2 className="page-title">Lease Application Form</h2>
+              </div>
               <div className="card-body">
                 <div className="row">
                   <div className="col-6">
@@ -86,39 +89,61 @@ class LeaseApplication extends Component {
                     />
                   </div>
                   <div className="col-6">
-                    <p style={{ color: "black" }}>Address: {msg.address}</p>
-                    <p style={{ color: "black" }}>Type : {msg.type}</p>
-                    <p style={{ color: "black" }}>Rent : {msg.rent}</p>
-                    <p style={{ color: "black" }}>Area : {msg.area}</p>
+                    <p>
+                      {" "}
+                      <span style={{ color: "black" }}>Address is </span>
+                      {msg.address}
+                    </p>
+                    <p>
+                      {" "}
+                      <span style={{ color: "black" }}>This house is for </span>
+                      {msg.type}
+                    </p>
+                    <p>
+                      {" "}
+                      <span style={{ color: "black" }}>Rent is </span>{" "}
+                      {msg.rent}
+                    </p>
+                    <p>
+                      {" "}
+                      <span style={{ color: "black" }}>Located in </span>{" "}
+                      {msg.area}
+                    </p>
                   </div>
                 </div>
                 {/* <div className="row"> */}
                 <form>
-                  <div class="form-group">
-                    {/* <label for="exampleInputEmail1">First Name:</label> */}
-                    <input
-                      type="text"
-                      name="firstName"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder="Enter first name"
-                      onChange={this.handleChange}
-                    />
-                    {/* <small id="emailHelp" class="form-text text-muted">
+                  <div class="form-row">
+                    <div class="col">
+                      <div class="form-group ">
+                        {/* <label for="exampleInputEmail1">First Name:</label> */}
+                        <input
+                          type="text"
+                          name="firstName"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="Enter first name"
+                          onChange={this.handleChange}
+                        />
+                        {/* <small id="emailHelp" class="form-text text-muted">
                     We'll never share your email with anyone else.
                   </small> */}
-                  </div>
-                  <div class="form-group">
-                    {/* <label for="exampleInputPassword1">Last Name:</label> */}
-                    <input
-                      type="text"
-                      name="lastName"
-                      class="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Enter last name"
-                      onChange={this.handleChange}
-                    />
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        {/* <label for="exampleInputPassword1">Last Name:</label> */}
+                        <input
+                          type="text"
+                          name="lastName"
+                          class="form-control"
+                          id="exampleInputPassword1"
+                          placeholder="Enter last name"
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     {/* <label for="exampleInputEmail1">Credit Score:</label> */}
