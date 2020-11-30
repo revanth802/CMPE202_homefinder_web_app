@@ -4,10 +4,16 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { backendServer } from "../../webconfig.js";
 import "../Search/search.css";
-import { MDBIcon,MDBBtn} from 'mdbreact';
+import { MDBIcon, MDBBtn } from "mdbreact";
 
-
-import {  ButtonGroup,CardGroup,Card,Button, CardColumns, CardDeck } from "react-bootstrap";
+import {
+  ButtonGroup,
+  CardGroup,
+  Card,
+  Button,
+  CardColumns,
+  CardDeck,
+} from "react-bootstrap";
 // import { Button,Card, Image } from 'semantic-ui-react'
 
 import { Link } from "react-router-dom";
@@ -19,17 +25,17 @@ class Search extends Component {
     this.state = {
       x1: "",
       x2: "active",
-      term:"",
+      term: "",
       minPrice: 500,
       maxPrice: 10000000,
       beds: 0,
       baths: 0,
       propertyTypes: "",
-      other:"",
-      year:0,
-      floor:"",
-      parking:"",
-      listings:[],
+      other: "",
+      year: 0,
+      floor: "",
+      parking: "",
+      listings: [],
       loginFlag: false,
       showerrormessage: false,
       redirecttohome: false,
@@ -38,25 +44,22 @@ class Search extends Component {
       type: "sale",
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSearch=this.handleSearch.bind(this);
-    this.handlefavourite=this.handlefavourite.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handlefavourite = this.handlefavourite.bind(this);
   }
 
   async componentDidMount() {
     const data = {
-      email: localStorage.getItem("email")
+      email: localStorage.getItem("email"),
     };
-    axios
-      .post(`${backendServer}/homelistings/`,data)
-      .then((response) => {
-        console.log("Pro are::", response.data);
-        this.setState({
-          listings: response.data,
-        });
-        console.log("Pro are::", this.state.homes);
+    axios.post(`${backendServer}/homelistings/`, data).then((response) => {
+      console.log("Pro are::", response.data);
+      this.setState({
+        listings: response.data,
       });
+      console.log("Pro are::", this.state.homes);
+    });
   }
-
 
   componentWillMount() {
     this.setState({
@@ -94,74 +97,69 @@ class Search extends Component {
     });
   };
 
-  async handlefavourite(e){
+  async handlefavourite(e) {
     // console.log(e);
     const data = {
       userid: localStorage.getItem("email"),
-     houseid: e
+      houseid: e,
     };
     await axios
-        .post(`${backendServer}/search/addToFavourites`, data)
-        .then((response) => {
-          console.log(response);
-          if (response.data=="success") {
-            console.log("Success")
-            this.setState({
-              msgr: "User successfully removed",
-            });
-          } else {
-            this.setState({
-              showLoginError: true,
-            });
-          }
-        })
-
-
-
-
-  }
-
-  handleSearch = (e) => {
-      //prevent page from refresh
-      e.preventDefault();
-      const data = {
-        email:localStorage.getItem("email"),
-        type:this.state.type,
-        term: this.state.term,
-        minPrice: this.state.minPrice,
-        maxPrice:this.state.maxPrice,
-        beds:this.state.beds,
-        baths:this.state.baths,
-        propertyTypes:this.state.propertyTypes,
-        year:this.state.year,
-        floor:this.state.floor,
-        other:this.state.other,
-        parking:this.state.parking
-      };
-      //set the with credentials to true
-      axios.defaults.withCredentials = true;
-      //make a post request with the user data
-      console.log("req.body", data);
-      axios
-        .post(`${backendServer}/search/`, data)
-        .then((response) => {
-          if (response) {
-            console.log(response.data);
-            this.setState({
-              listings: response.data
-            })
-          } else {
-            this.setState({
-              showLoginError: true,
-            });
-          }
-        })
-        .catch((ex) => {
+      .post(`${backendServer}/search/addToFavourites`, data)
+      .then((response) => {
+        console.log(response);
+        if (response.data == "success") {
+          console.log("Success");
+          this.setState({
+            msgr: "User successfully removed",
+          });
+        } else {
           this.setState({
             showLoginError: true,
           });
+        }
+      });
+  }
+
+  handleSearch = (e) => {
+    //prevent page from refresh
+    e.preventDefault();
+    const data = {
+      email: localStorage.getItem("email"),
+      type: this.state.type,
+      term: this.state.term,
+      minPrice: this.state.minPrice,
+      maxPrice: this.state.maxPrice,
+      beds: this.state.beds,
+      baths: this.state.baths,
+      propertyTypes: this.state.propertyTypes,
+      year: this.state.year,
+      floor: this.state.floor,
+      other: this.state.other,
+      parking: this.state.parking,
+    };
+    //set the with credentials to true
+    axios.defaults.withCredentials = true;
+    //make a post request with the user data
+    console.log("req.body", data);
+    axios
+      .post(`${backendServer}/search/`, data)
+      .then((response) => {
+        if (response) {
+          console.log(response.data);
+          this.setState({
+            listings: response.data,
+          });
+        } else {
+          this.setState({
+            showLoginError: true,
+          });
+        }
+      })
+      .catch((ex) => {
+        this.setState({
+          showLoginError: true,
         });
-    
+      });
   };
 
   handleMsg1 = (e) => {
@@ -184,75 +182,104 @@ class Search extends Component {
     //prevent page from refresh
     e.preventDefault();
     const data = {
-      email: localStorage.getItem("email")
+      email: localStorage.getItem("email"),
     };
 
     //set the with credentials to true
     axios.defaults.withCredentials = true;
     axios
-          .get(`${backendServer}/homelistings/rentalListings/`,data)
-          .then((response) => {
-            // console.log("Pro are::", response.data);
-            this.setState({
-             listings: response.data,
-            });
-            // console.log("Pro are::", this.state.homes);
-          });
-      this.setState({
-        type: "rent",
-        x1: "active",
-        x2: "",
+      .get(`${backendServer}/homelistings/rentalListings/`, data)
+      .then((response) => {
+        // console.log("Pro are::", response.data);
+        this.setState({
+          listings: response.data,
+        });
+        // console.log("Pro are::", this.state.homes);
       });
-    
-
-
+    this.setState({
+      type: "rent",
+      x1: "active",
+      x2: "",
+    });
   };
 
   render() {
-    let msg,redirectVar = null;
-    if (this.state.type == "sale") msg = <p>  <i class="fas fa-home fa-lg"></i> Find Your New Home!</p>;
-    else msg = <p> <i class="fas fa-home fa-lg"></i>Find Homes for Rent</p>;
+    let msg,
+      redirectVar = null;
+    if (this.state.type == "sale")
+      msg = (
+        <p>
+          {" "}
+          <i class="fas fa-home fa-lg"></i> Find Your New Home!
+        </p>
+      );
+    else
+      msg = (
+        <p>
+          {" "}
+          <i class="fas fa-home fa-lg"></i>Find Homes for Rent
+        </p>
+      );
     // if (this.state.redirectToHome) {
     //   redirectVar = <Redirect push to="/somewhere/else" />;
     // }
     let candr = this.state.listings.map((msg) => {
       return (
         // <CardDeck>
-  <Card border="primary" style={{padding:"10px",width:"380px",height:"480px",marginLeft:"20px"}} >
-    <Card.Img variant="top" src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620" style={{width:"350px",height:"280px"}} />
-    <Card.Body>
-      <Card.Title style={{color:"black",height:"54px"}}>{msg.addressLine1}
-      &nbsp;
-      <button  onClick={(e)=> this.handlefavourite(msg._id)}>Favr8</button>
-      {/* <i class="fas fa-heart fa-sm" style={{color:"red"}}></i> */}
-      </Card.Title>
-      <Card.Text>
-      <h4 data-v-dabe9ba4="" class="text-primary mb-0">
-          ${msg.price}
-          {/* <MDBBtn rounded size="lg" color="info" >Button<MDBIcon icon="heart" className="ml-2" /></MDBBtn> */}
-
-          &nbsp;
-         <span class="scope-label text-for-sale small" style={{color:"red"}}>House For {msg.type}</span></h4>
-         <div data-v-dabe9ba4="" class="text-muted">
-    {msg.bedrooms} Bd | {msg.bathrooms} bath
-    <span data-v-dabe9ba4="">| {msg.area} sqft</span></div>
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">Last updated 3 mins ago</small>
-      {/* <MDBBtn floating size="lg" gradient="purple"><MDBIcon icon="bolt" /></MDBBtn> */}
-    </Card.Footer>
-  </Card>
-       
-);
+        <Card
+          border="primary"
+          style={{
+            padding: "10px",
+            width: "380px",
+            height: "480px",
+            marginLeft: "20px",
+          }}
+        >
+          <Card.Img
+            variant="top"
+            src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620"
+            style={{ width: "350px", height: "280px" }}
+          />
+          <Card.Body>
+            <Card.Title style={{ color: "black", height: "54px" }}>
+              {msg.addressLine1}
+              &nbsp;
+              <button onClick={(e) => this.handlefavourite(msg._id)}>
+                Favr8
+              </button>
+              {/* <i class="fas fa-heart fa-sm" style={{color:"red"}}></i> */}
+            </Card.Title>
+            <Card.Text>
+              <h4 data-v-dabe9ba4="" class="text-primary mb-0">
+                ${msg.price}
+                {/* <MDBBtn rounded size="lg" color="info" >Button<MDBIcon icon="heart" className="ml-2" /></MDBBtn> */}
+                &nbsp;
+                <span
+                  class="scope-label text-for-sale small"
+                  style={{ color: "red" }}
+                >
+                  House For {msg.type}
+                </span>
+              </h4>
+              <div data-v-dabe9ba4="" class="text-muted">
+                {msg.bedrooms} Bd | {msg.bathrooms} bath
+                <span data-v-dabe9ba4="">| {msg.area} sqft</span>
+              </div>
+            </Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <small className="text-muted">Last updated 3 mins ago</small>
+            {/* <MDBBtn floating size="lg" gradient="purple"><MDBIcon icon="bolt" /></MDBBtn> */}
+          </Card.Footer>
+        </Card>
+      );
     });
     return (
-      <div>
+      <div className="search-page">
         <center>
           <div className="search">
             <header className="container mt-4">
               <h1 className="search-title mb-3 mb-md-0">
-             
                 <span
                   className="d-inline-block"
                   style={{ minWidth: "288px", background: "#00294D80" }}
@@ -317,11 +344,11 @@ class Search extends Component {
                                 className="input-group-prepend d-none d-md-flex"
                                 data-v-0bf4be34
                               >
-                              
-                               
                                 {/* <i class=""></i> */}
                               </div>{" "}
-                              <center><span className="fas fa-search fa-3x"  /></center>
+                              <center>
+                                <span className="fas fa-search fa-3x" />
+                              </center>
                               <input
                                 type="search"
                                 name="term"
@@ -488,10 +515,7 @@ class Search extends Component {
                               <option value={10000000}>$10,000,000</option>
                             </select>
                           </div>{" "}
-                          <div
-                            className="form-group col-auto d-none d-md-block field-select"
-                    
-                          >
+                          <div className="form-group col-auto d-none d-md-block field-select">
                             <select
                               name="beds"
                               className="custom-select custom-select-sm"
@@ -524,9 +548,7 @@ class Search extends Component {
                               <option value={5}>5+ Baths</option>
                             </select>
                           </div>{" "}
-                          <div
-                            className="col d-none d-md-block field-select"
-                          >
+                          <div className="col d-none d-md-block field-select">
                             <select
                               name="propertyTypes"
                               className="custom-select custom-select-sm"
@@ -548,7 +570,6 @@ class Search extends Component {
                               <option value="LAND">Raw Land</option>
                             </select>
                           </div>
-                          
                         </div>
                         <div
                           className="filters-row form-row"
@@ -566,7 +587,6 @@ class Search extends Component {
                               <option value={""}>Parking Type</option>
                               <option value={"open"}>Open Parking</option>
                               <option value={"closed"}>Closed Parking</option>
-                              
                             </select>
                           </div>{" "}
                           <div
@@ -581,26 +601,30 @@ class Search extends Component {
                               <option value={""}>Flooring</option>
                               <option value={"carpet"}>Carpet</option>
                               <option value={"wooden"}>Wooden</option>
-            
                             </select>
                           </div>{" "}
                           <div
                             className="form-group col-auto d-none d-md-block field-select"
                             data-v-0bf4be34
                           >
-                           <input name="year"  
-                              onChange={this.handleChange} type="number" maxlength="4" placeholder="Year built" style={{height:"32px",width:"100px"}}></input>
+                            <input
+                              name="year"
+                              onChange={this.handleChange}
+                              type="number"
+                              maxlength="4"
+                              placeholder="Year built"
+                              style={{ height: "32px", width: "100px" }}
+                            ></input>
                           </div>{" "}
-                          <div
-                            className="form-group col-auto d-none d-md-block field-select"
-                    
-                          >
-                             <input type="text" name="other" 
-                              onChange={this.handleChange} placeholder="Other Amenities" style={{height:"32px",width:"150px"}} ></input>
+                          <div className="form-group col-auto d-none d-md-block field-select">
+                            <input
+                              type="text"
+                              name="other"
+                              onChange={this.handleChange}
+                              placeholder="Other Amenities"
+                              style={{ height: "32px", width: "150px" }}
+                            ></input>
                           </div>{" "}
-                         
-                          
-                          
                         </div>
                       </div>
                     </form>
@@ -609,15 +633,9 @@ class Search extends Component {
               </div>
             </header>
           </div>
-        
-        &nbsp;
-        <CardColumns style={{ columnCount:"1"}}>
-   
-        {candr}
-
-        </CardColumns>
-
-        {/* <CardDeck style={{ columnCount:"2",columnGap:"0px"}}>
+          &nbsp;
+          <CardColumns style={{ columnCount: "1" }}>{candr}</CardColumns>
+          {/* <CardDeck style={{ columnCount:"2",columnGap:"0px"}}>
           {candr}
         </CardDeck> */}
         </center>
