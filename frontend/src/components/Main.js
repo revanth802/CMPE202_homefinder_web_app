@@ -13,6 +13,7 @@ import LeaseApplication from "../components/leaseApplication";
 import Sell from "./Sell/sell";
 import mylistings from "./Mylistings/mylistings";
 import currentlisting from "./Mylistings/currentlisting";
+import rentalApplications from "./Applications/rentalApplications";
 import myfavorites from "./myfavourites/myfavourites";
 
 //Create a Main Component
@@ -42,14 +43,16 @@ class Main extends Component {
                 path="/leaseApplication/:id"
                 component={LeaseApplication}
               />
-               <Route
-                path="/currentlisting/:id"
-                component={currentlisting}
-              />
+              <Route path="/currentlisting/:id" component={currentlisting} />
               <Route exact path="/myfavorites" component={myfavorites} />
               <Route exact path="/search" component={Search} />
               <Route exact path="/sell" component={Sell} />
               <Route exact path="/mylistings" component={mylistings} />
+              <Route
+                exact
+                path="/rentalApplications/:id"
+                component={rentalApplications}
+              />
             </Fragment>
           )}
 
