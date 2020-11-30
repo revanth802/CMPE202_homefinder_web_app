@@ -35,7 +35,7 @@ class LeaseApplication extends Component {
       status: "pending",
       listingId: this.state.listingId,
     };
-
+    console.log("handleSubmit:::", data);
     var listingName = this.state.homes[0].address;
     axios
       .post(`${backendServer}/homelistings/submitLease`, data)
@@ -98,10 +98,12 @@ class LeaseApplication extends Component {
                     {/* <label for="exampleInputEmail1">First Name:</label> */}
                     <input
                       type="text"
+                      name="firstName"
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter first name"
+                      onChange={this.handleChange}
                     />
                     {/* <small id="emailHelp" class="form-text text-muted">
                     We'll never share your email with anyone else.
@@ -111,39 +113,47 @@ class LeaseApplication extends Component {
                     {/* <label for="exampleInputPassword1">Last Name:</label> */}
                     <input
                       type="text"
+                      name="lastName"
                       class="form-control"
                       id="exampleInputPassword1"
                       placeholder="Enter last name"
+                      onChange={this.handleChange}
                     />
                   </div>
                   <div class="form-group">
                     {/* <label for="exampleInputEmail1">Credit Score:</label> */}
                     <input
                       type="text"
+                      name="creditScore"
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter credit score"
+                      onChange={this.handleChange}
                     />
                   </div>
                   <div class="form-group">
                     {/* <label for="exampleInputEmail1">Employer Name:</label> */}
                     <input
                       type="text"
+                      name="empName"
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter employer name"
+                      onChange={this.handleChange}
                     />
                   </div>
                   <div class="form-group">
                     {/* <label for="exampleInputEmail1">Yearly Income:</label> */}
                     <input
                       type="text"
+                      name="netIncome"
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter yearly income"
+                      onChange={this.handleChange}
                     />
                   </div>
                   <button
