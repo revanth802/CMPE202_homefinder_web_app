@@ -10,6 +10,7 @@ import admin from "./Admin/admin";
 import Search from "./Search/Search";
 import RentalListings from "../components/rentalListings";
 import LeaseApplication from "../components/leaseApplication";
+import SaleApplication from "../components/saleApplication";
 import Sell from "./Sell/sell";
 import mylistings from "./Mylistings/mylistings";
 import currentlisting from "./Mylistings/currentlisting";
@@ -43,6 +44,7 @@ class Main extends Component {
                 path="/leaseApplication/:id"
                 component={LeaseApplication}
               />
+              <Route path="/saleApplication/:id" component={SaleApplication} />
               <Route path="/currentlisting/:id" component={currentlisting} />
               <Route exact path="/myfavorites" component={myfavorites} />
               <Route exact path="/search" component={Search} />
