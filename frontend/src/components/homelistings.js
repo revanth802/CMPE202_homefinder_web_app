@@ -20,6 +20,12 @@ class HomeListings extends Component {
     });
   }
 
+  scheduleTour(id) {
+    this.setState({
+      redirect: `/scheduleTour/${id}`,
+    });
+  }
+
   async componentDidMount() {
     const data = {
       email: localStorage.getItem("email"),
@@ -52,7 +58,7 @@ class HomeListings extends Component {
                   style={{ width: "100px", height: "120px" }}
                   // id="avatar-image"
                 />
-                <p style={{ color: "black" }}>Address: {msg.address}</p>
+                <p style={{ color: "black" }}>Address: {msg.addressLine1}</p>
                 <p style={{ color: "black" }}>Type : {msg.type}</p>
                 <p style={{ color: "black" }}>Price : {msg.price}</p>
                 <p style={{ color: "black" }}>Area : {msg.area}</p>

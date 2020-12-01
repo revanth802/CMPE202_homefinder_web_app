@@ -5,7 +5,7 @@ import { backendServer } from "../webconfig";
 import "./leaseApplication.css";
 import { Card, Button, ButtonGroup, Form } from "react-bootstrap";
 
-class LeaseApplication extends Component {
+class ScheduleTour extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,32 +29,20 @@ class LeaseApplication extends Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       homeId: this.state.homes[0].id,
-      empName: this.state.empName,
-      creditScore: this.state.creditScore,
-      netIncome: this.state.netIncome,
-      status: "pending",
+      dayOfVisit:this.state.dayOfVisit,
+      timeOfVisit:this.state.timeOfVisit,
       listingId: this.state.listingId,
+      type:this.state.homes[0].type
     };
     console.log("handleSubmit:::", data);
-    var listingName = this.state.homes[0].addressLine1;
-    var toEmail = this.state.homes[0].representedBy
     
     axios
-      .post(`${backendServer}/homelistings/submitLease`, data)
+      .post(`${backendServer}/homelistings/scheduleTour`, data)
       .then(async function (response) {
         console.log("Pro are::", response.data);
-        var emailData = {
-          toEmail: toEmail,
-          emailType: "Lease Application",
-          listingName: listingName,
-        };
-
-          await axios
-            .post(`${backendServer}/email/sendEmail`, emailData)
-            .then((response2) => {
-              alert("Application sent");
-              console.log("email sent");
-            });
+        alert("Appointment Fixed");
+        console.log("email sent");
+          
       });
   }
   async componentDidMount() {
@@ -78,7 +66,7 @@ class LeaseApplication extends Component {
           <div className="container lease-app-form">
             <div className="card applications-end">
               <div className="card-head">
-                <h2 className="page-title">Lease Application Form</h2>
+                <h2 className="page-title">Schedule a visit with us</h2>
               </div>
               <div className="card-body">
                 <div className="row">
@@ -103,18 +91,13 @@ class LeaseApplication extends Component {
                     </p>
                     <p>
                       {" "}
-                      <span style={{ color: "black" }}>Rent is </span>{" "}
+                      <span style={{ color: "black" }}>Price We have is </span>{" "}
                       {msg.price}
                     </p>
                     <p>
                       {" "}
                       <span style={{ color: "black" }}>Area of Property is </span>{" "}
                       {msg.area}
-                    </p>
-                    <p>
-                      {" "}
-                      <span style={{ color: "black" }}>Terms of lease </span>{" "}
-                      {msg.leaseTerms}
                     </p>
                   </div>
                 </div>
@@ -156,38 +139,27 @@ class LeaseApplication extends Component {
                     {/* <label for="exampleInputEmail1">Credit Score:</label> */}
                     <input
                       type="text"
-                      name="creditScore"
+                      name="dayOfVisit"
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      placeholder="Enter credit score"
+                      placeholder="Enter Date for Visit"
                       onChange={this.handleChange}
                     />
                   </div>
                   <div class="form-group">
-                    {/* <label for="exampleInputEmail1">Employer Name:</label> */}
+                    {/* <label for="exampleInputEmail1">Credit Score:</label> */}
                     <input
                       type="text"
-                      name="empName"
+                      name="timeOfVisit"
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      placeholder="Enter employer name"
+                      placeholder="Enter time for Visit"
                       onChange={this.handleChange}
                     />
                   </div>
-                  <div class="form-group">
-                    {/* <label for="exampleInputEmail1">Yearly Income:</label> */}
-                    <input
-                      type="text"
-                      name="netIncome"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder="Enter yearly income"
-                      onChange={this.handleChange}
-                    />
-                  </div>
+                  
                   <button
                     type="submit"
                     class="btn btn-primary"
@@ -214,4 +186,4 @@ class LeaseApplication extends Component {
   }
 }
 
-export default LeaseApplication;
+export default ScheduleTour;
