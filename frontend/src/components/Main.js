@@ -15,6 +15,8 @@ import mylistings from "./Mylistings/mylistings";
 import currentlisting from "./Mylistings/currentlisting";
 import rentalApplications from "./Applications/rentalApplications";
 import myfavorites from "./myfavourites/myfavourites";
+import BuyApplication from "../components/buyApplication"
+import ScheduleTour from "../components/scheduleTour"
 
 //Create a Main Component
 class Main extends Component {
@@ -43,7 +45,15 @@ class Main extends Component {
                 path="/leaseApplication/:id"
                 component={LeaseApplication}
               />
+              <Route
+                path="/scheduleTour/:id"
+                component={ScheduleTour}
+              />
               <Route path="/currentlisting/:id" component={currentlisting} />
+              <Route
+                path="/buyApplication/:id"
+                component={BuyApplication}
+              />
               <Route exact path="/myfavorites" component={myfavorites} />
               <Route exact path="/search" component={Search} />
               <Route exact path="/sell" component={Sell} />

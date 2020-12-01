@@ -13,6 +13,18 @@ class HomeListings extends Component {
         };
     }
 
+    loadRent(id){
+      this.setState({
+          redirect:`/buyApplication/${id}`
+      })
+  }
+
+  scheduleTour(id){
+    this.setState({
+      redirect:`/scheduleTour/${id}`
+  })
+  }
+
     async componentDidMount() {
       const data = {
         email: localStorage.getItem("email")
@@ -30,6 +42,10 @@ class HomeListings extends Component {
 
     render()
     {
+      let redirectVar = null;
+      if (this.state.redirect) {
+          redirectVar = <Redirect push to={this.state.redirect} />;
+        }
         let candr = this.state.homes.map((msg) => {
             return (
             <div>
@@ -44,7 +60,7 @@ class HomeListings extends Component {
                 style={{width:"100px",height:"120px"}}
               // id="avatar-image"
             />
-                  <p style={{color:"black"}}>Address: {msg.address}</p> 
+                  <p style={{color:"black"}}>Address: {msg.addressLine1}</p> 
                   <p style={{color:"black"}}>Type : {msg.type}</p>
                   <p style={{color:"black"}}>Price : {msg.price}</p>
                   <p style={{color:"black"}}>Area : {msg.area}</p>
@@ -54,9 +70,9 @@ class HomeListings extends Component {
                   <ButtonGroup style={{marginLeft:"450px",marginTop:"-80px"}} className="mb-2">
         {/* <Button>Approve</Button>
         &nbsp; */}
-        <Button>Schedule Tour</Button>
+        <Button onClick={(e)=> this.scheduleTour(msg._id)}>Schedule Tour</Button>
         &nbsp;
-        <Button onClick={(e)=> this.handleRemove(msg.email)}>Buy</Button>
+        <Button onClick={(e)=> this.loadRent(msg._id)}>Buy</Button>
 
       </ButtonGroup>
                 </Card.Body>
@@ -69,6 +85,7 @@ class HomeListings extends Component {
           return (
             <div>
             {/* <div class="card-deck"> */}
+            {redirectVar}
               {candr}
               {/* </div> */}
              

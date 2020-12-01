@@ -37,7 +37,7 @@ var subject = `You have an ${type}`;
         var mailOptions ={
             to:req.body.toEmail,
             html: html,
-            subject:"You have a house offer !!"
+            subject:subject
         }
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
