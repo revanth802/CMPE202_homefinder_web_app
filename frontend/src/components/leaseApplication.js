@@ -96,28 +96,26 @@ class LeaseApplication extends Component {
                   <div className="col-6">
                     <p>
                       {" "}
-                      <span className="field-names">Address is </span>
+                      <span className="field-names">Address: </span>
                       {msg.addressLine1}
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">This house is for </span>
+                      <span className="field-names">House Type: </span>
                       {msg.type}
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">Rent is </span> {msg.price}
+                      <span className="field-names">Rent: </span> {msg.price}
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">
-                        Area of Property is{" "}
-                      </span>{" "}
+                      <span className="field-names">Living Area: </span>{" "}
                       {msg.area}
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">Terms of lease </span>{" "}
+                      <span className="field-names">Lease Terms: </span>{" "}
                       {msg.leaseTerms}
                     </p>
                   </div>

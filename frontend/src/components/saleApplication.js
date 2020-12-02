@@ -102,7 +102,7 @@ class SaleApplication extends Component {
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">House type: </span>
+                      <span className="field-names">House Type: </span>
                       {msg.type}
                     </p>
                     <p>
@@ -127,12 +127,12 @@ class SaleApplication extends Component {
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">Living Area: </span>{" "}
+                      <span className="field-names">Home Type: </span>{" "}
                       {msg.hometype}
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">Flooring type: </span>{" "}
+                      <span className="field-names">Flooring Type: </span>{" "}
                       {msg.flooring}
                     </p>
                     <p>
