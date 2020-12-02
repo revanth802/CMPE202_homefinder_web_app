@@ -88,7 +88,7 @@ class ScheduleTour extends Component {
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">House type: </span>
+                      <span className="field-names">House Type: </span>
                       <span className="text-capitalize">{msg.type}</span>
                     </p>
                     <p>
@@ -97,7 +97,7 @@ class ScheduleTour extends Component {
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">Living Are: </span>{" "}
+                      <span className="field-names">Living Area: </span>{" "}
                       {msg.area}
                     </p>
                     <p>
