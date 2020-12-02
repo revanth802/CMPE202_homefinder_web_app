@@ -29,30 +29,30 @@ class SaleApplication extends Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       homeId: this.state.homes[0].id,
-      empName: this.state.empName,
-      creditScore: this.state.creditScore,
-      netIncome: this.state.netIncome,
+      offerPrice: this.state.offerPrice,
       status: "pending",
       listingId: this.state.listingId,
     };
     console.log("handleSubmit:::", data);
-    var listingName = this.state.homes[0].address;
+    var listingName = this.state.homes[0].addressLine1;
+    var toEmail = this.state.homes[0].representedBy;
+
     axios
-      .post(`${backendServer}/homelistings/submitLease`, data)
+      .post(`${backendServer}/homelistings/submitBuy`, data)
       .then(async function (response) {
         console.log("Pro are::", response.data);
         var emailData = {
-          toEmail: "thanmai.gajam@sjsu.edu",
+          toEmail: toEmail,
           emailType: "Lease Application",
           listingName: listingName,
         };
 
-        //   await axios
-        //     .post(`${backendServer}/email/sendEmail`, emailData)
-        //     .then((response2) => {
-        //       alert("Application sent");
-        //       console.log("email sent");
-        //     });
+        // await axios
+        //   .post(`${backendServer}/email/sendEmail`, emailData)
+        //   .then((response2) => {
+        //     alert("Application sent");
+        //     console.log("email sent");
+        //   });
       });
   }
   async componentDidMount() {
@@ -185,43 +185,15 @@ class SaleApplication extends Component {
                   </div>
                   <div class="form-group">
                     <label className="field-names" for="exampleInputEmail1">
-                      Credit Score:
+                      Offer Price:
                     </label>
                     <input
                       type="text"
-                      name="creditScore"
+                      name="offerPrice"
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      placeholder="Enter credit score"
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label className="field-names" for="exampleInputEmail1">
-                      Employer Name:
-                    </label>
-                    <input
-                      type="text"
-                      name="empName"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder="Enter employer name"
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label className="field-names" for="exampleInputEmail1">
-                      Yearly Income:
-                    </label>
-                    <input
-                      type="text"
-                      name="netIncome"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder="Enter yearly income"
+                      placeholder="Enter your price offer"
                       onChange={this.handleChange}
                     />
                   </div>

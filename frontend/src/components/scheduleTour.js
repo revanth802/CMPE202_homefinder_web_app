@@ -29,20 +29,19 @@ class ScheduleTour extends Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       homeId: this.state.homes[0].id,
-      dayOfVisit:this.state.dayOfVisit,
-      timeOfVisit:this.state.timeOfVisit,
+      dayOfVisit: this.state.dayOfVisit,
+      timeOfVisit: this.state.timeOfVisit,
       listingId: this.state.listingId,
-      type:this.state.homes[0].type
+      type: this.state.homes[0].type,
     };
     console.log("handleSubmit:::", data);
-    
+
     axios
       .post(`${backendServer}/homelistings/scheduleTour`, data)
       .then(async function (response) {
         console.log("Pro are::", response.data);
         alert("Appointment Fixed");
         console.log("email sent");
-          
       });
   }
   async componentDidMount() {
@@ -71,33 +70,40 @@ class ScheduleTour extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col-6">
-                    <img
-                      alt="AZ"
-                      src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
-                      style={{ width: "100px", height: "120px" }}
-                      // id="avatar-image"
+                    <Card.Img
+                      variant="top"
+                      src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620"
+                      style={{
+                        width: "300px",
+                        height: "230px",
+                        marginBottom: "20px",
+                      }}
                     />
                   </div>
                   <div className="col-6">
                     <p>
                       {" "}
-                      <span style={{ color: "black" }}>Address is </span>
+                      <span className="field-names">Address:</span>
                       {msg.addressLine1}
                     </p>
                     <p>
                       {" "}
-                      <span style={{ color: "black" }}>This house is for </span>
-                      {msg.type}
+                      <span className="field-names">House type: </span>
+                      <span className="text-capitalize">{msg.type}</span>
                     </p>
                     <p>
                       {" "}
-                      <span style={{ color: "black" }}>Price We have is </span>{" "}
-                      {msg.price}
+                      <span className="field-names">Rent: </span> {msg.price}
                     </p>
                     <p>
                       {" "}
-                      <span style={{ color: "black" }}>Area of Property is </span>{" "}
+                      <span className="field-names">Living Are: </span>{" "}
                       {msg.area}
+                    </p>
+                    <p>
+                      {" "}
+                      <span className="field-names">Lease Terms: </span>{" "}
+                      {msg.leaseTerms}
                     </p>
                   </div>
                 </div>
@@ -106,7 +112,7 @@ class ScheduleTour extends Component {
                   <div class="form-row">
                     <div class="col">
                       <div class="form-group ">
-                        {/* <label for="exampleInputEmail1">First Name:</label> */}
+                        <label className="field-names">First Name:</label>
                         <input
                           type="text"
                           name="firstName"
@@ -123,7 +129,7 @@ class ScheduleTour extends Component {
                     </div>
                     <div class="col">
                       <div class="form-group">
-                        {/* <label for="exampleInputPassword1">Last Name:</label> */}
+                        <label className="field-names">Last Name:</label>
                         <input
                           type="text"
                           name="lastName"
@@ -136,19 +142,20 @@ class ScheduleTour extends Component {
                     </div>
                   </div>
                   <div class="form-group">
-                    {/* <label for="exampleInputEmail1">Credit Score:</label> */}
+                    <label className="field-names" for="date">
+                      Date of Visit:
+                    </label>
                     <input
-                      type="text"
+                      type="date"
                       name="dayOfVisit"
                       class="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
+                      id="date"
                       placeholder="Enter Date for Visit"
                       onChange={this.handleChange}
                     />
                   </div>
                   <div class="form-group">
-                    {/* <label for="exampleInputEmail1">Credit Score:</label> */}
+                    <label className="field-names">Time of Visit:</label>
                     <input
                       type="text"
                       name="timeOfVisit"
@@ -159,7 +166,7 @@ class ScheduleTour extends Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  
+
                   <button
                     type="submit"
                     class="btn btn-primary"

@@ -37,8 +37,8 @@ class LeaseApplication extends Component {
     };
     console.log("handleSubmit:::", data);
     var listingName = this.state.homes[0].addressLine1;
-    var toEmail = this.state.homes[0].representedBy
-    
+    var toEmail = this.state.homes[0].representedBy;
+
     axios
       .post(`${backendServer}/homelistings/submitLease`, data)
       .then(async function (response) {
@@ -49,12 +49,12 @@ class LeaseApplication extends Component {
           listingName: listingName,
         };
 
-          await axios
-            .post(`${backendServer}/email/sendEmail`, emailData)
-            .then((response2) => {
-              alert("Application sent");
-              console.log("email sent");
-            });
+        await axios
+          .post(`${backendServer}/email/sendEmail`, emailData)
+          .then((response2) => {
+            alert("Application sent");
+            console.log("email sent");
+          });
       });
   }
   async componentDidMount() {
@@ -83,37 +83,41 @@ class LeaseApplication extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col-6">
-                    <img
-                      alt="AZ"
-                      src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
-                      style={{ width: "100px", height: "120px" }}
-                      // id="avatar-image"
+                    <Card.Img
+                      variant="top"
+                      src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620"
+                      style={{
+                        width: "350px",
+                        height: "280px",
+                        marginBottom: "20px",
+                      }}
                     />
                   </div>
                   <div className="col-6">
                     <p>
                       {" "}
-                      <span style={{ color: "black" }}>Address is </span>
+                      <span className="field-names">Address is </span>
                       {msg.addressLine1}
                     </p>
                     <p>
                       {" "}
-                      <span style={{ color: "black" }}>This house is for </span>
+                      <span className="field-names">This house is for </span>
                       {msg.type}
                     </p>
                     <p>
                       {" "}
-                      <span style={{ color: "black" }}>Rent is </span>{" "}
-                      {msg.price}
+                      <span className="field-names">Rent is </span> {msg.price}
                     </p>
                     <p>
                       {" "}
-                      <span style={{ color: "black" }}>Area of Property is </span>{" "}
+                      <span className="field-names">
+                        Area of Property is{" "}
+                      </span>{" "}
                       {msg.area}
                     </p>
                     <p>
                       {" "}
-                      <span style={{ color: "black" }}>Terms of lease </span>{" "}
+                      <span className="field-names">Terms of lease </span>{" "}
                       {msg.leaseTerms}
                     </p>
                   </div>
@@ -123,7 +127,9 @@ class LeaseApplication extends Component {
                   <div class="form-row">
                     <div class="col">
                       <div class="form-group ">
-                        {/* <label for="exampleInputEmail1">First Name:</label> */}
+                        <label className="field-names" for="exampleInputEmail1">
+                          First Name:
+                        </label>
                         <input
                           type="text"
                           name="firstName"
@@ -140,7 +146,12 @@ class LeaseApplication extends Component {
                     </div>
                     <div class="col">
                       <div class="form-group">
-                        {/* <label for="exampleInputPassword1">Last Name:</label> */}
+                        <label
+                          className="field-names"
+                          for="exampleInputPassword1"
+                        >
+                          Last Name:
+                        </label>
                         <input
                           type="text"
                           name="lastName"
@@ -153,7 +164,9 @@ class LeaseApplication extends Component {
                     </div>
                   </div>
                   <div class="form-group">
-                    {/* <label for="exampleInputEmail1">Credit Score:</label> */}
+                    <label className="field-names" for="exampleInputEmail1">
+                      Credit Score:
+                    </label>
                     <input
                       type="text"
                       name="creditScore"
@@ -165,7 +178,9 @@ class LeaseApplication extends Component {
                     />
                   </div>
                   <div class="form-group">
-                    {/* <label for="exampleInputEmail1">Employer Name:</label> */}
+                    <label className="field-names" for="exampleInputEmail1">
+                      Employer Name:
+                    </label>
                     <input
                       type="text"
                       name="empName"
@@ -177,7 +192,9 @@ class LeaseApplication extends Component {
                     />
                   </div>
                   <div class="form-group">
-                    {/* <label for="exampleInputEmail1">Yearly Income:</label> */}
+                    <label className="field-names" for="exampleInputEmail1">
+                      Yearly Income:
+                    </label>
                     <input
                       type="text"
                       name="netIncome"

@@ -15,6 +15,7 @@ import Sell from "./Sell/sell";
 import mylistings from "./Mylistings/mylistings";
 import currentlisting from "./Mylistings/currentlisting";
 import rentalApplications from "./Applications/rentalApplications";
+import saleApplications from "./Applications/saleApplications";
 import myfavorites from "./myfavourites/myfavourites";
 // import BuyApplication from "../components/buyApplication";
 import ScheduleTour from "../components/scheduleTour";
@@ -61,6 +62,11 @@ class Main extends Component {
                 exact
                 path="/rentalApplications/:id"
                 component={rentalApplications}
+              />
+              <Route
+                exact
+                path="/saleApplications/:id"
+                component={saleApplications}
               />
             </Fragment>
           )}

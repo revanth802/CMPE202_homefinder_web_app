@@ -2,7 +2,7 @@ const Homelistings = require("../../models/homelistings.js");
 
 const leaseApplications = require("../../models/leaseApplications.js");
 
-const scheduledVisits = require("../../models/scheduledVisits")
+const scheduledVisits = require("../../models/scheduledVisits");
 
 module.exports = {
   displayhomes: (req, res) => {
@@ -62,48 +62,42 @@ module.exports = {
     });
   },
 
-  submitBuy:(req, res) => {
-      
-        var lease = new leaseApplications({
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          offerPrice:req.body.offerPrice,
-          listingId:req.body.homeId,
-          type:"sale"
-        })
-        lease.save(function (err, results) {
-          //console.log(results._id);
-        // res.end(result);
-        console.log("error:: ",err )
-          console.log("results of submot buy",results);
-          res.send(results);
-          res.end();
-        });
-      },
+  submitBuy: (req, res) => {
+    var lease = new leaseApplications({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      offerPrice: req.body.offerPrice,
+      listingId: req.body.listingId,
+      type: "sale",
+      status: req.body.status,
+    });
+    lease.save(function (err, results) {
+      //console.log(results._id);
+      // res.end(result);
+      console.log("error:: ", err);
+      console.log("results of submot buy", results);
+      res.send(results);
+      res.end();
+    });
+  },
 
-  scheduleTour:(req, res) => {
-      
-        var visit = new scheduledVisits({
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          dayOfVisit:req.body.dayOfVisit,
-          homeId:req.body.homeId,
-          listingId:req.body.homeId,
-          timeOfVisit:req.body.timeOfVisit,
-          type:req.body.type
-        })
-        visit.save(function (err, results) {
-          //console.log(results._id);
-        // res.end(result);
-        console.log("error:: ",err )
-          console.log("results of submot buy",results);
-          res.send(results);
-          res.end();
-        });
-      }
-      
-    }
-  
-    
-  
-  
+  scheduleTour: (req, res) => {
+    var visit = new scheduledVisits({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      dayOfVisit: req.body.dayOfVisit,
+      homeId: req.body.homeId,
+      listingId: req.body.homeId,
+      timeOfVisit: req.body.timeOfVisit,
+      type: req.body.type,
+    });
+    visit.save(function (err, results) {
+      //console.log(results._id);
+      // res.end(result);
+      console.log("error:: ", err);
+      console.log("results of submot buy", results);
+      res.send(results);
+      res.end();
+    });
+  },
+};

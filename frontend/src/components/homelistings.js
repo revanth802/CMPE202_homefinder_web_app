@@ -69,7 +69,9 @@ class HomeListings extends Component {
               >
                 {/* <Button>Approve</Button>
         &nbsp; */}
-                <Button>Schedule Tour</Button>
+                <Button onClick={(e) => this.scheduleTour(msg._id)}>
+                  Schedule Tour
+                </Button>
                 &nbsp;
                 <Button onClick={(e) => this.handleRemove(msg._id)}>Buy</Button>
               </ButtonGroup>
