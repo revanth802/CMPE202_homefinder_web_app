@@ -4,7 +4,7 @@ const Homelistings = require("../../models/homelistings.js");
 module.exports = {
   myhomelistings: (req, res) => {
     // console.log("query here",req.body);
-    Homelistings.find({ owner: req.body.owner }, (error, result) => {
+    Homelistings.find({ $or:[ {owner: req.body.owner },{representedBy:req.body.owner}] }, (error, result) => {
       // res.end(result);
       // console.log("my homelistings",result);
       res.send(result);
