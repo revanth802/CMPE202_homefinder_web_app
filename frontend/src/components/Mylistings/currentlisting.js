@@ -28,7 +28,7 @@ class currentlisting extends Component {
       securityDeposit: "",
       availableDate: "",
       type: "",
-      // successmsg:"",
+      status:"",
       homes: [],
       listingId: this.props.match.params.id,
     };
@@ -94,7 +94,7 @@ class currentlisting extends Component {
       price: this.state.price,
       terms: this.state.terms,
       amenities: this.state.amenities,
-
+      status:this.state.status,
       person: localStorage.getItem("email"),
       parking: this.state.parking,
       securityDeposit: this.state.securityDeposit,
@@ -148,6 +148,7 @@ class currentlisting extends Component {
           <div className="row">
             <div className="col-md-6">
               <div className="form-group">
+              <label>Address Line 1</label>
                 <input
                   type="text"
                   name="add1"
@@ -159,6 +160,7 @@ class currentlisting extends Component {
                 />
               </div>
               <div className="form-group">
+              <label>Address Line 2</label>
                 <input
                   type="text"
                   name="add2"
@@ -169,6 +171,7 @@ class currentlisting extends Component {
                 />
               </div>
               <div className="form-group">
+              <label>City</label>
                 <input
                   type="text"
                   name="city"
@@ -179,6 +182,7 @@ class currentlisting extends Component {
                 />
               </div>
               <div className="form-group">
+              <label>State</label>
                 <input
                   type="text"
                   name="statex"
@@ -189,6 +193,7 @@ class currentlisting extends Component {
                 />
               </div>
               <div className="form-group">
+              <label>Zipcode</label>
                 <input
                   type="text"
                   name="zipcode"
@@ -200,6 +205,7 @@ class currentlisting extends Component {
               </div>
 
               <div className="form-group">
+              <label>Area in sqft</label>
                 <input
                   type="number"
                   name="area"
@@ -210,6 +216,7 @@ class currentlisting extends Component {
                 />
               </div>
               <div className="form-group">
+              <label>Number of beds</label>
                 <input
                   type="number"
                   name="beds"
@@ -220,6 +227,7 @@ class currentlisting extends Component {
                 />
               </div>
               <div className="form-group">
+              <label>Number of baths</label>
                 <input
                   type="number"
                   name="baths"
@@ -230,6 +238,7 @@ class currentlisting extends Component {
                 />
               </div>
               <div className="form-group">
+              <label>Property types</label>
                 <select
                   name="propertyTypes"
                   className="custom-select custom-select-sm"
@@ -247,6 +256,7 @@ class currentlisting extends Component {
                 </select>
               </div>
               <div className="form-group">
+              <label>Flooring</label>
                 <select
                   name="floor"
                   className="custom-select custom-select-sm"
@@ -259,6 +269,7 @@ class currentlisting extends Component {
                 </select>
               </div>
               <div className="form-group">
+              <label>Parking</label>
                 <select
                   name="parking"
                   className="custom-select custom-select-sm"
@@ -278,6 +289,7 @@ class currentlisting extends Component {
             </div>
             <div className="col-md-6">
               <div className="form-group">
+              <label>Year constructed</label>
                 <input
                   type="number"
                   name="year"
@@ -288,6 +300,7 @@ class currentlisting extends Component {
                 />{" "}
               </div>
               <div className="form-group">
+              <label>Amenities</label>
                 <textarea
                   name="amenities"
                   className="form-control"
@@ -298,6 +311,7 @@ class currentlisting extends Component {
                 />
               </div>
               <div className="form-group">
+              <label>Price in $</label>
                 <input
                   type="number"
                   name="price"
@@ -308,6 +322,7 @@ class currentlisting extends Component {
                 />
               </div>
               <div className="form-group">
+              <label>Lease Terms</label>
                 <textarea
                   name="terms"
                   className="form-control"
@@ -317,6 +332,7 @@ class currentlisting extends Component {
                   defaultValue={this.state.homes.leaseTerms}
                 />
               </div>
+              
               {this.state.homes.type == "rent" ? (
                 <div>
                   <div className="form-group">
@@ -347,7 +363,23 @@ class currentlisting extends Component {
               ) : (
                 ""
               )}
+
+              <div className="form-group">
+              <label>Update Status</label>
+                <select
+                  name="status"
+                  className="custom-select custom-select-sm"
+                  onChange={this.handleChange}
+                  value={this.state.homes.status}
+                >
+                  <option value={""}>Status</option>
+                  <option value={"open"}>Open</option>
+                  <option value={"closed"}>Closed</option>
+                </select>
+              </div>
+              
             </div>
+            
           </div>
         </form>
       </div>

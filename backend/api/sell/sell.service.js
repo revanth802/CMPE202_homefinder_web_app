@@ -34,6 +34,7 @@ module.exports = {
       parking: body.parking,
       securityDeposit: body.securityDeposit,
       availableDate: body.availableDate,
+      status:"open"
     });
 
     newUserDetails.save((error, data) => {

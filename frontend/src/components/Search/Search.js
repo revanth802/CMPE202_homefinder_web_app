@@ -245,6 +245,10 @@ class Search extends Component {
             <Card.Title style={{ color: "black", height: "54px" }}>
               {msg.addressLine1}
               &nbsp;
+              {msg.addressLine2}
+              ,
+              <br></br>
+              {msg.city},{msg.state}
               {/* <div> */}
               {localStorage.getItem("role") == "user" ? (
                 <button onClick={(e) => this.handlefavourite(msg._id)}>
