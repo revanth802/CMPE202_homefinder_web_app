@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { Form } from "react-bootstrap";
 import axios from "axios";
-import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 import { backendServer } from "../../webconfig.js";
 import {Card,Button,ButtonGroup,ListGroupItem} from 'react-bootstrap';
 
@@ -50,8 +50,9 @@ class myapplications extends Component {
             style={{width:"100px",height:"120px"}}
           // id="avatar-image"
         /> */}
-              <p style={{color:"black"}}>Listing id: {msg.listingId}</p> 
+              <p style={{color:"black"}}>Application for Listing id: {msg.listingId}</p> 
               <p style={{color:"black"}}>Present Status: {msg.status}</p>
+              <Link to={"/listingDetails/" + msg.listingId} style={{color:"blue"}}>View details</Link>
               </Card.Text>
               
             </Card.Body>
