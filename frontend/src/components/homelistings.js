@@ -26,6 +26,12 @@ class HomeListings extends Component {
     });
   }
 
+  loadDetails(id){
+    this.setState({
+      redirect:`/listingDetails/${id}`
+  })
+  }
+
   async componentDidMount() {
     const data = {
       email: localStorage.getItem("email"),
@@ -67,8 +73,8 @@ class HomeListings extends Component {
                 style={{ marginLeft: "450px", marginTop: "-80px" }}
                 className="mb-2"
               >
-                {/* <Button>Approve</Button>
-        &nbsp; */}
+                <Button onClick={(e)=> this.loadDetails(msg._id)}>View Details</Button>
+                  &nbsp;
                 <Button onClick={(e) => this.scheduleTour(msg._id)}>
                   Schedule Tour
                 </Button>

@@ -278,8 +278,7 @@ class Search extends Component {
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-            {/* <MDBBtn floating size="lg" gradient="purple"><MDBIcon icon="bolt" /></MDBBtn> */}
+          <Link to={"/listingDetails/" + msg._id} style={{color:"blue"}}>View details</Link>
           </Card.Footer>
         </Card>
       );

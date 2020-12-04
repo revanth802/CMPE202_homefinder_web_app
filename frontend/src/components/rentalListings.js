@@ -25,6 +25,12 @@ class RentalListings extends Component {
     })
     }
 
+    loadDetails(id){
+      this.setState({
+        redirect:`/listingDetails/${id}`
+    })
+    }
+
     async componentDidMount() {
       const data = {
         email: localStorage.getItem("email")
@@ -61,19 +67,20 @@ class RentalListings extends Component {
               // id="avatar-image"
             />
                   <p style={{color:"black"}}>Address: {msg.addressLine1}</p> 
-                  <p style={{color:"black"}}>Type : {msg.type}</p>
                   <p style={{color:"black"}}>Rent : {msg.price}</p>
                   <p style={{color:"black"}}>Area : {msg.area}</p>
 
 
                   </Card.Text>
                   <ButtonGroup style={{marginLeft:"450px",marginTop:"-80px"}} className="mb-2">
-        {/* <Button>Approve</Button>
-        &nbsp; */}
+                
+                  <Button onClick={(e)=> this.loadDetails(msg._id)}>View Details</Button>
+                  &nbsp;
         <Button onClick={(e)=> this.scheduleTour(msg._id)}>Schedule Tour</Button>
         &nbsp;
         <Button onClick={(e)=> this.loadRent(msg._id)}>Rent</Button>
-
+        &nbsp;
+       
       </ButtonGroup>
                 </Card.Body>
               </Card>

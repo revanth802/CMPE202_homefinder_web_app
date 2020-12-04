@@ -345,9 +345,9 @@ class currentlisting extends Component {
                       defaultValue={this.state.homes.securityDeposit}
                     />{" "}
                   </div>
-                  <div>
+                  {/* <div>
                     {("Date", this.state.homes.availableDate.split("T")[0])}
-                  </div>
+                  </div> */}
                   <label for="date"> Available Date</label>
                   <input
                     type="date"

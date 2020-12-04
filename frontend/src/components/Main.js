@@ -17,9 +17,8 @@ import currentlisting from "./Mylistings/currentlisting";
 import rentalApplications from "./Applications/rentalApplications";
 import saleApplications from "./Applications/saleApplications";
 import myfavorites from "./myfavourites/myfavourites";
-// import BuyApplication from "../components/buyApplication";
 import ScheduleTour from "../components/scheduleTour";
-
+import listingdetails from "./ListingDetails/listingdetails";
 //Create a Main Component
 class Main extends Component {
   render() {
@@ -50,10 +49,7 @@ class Main extends Component {
               <Route path="/saleApplication/:id" component={SaleApplication} />
               <Route path="/scheduleTour/:id" component={ScheduleTour} />
               <Route path="/currentlisting/:id" component={currentlisting} />
-              {/* <Route
-                path="/buyApplication/:id"
-                component={BuyApplication}
-              /> */}
+              <Route path="/listingDetails/:id" component={listingdetails} />
               <Route exact path="/myfavorites" component={myfavorites} />
               <Route exact path="/search" component={Search} />
               <Route exact path="/sell" component={Sell} />
