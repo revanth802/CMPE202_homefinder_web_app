@@ -76,11 +76,11 @@ class Navbar extends Component {
               Search
             </Link>
           </li>
-          <li class="nav-item">
+          {/* <li class="nav-item">
             <Link class="nav-link" to="/" onClick={this.handleLogout}>
               Logout
             </Link>
-          </li>
+          </li> */}
           {/* <li><Link to="/carthome"><span><i className="icon-shopping-cart icon-2x"></i></span><span className="badge badge-light">{this.state.cart.length}</span></Link></li> */}
           <li class="nav-item">
             <Link class="nav-link" to="/admin-dashboard">

@@ -66,6 +66,8 @@ class rentalApplications extends Component {
     return (
       // <h1>Heloowww</h1>
       <div className="container">
+      <br></br>
+      &nbsp;
         <div className="applications-list">
           {/* <div>Heloowww</div>
         <pre>{JSON.stringify(this?.state?.applications, null, 2)}</pre> */}

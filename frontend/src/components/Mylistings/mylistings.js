@@ -147,6 +147,8 @@ class mylistings extends Component {
     });
     return (
       <div>
+      &nbsp;
+      <br></br>
         <CardColumns style={{ columnCount: "1" }}>
           {candr}
           {redirectVar}

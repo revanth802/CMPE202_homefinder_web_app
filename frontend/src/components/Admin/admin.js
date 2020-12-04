@@ -171,7 +171,7 @@ async handleReject(e) {
               <ButtonGroup style={{marginLeft:"450px",marginTop:"-80px"}} className="mb-2">
     <Button disabled = {msg.status == "Approved"} onClick={(e)=> this.handleApprove(msg.email)}>Approve</Button>
     &nbsp;
-    <Button disabled = {msg.status == "Approved" || msg.status == "Rejected"} onClick={(e)=> this.handleReject(msg.email)}>Reject</Button>
+    <Button disabled = { msg.status == "Rejected"} onClick={(e)=> this.handleReject(msg.email)}>Reject</Button>
     &nbsp;
     <Button onClick={(e)=> this.handleRemove(msg.email)}>Remove</Button>
   </ButtonGroup>
