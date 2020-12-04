@@ -53,13 +53,7 @@ class myapplications extends Component {
               <p style={{color:"black"}}>Listing id: {msg.listingId}</p> 
               <p style={{color:"black"}}>Present Status: {msg.status}</p>
               </Card.Text>
-              <ButtonGroup style={{marginLeft:"450px",marginTop:"-80px"}} className="mb-2">
-    <Button disabled = {msg.status == "Approved"} onClick={(e)=> this.handleApprove(msg.email)}>Approve</Button>
-    &nbsp;
-    <Button disabled = { msg.status == "Rejected"} onClick={(e)=> this.handleReject(msg.email)}>Reject</Button>
-    &nbsp;
-    <Button onClick={(e)=> this.handleRemove(msg.email)}>Remove</Button>
-  </ButtonGroup>
+              
             </Card.Body>
           </Card>
           
