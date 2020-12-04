@@ -296,7 +296,7 @@ class Search extends Component {
               </h1>{" "}
               <div className="container text-center p-0">
                 <div className="full-search">
-                  <div className="search-box" data-v-0bf4be34>
+                  <div className="search-box">
                     &nbsp;
                     <div style={{ marginLeft: "-80px" }}>
                       <ButtonGroup
@@ -326,7 +326,7 @@ class Search extends Component {
                         height: "180px",
                         width: "650px",
                         background: "#00294D80",
-                        marginLeft: "200px",
+                        marginLeft: "100px",
                       }}
                     >
                       <div>

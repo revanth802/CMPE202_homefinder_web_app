@@ -224,19 +224,7 @@ class Navbar extends Component {
             Logout
           </Link>
         </nav>
-        <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-            {/* <div class="navbar-header">
-              <img 	style={{image:("../../assets/house2.jpg")}}/>
-            </div> */}
-            {/* <form class="navbar-form navbar-left" action="/action_page.php">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search"/>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-            </form> */}
-          </div>
-        </nav>
+      
       </div>
     );
   }
