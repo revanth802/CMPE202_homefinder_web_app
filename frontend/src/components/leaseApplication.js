@@ -34,6 +34,8 @@ class LeaseApplication extends Component {
       netIncome: this.state.netIncome,
       status: "pending",
       listingId: this.state.listingId,
+      applicant:localStorage.getItem("email"),
+      actual_applicant:localStorage.getItem("email")
     };
     console.log("handleSubmit:::", data);
     var listingName = this.state.homes[0].addressLine1;
@@ -63,7 +65,6 @@ class LeaseApplication extends Component {
         `${backendServer}/homelistings/getListingDetails?id=${this.state.listingId}`
       )
       .then((response) => {
-        console.log("Pro are::", response.data);
         this.setState({
           homes: this.state.homes.concat(response.data),
         });

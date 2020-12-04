@@ -19,6 +19,7 @@ import saleApplications from "./Applications/saleApplications";
 import myfavorites from "./myfavourites/myfavourites";
 import ScheduleTour from "../components/scheduleTour";
 import listingdetails from "./ListingDetails/listingdetails";
+import myapplications from "./myApplications/myapplications";
 //Create a Main Component
 class Main extends Component {
   render() {
@@ -63,6 +64,11 @@ class Main extends Component {
                 exact
                 path="/saleApplications/:id"
                 component={saleApplications}
+              />
+               <Route
+                exact
+                path="/myapplications"
+                component={myapplications}
               />
             </Fragment>
           )}

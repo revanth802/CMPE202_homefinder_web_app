@@ -32,6 +32,8 @@ class SaleApplication extends Component {
       offerPrice: this.state.offerPrice,
       status: "pending",
       listingId: this.state.listingId,
+      applicant:localStorage.getItem("email"),
+      actual_applicant:localStorage.getItem("email")
     };
     console.log("handleSubmit:::", data);
     var listingName = this.state.homes[0].addressLine1;
@@ -47,12 +49,12 @@ class SaleApplication extends Component {
           listingName: listingName,
         };
 
-        // await axios
-        //   .post(`${backendServer}/email/sendEmail`, emailData)
-        //   .then((response2) => {
-        //     alert("Application sent");
-        //     console.log("email sent");
-        //   });
+        await axios
+          .post(`${backendServer}/email/sendEmail`, emailData)
+          .then((response2) => {
+            alert("Application sent");
+            console.log("email sent");
+          });
       });
   }
   async componentDidMount() {

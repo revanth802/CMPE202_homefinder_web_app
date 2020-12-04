@@ -35,8 +35,9 @@ class RentalListings extends Component {
       const data = {
         email: localStorage.getItem("email")
       };
+      console.log(data)
         axios
-          .get(`${backendServer}/homelistings/rentalListings/`,data)
+          .post(`${backendServer}/homelistings/rentalListings/`,data)
           .then((response) => {
             console.log("Pro are::", response.data);
             this.setState({

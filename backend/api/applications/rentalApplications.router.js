@@ -5,12 +5,12 @@ const {
   // displayhomes,
   getRentalApplications,
   updateStatus,
-  // getListingDetails,
+  getMyApplications,
   // submitLease,
 } = require("./rentalApplications.service");
 // router.post("/", displayhomes);
 router.get("/rentalApplications/:id", getRentalApplications);
 router.post("/updateStatus", updateStatus);
-// router.get("/getListingDetails", getListingDetails);
+router.post("/getMyApplications", getMyApplications);
 // router.post("/submitLease", submitLease);
 module.exports = router;

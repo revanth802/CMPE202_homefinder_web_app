@@ -24,8 +24,7 @@ module.exports = {
     Homelistings.find(
       { type: "rent", owner: { $ne: req.body.email } },
       (error, result) => {
-        // res.end(result);
-        console.log("homelistings", result);
+        
         res.send(result);
         res.end();
       }
@@ -53,6 +52,8 @@ module.exports = {
       homeId: req.body.homeId,
       status: req.body.status,
       listingId: req.body.listingId,
+      applicant:req.body.applicant,
+      actual_applicant:req.body.applicant
     });
     lease.save(function (err, results) {
       console.log("error:: ", err);
@@ -68,6 +69,8 @@ module.exports = {
       lastName: req.body.lastName,
       offerPrice: req.body.offerPrice,
       listingId: req.body.listingId,
+      applicant:req.body.applicant,
+      actual_applicant:req.body.applicant,
       type: "sale",
       status: req.body.status,
     });

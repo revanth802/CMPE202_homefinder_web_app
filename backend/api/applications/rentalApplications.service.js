@@ -13,6 +13,15 @@ module.exports = {
     });
   },
 
+  getMyApplications: (req, res) => {
+    console.log("here my appns")
+    leaseApplications.find({ applicant: req.body.email }, (error, result) => {
+      // 
+      res.send(result);
+      res.end();
+    });
+  },
+
   updateStatus: (req, res) => {
     // console.log("query here",req);
     console.log("update rental application status", req.body);

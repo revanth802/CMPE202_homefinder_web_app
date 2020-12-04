@@ -189,7 +189,7 @@ class Search extends Component {
     //set the with credentials to true
     axios.defaults.withCredentials = true;
     axios
-      .get(`${backendServer}/homelistings/rentalListings/`, data)
+      .post(`${backendServer}/homelistings/rentalListings/`, data)
       .then((response) => {
         // console.log("Pro are::", response.data);
         this.setState({

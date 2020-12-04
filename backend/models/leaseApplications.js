@@ -12,7 +12,9 @@ var leaseApplications = new Schema(
     netIncome: { type: String },
     status: { type: String },
     listingId: { type: String },
-    offerPrice:{type:String}
+    offerPrice:{type:String},
+    applicant:{type:String},
+    actual_applicant: {type:String}
 },
   {
     versionKey: false,

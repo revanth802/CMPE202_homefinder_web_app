@@ -220,6 +220,11 @@ class Navbar extends Component {
           <a class="navbar-brand " href="#"><i class="fas fa-home fa-lg"></i></a>
           {navLinks}
           {/* <li class="nav-item"> */}
+          
+            <Link class="nav-link" to="/myapplications">
+              My Applications
+            </Link>
+     
           <Link class="nav-link" to="/" onClick={this.handleLogout}>
             Logout
           </Link>

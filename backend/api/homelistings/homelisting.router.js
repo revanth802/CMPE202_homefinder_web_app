@@ -10,7 +10,7 @@ const {
     scheduleTour
 } = require("./homelisting.service");
 router.post("/", displayhomes);
-router.get("/rentalListings",rentalListings)
+router.post("/rentalListings",rentalListings)
 router.get("/getListingDetails",getListingDetails)
 router.post("/submitLease",submitLease)
 router.post("/submitBuy",submitBuy)
