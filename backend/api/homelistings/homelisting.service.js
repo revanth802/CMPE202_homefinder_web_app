@@ -70,7 +70,7 @@ module.exports = {
       offerPrice: req.body.offerPrice,
       listingId: req.body.listingId,
       applicant:req.body.applicant,
-      actual_applicant:req.body.applicant,
+      actual_applicant:req.body.actual_applicant,
       type: "sale",
       status: req.body.status,
     });

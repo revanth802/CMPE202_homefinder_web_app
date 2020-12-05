@@ -12,6 +12,9 @@ class SaleApplication extends Component {
       homes: [],
       flag1: false,
       listingId: this.props.match.params.id,
+      role : localStorage.getItem("role"),
+      owners : [],
+      owner : ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,7 +36,7 @@ class SaleApplication extends Component {
       status: "pending",
       listingId: this.state.listingId,
       applicant:localStorage.getItem("email"),
-      actual_applicant:localStorage.getItem("email")
+      actual_applicant:(this.state.owner != "")?this.state.owner : localStorage.getItem("email")
     };
     console.log("handleSubmit:::", data);
     var listingName = this.state.homes[0].addressLine1;
@@ -69,9 +72,23 @@ class SaleApplication extends Component {
         });
         console.log("Pro are::", this.state.homes);
       });
+
+      axios
+      .get(`${backendServer}/sell/getOwners`)
+      .then((response) => {
+        console.log("Pro are::", response.data);
+        this.setState({
+          owners: response.data,
+        });
+        console.log("Pro are::", this.state.owners);
+      });
+
   }
 
   render() {
+    let optionItems = this.state.owners.map((owner) =>
+    <option key={owner}>{owner}</option>);
+
     let candr = this.state.homes.map((msg) => {
       return (
         <div className="lease-application">
@@ -185,7 +202,9 @@ class SaleApplication extends Component {
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-row">
+                    <div class="col">
+                      <div class="form-group ">
                     <label className="field-names" for="exampleInputEmail1">
                       Offer Price:
                     </label>
@@ -198,7 +217,34 @@ class SaleApplication extends Component {
                       placeholder="Enter your price offer"
                       onChange={this.handleChange}
                     />
-                  </div>
+                    </div>
+
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                  {this.state.role == "realtor" ? (
+                  
+                
+                  <div>
+                    <label for="date" style={{color:"black"}}>On behalf of Buyer</label>
+                                <select
+                  name="owner"
+                  className="custom-select custom-select-sm"
+                  onChange={this.handleChange}>
+                  <option value="">Select</option>
+   {optionItems}
+                </select>
+                </div>
+                   
+                 
+              
+              ) : (
+                ""
+              )}
+            </div>
+            </div>
+            </div>
+
                   <button
                     type="submit"
                     class="btn btn-primary"
@@ -206,6 +252,8 @@ class SaleApplication extends Component {
                   >
                     Submit
                   </button>
+
+
                 </form>
                 {/* </div> */}
               </div>
