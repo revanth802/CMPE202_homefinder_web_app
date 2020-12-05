@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
+import { Redirect } from "react-router";
 import { backendServer } from "../../webconfig.js";
 import "../Sell/sell.css";
 import { Button } from "react-bootstrap";
@@ -107,6 +108,7 @@ class Sell extends Component {
         } else if (response.data === "success") {
           this.setState({
             successmsg: "success",
+            redirect: `/mylistings/`
           });
         }
       })
@@ -118,6 +120,11 @@ class Sell extends Component {
   };
 
   render() {
+    let redirectVar = null;
+    if (this.state.redirect) {
+      redirectVar = <Redirect push to={this.state.redirect} />;
+    }
+
     let msgshow = null;
     if (this.state.successmsg == "success")
       msgshow = <p>Listing Successfully posted</p>;
@@ -127,6 +134,7 @@ class Sell extends Component {
     return (
       <div className="container contact-form">
         <div className="contact-image">
+        {redirectVar}
           <img
             src="https://image.ibb.co/kUagtU/rocket_contact.png"
             alt="rocket_contact"

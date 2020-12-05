@@ -85,7 +85,7 @@ class Navbar extends Component {
           <li class="nav-item">
             <Link class="nav-link" to="/admin-dashboard">
               <span>
-                <i className="icon-shopping-cart icon-2x">Search</i>
+                <i className="icon-shopping-cart icon-2x">Admin-Dashboard</i>
               </span>
             </Link>
           </li>
