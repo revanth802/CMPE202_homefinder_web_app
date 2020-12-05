@@ -42,7 +42,7 @@ class myapplications extends Component {
         statusColor = "red";
         statusNew = "Rejected";
       } else if (msg.status == "pending") {
-        statusColor = "grey";
+        statusColor = "orange";
         statusNew = "Pending";
       }
       return (

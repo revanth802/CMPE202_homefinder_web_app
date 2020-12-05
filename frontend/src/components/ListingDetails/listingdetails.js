@@ -143,13 +143,8 @@ class ListingDetails extends Component {
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">Remove this ID: </span>{" "}
-                      {msg._id}
-                    </p>
-                    <p>
-                      {" "}
                       <span className="field-names">
-                        Remove This Status:{" "}
+                        Status:{" "}
                       </span>{" "}
                       {msg.status}
                     </p>
