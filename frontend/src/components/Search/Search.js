@@ -245,15 +245,28 @@ class Search extends Component {
             <Card.Title style={{ color: "black", height: "54px" }}>
               {msg.addressLine1}
               &nbsp;
-              {msg.addressLine2}
-              ,
-              <br></br>
+              {msg.addressLine2},<br></br>
               {msg.city},{msg.state}
-              {/* <div> */}
+              {/* <div> */}{" "}
               {localStorage.getItem("role") == "user" ? (
-                <button onClick={(e) => this.handlefavourite(msg._id)}>
-                  Favr8
-                </button>
+                <Button
+                  className="btn btn-outline-danger"
+                  onClick={(e) => this.handlefavourite(msg._id)}
+                >
+                  <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 16 16"
+                    class="bi bi-heart-fill"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                    />
+                  </svg>
+                </Button>
               ) : (
                 ""
               )}
@@ -278,7 +291,9 @@ class Search extends Component {
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-          <Link to={"/listingDetails/" + msg._id} style={{color:"blue"}}>View details</Link>
+            <div className="link-style">
+              <Link to={"/listingDetails/" + msg._id}>View details</Link>
+            </div>
           </Card.Footer>
         </Card>
       );
