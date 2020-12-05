@@ -13,6 +13,8 @@ import {
   Button,
   CardColumns,
   CardDeck,
+  Tooltip,
+  OverlayTrigger,
 } from "react-bootstrap";
 // import { Button,Card, Image } from 'semantic-ui-react'
 
@@ -723,8 +725,8 @@ class Search extends Component {
                               type="text"
                               name="other"
                               onChange={this.handleChange}
-                              placeholder="Other Amenities"
-                              style={{ height: "32px", width: "150px" }}
+                              placeholder="Amenities"
+                              style={{ height: "32px", width: "100px" }}
                             ></input>
                           </div>{" "}
                           {this.state.userrole == "user" ? (

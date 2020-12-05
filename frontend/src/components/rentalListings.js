@@ -87,6 +87,10 @@ class RentalListings extends Component {
                     <span className="field-names">Area : </span>
                     {msg.area}
                   </p>
+                  <p>
+                    <span className="field-names">Status : </span>
+                    {msg.status}
+                  </p>
                 </div>
                 <div className="col-3">
                   <div style={{ marginBottom: "10px" }}>
