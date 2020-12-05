@@ -1,7 +1,7 @@
 const User = require("../../models/usermodel.js");
 const Homelistings = require("../../models/homelistings.js");
 const leaseApplications = require("../../models/leaseApplications.js");
-
+const favouriteHomes= require("../../models/favouriteHomes.js");
 module.exports = {
   myhomelistings: (req, res) => {
     // console.log("query here",req.body);
@@ -24,6 +24,12 @@ module.exports = {
     });
 
     leaseApplications.deleteMany({ listingId: req.body.uname }, (error, result) => {
+      
+      // res.send("success");
+      // res.end();
+    });
+
+    favouriteHomes.deleteMany({ houseId: req.body.uname }, (error, result) => {
       
       // res.send("success");
       res.end();
