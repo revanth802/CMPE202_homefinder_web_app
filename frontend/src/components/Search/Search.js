@@ -48,6 +48,7 @@ class Search extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+
     this.resetfields = this.resetfields.bind(this);
     this.addtofavsearch = this.addtofavsearch.bind(this);
   }
@@ -179,28 +180,28 @@ class Search extends Component {
       });
   }
 
-  // async handlefavourite(e) {
-  //   // console.log(e);
-  //   const data = {
-  //     userid: localStorage.getItem("email"),
-  //     houseid: e,
-  //   };
-  //   await axios
-  //     .post(`${backendServer}/search/addToFavourites`, data)
-  //     .then((response) => {
-  //       console.log(response);
-  //       if (response.data == "success") {
-  //         console.log("Success");
-  //         this.setState({
-  //           msgr: "User successfully removed",
-  //         });
-  //       } else {
-  //         this.setState({
-  //           showLoginError: true,
-  //         });
-  //       }
-  //     });
-  // }
+  async handlefavourite(e) {
+    // console.log(e);
+    const data = {
+      userid: localStorage.getItem("email"),
+      houseid: e,
+    };
+    await axios
+      .post(`${backendServer}/search/addToFavourites`, data)
+      .then((response) => {
+        console.log(response);
+        if (response.data == "success") {
+          console.log("Success");
+          this.setState({
+            msgr: "User successfully removed",
+          });
+        } else {
+          this.setState({
+            showLoginError: true,
+          });
+        }
+      });
+  }
 
   handleSearch = (e) => {
     //prevent page from refresh
