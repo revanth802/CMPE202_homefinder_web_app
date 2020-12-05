@@ -16,20 +16,22 @@ module.exports = {
 
   
 
-    search: (req, res) => {
+    async search(req, res) {
         console.log("in search controller")
         body = req.body
             console.log(body);
            if(req.body.favsearchlabel != "")
            {
-             FavouriteSearches.findOne({favlabel : req.body.favsearchlabel},(error,results) => 
+             await FavouriteSearches.findOne({favlabel : req.body.favsearchlabel},(error,results) => 
              {
                console.log("with fav label")
                console.log(results)
-               req.body = results
+               body = results
              })
            }
-        Property.find({
+          console.log("after fav search added")
+           console.log(req.body)
+       await  Property.find({
             $and: [{
                 $or: [{ addressLine1: { $regex: body.term, $options: "i" } },
                 { addressLine2: { $regex:  body.term, $options: "i" } },
@@ -63,13 +65,14 @@ module.exports = {
             for(let i=0;i<ids_homes.length;i++)
             {
            
-            FavouriteSearches.updateOne(
-              {user:body.email,homeId:ids_homes[i]},
-              { $inc: { frequency: 1 }},{upsert:true},
-              (error, result) => {
+          //  await  FavouriteSearches.updateOne(
+          //     {user:body.email,homeId:ids_homes[i]},
+          //     { $inc: { frequency: 1 }},{upsert:true},
+          //     (error, result) => {
             
-              }
-            );}}
+          //     }
+          //   );
+          }}
             res.status(200).json(properties);
         });
     },
