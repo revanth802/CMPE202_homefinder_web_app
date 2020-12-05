@@ -756,8 +756,8 @@ class Search extends Component {
                               type="text"
                               name="other"
                               onChange={this.handleChange}
-                              placeholder="Other Amenities"
-                              style={{ height: "32px", width: "150px" }}
+                              placeholder="Amenities"
+                              style={{ height: "32px", width: "100px" }}
                             ></input>
                           </div>{" "}
 
@@ -767,7 +767,7 @@ class Search extends Component {
                   name="favsearchlabel"
                   className="custom-select custom-select-sm"
                   onChange={this.handleChange}>
-                  <option value="">Favorite Searches</option>
+                  <option value="">Favorites</option>
    {optionItems}
                 </select></div>
                        
