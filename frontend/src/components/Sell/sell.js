@@ -32,6 +32,7 @@ class Sell extends Component {
       owners : [],
       owner : ""
     };
+    this.handleImageChange=this.handleImageChange.bind(this)
     this.handleChange = this.handleChange.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
   }
@@ -46,6 +47,13 @@ class Sell extends Component {
         });
         console.log("Pro are::", this.state.owners);
       });
+  }
+
+  async handleImageChange(e) {
+    this.setState({
+      formData: e.target.files[0],
+    });
+    console.log(e.target.name, " ", e.target.value);
   }
 
   handleChange = (e) => {
@@ -92,31 +100,61 @@ class Sell extends Component {
       owner : this.state.owner
     };
 
+    let fileData = new FormData();
+    console.log("fileData in state", this.state.formData);
+    fileData.append("file", this.state.formData);
+
+    var data1 = {
+      type: this.state.formData.type,
+      path: this.state.formData.name,
+    };
+    
+     axios
+      .post(
+        `${backendServer}/sell/uploadImage/?userId=` +
+          localStorage.getItem("email"),
+        fileData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((res) => {
+        localStorage.setItem("imagePath", res.data.Location);
+        console.log("response:", res);
+        data.imagePath = res.data.Location;
+        axios
+        .post(`${backendServer}/sell/`, data)
+        .then((response) => {
+          console.log(response);
+          if (response.data === "error") {
+            console.log("error");
+            this.setState({
+              showRegistrationError: true,
+            });
+          } else if (response.data === "success") {
+            this.setState({
+              successmsg: "success",
+              redirect: `/mylistings/`
+            });
+          }
+        })
+        .catch((ex) => {
+          this.setState({
+            showRegistrationError: true,
+          });
+        });
+  
+      });
+
     //set the with credentials to true
     axios.defaults.withCredentials = true;
     //make a post request with the user data
     console.log("req.body", data);
-    axios
-      .post(`${backendServer}/sell/`, data)
-      .then((response) => {
-        console.log(response);
-        if (response.data === "error") {
-          console.log("error");
-          this.setState({
-            showRegistrationError: true,
-          });
-        } else if (response.data === "success") {
-          this.setState({
-            successmsg: "success",
-            redirect: `/mylistings/`
-          });
-        }
-      })
-      .catch((ex) => {
-        this.setState({
-          showRegistrationError: true,
-        });
-      });
+    
+
+
   };
 
   render() {
@@ -380,9 +418,24 @@ class Sell extends Component {
               ) : (
                 ""
               )}
+              <div>
+              <input
+                  type="file"
+                  name="user_image"
+                  accept="image/*"
+                  className="form-control"
+                  aria-label="Image"
+                  aria-describedby="basic-addon1"
+                  onChange={this.handleImageChange}
+                  style={{ width: "250px" }}
+                />
+                </div>
             </div>
             </div>
           </div>
+
+        
+                
         </form>
       </div>
     );
