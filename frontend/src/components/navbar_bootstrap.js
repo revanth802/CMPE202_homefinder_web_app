@@ -129,6 +129,9 @@ class Navbar extends Component {
               style={{ color: "red" }}
             ></li>
           </Link>
+          <Link class="nav-link" to="/myapplications">
+              My Applications
+            </Link>
         </ul>
       );
     }
@@ -160,6 +163,9 @@ class Navbar extends Component {
               Manage Listings
             </Link>
           </li>
+          <Link class="nav-link" to="/myapplications">
+              My Applications
+            </Link>
 
          
         </ul>
@@ -219,11 +225,9 @@ class Navbar extends Component {
 
           <a class="navbar-brand " href="#"><i class="fas fa-home fa-lg"></i></a>
           {navLinks}
-          {/* <li class="nav-item"> */}
           
-            <Link class="nav-link" to="/myapplications">
-              My Applications
-            </Link>
+          
+          
      
           <Link class="nav-link" to="/" onClick={this.handleLogout}>
             Logout

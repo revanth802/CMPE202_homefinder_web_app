@@ -1,3 +1,4 @@
+const homelistings = require("../../models/homelistings.js");
 const User = require("../../models/usermodel.js");
 
 
@@ -21,9 +22,17 @@ module.exports = {
         User.findOneAndDelete({email:req.body.uname}, (error, result) => {
         // res.end(result);
           console.log("users",result);
+         
+          // res.end();
+        });
+
+        homelistings.deleteMany({ $or:[ {owner: req.body.uname },{representedBy:req.body.uname}] }, (error, result) => {
+        
           res.send("success");
           res.end();
         });
+
+
       },
 
       reject: (req, res) => {

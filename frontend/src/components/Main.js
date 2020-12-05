@@ -34,6 +34,7 @@ class Main extends Component {
             <Route exact path="/admin-dashboard" component={admin} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/" component={Login} />
+            <Route exact path="/listingDetails/:id" component={listingdetails} />
           </Fragment>
         )}
         {localStorage.getItem("role") != "admin" &&

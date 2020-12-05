@@ -1,5 +1,6 @@
 const User = require("../../models/usermodel.js");
 const Homelistings = require("../../models/homelistings.js");
+const leaseApplications = require("../../models/leaseApplications.js");
 
 module.exports = {
   myhomelistings: (req, res) => {
@@ -19,6 +20,12 @@ module.exports = {
       // res.end(result);
       // console.log("users",result);
       res.send("success");
+      // res.end();
+    });
+
+    leaseApplications.deleteMany({ listingId: req.body.uname }, (error, result) => {
+      
+      // res.send("success");
       res.end();
     });
   },
