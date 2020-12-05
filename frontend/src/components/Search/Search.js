@@ -44,7 +44,8 @@ class Search extends Component {
       type: "sale",
       favlabel : "",
       favsearchlabel:"",
-      favlabels : []
+      favlabels : [],
+      userrole: localStorage.getItem("role")
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -758,7 +759,8 @@ class Search extends Component {
                               style={{ height: "32px", width: "150px" }}
                             ></input>
                           </div>{" "}
-                        
+                          
+                          {this.state.userrole == "user" ? (
                           <div className="form-group col-auto d-none d-md-block field-select">
                                 <select
                   name="favsearchlabel"
@@ -767,10 +769,14 @@ class Search extends Component {
                   <option value="">Favorite Searches</option>
    {optionItems}
                 </select></div>
-                         {" "}
+                       
+                             
+              ) : (
+                ""
+              )}
 
                          
-
+{this.state.userrole == "user" ? (
                          <div className="form-group col-auto d-none d-md-block field-select">
                             <input
                               type="text"
@@ -779,9 +785,14 @@ class Search extends Component {
                               placeholder="Enter Your Label"
                               style={{ height: "32px", width: "150px" }}
                             ></input>
-                          </div>{" "}
+                          </div>
 
+                  
+) : (
+  ""
+)}
 
+{this.state.userrole == "user" ? (
                           <div className="input-group-btn" data-v-0bf4be34>
                                 <button
                                   type="submit"
@@ -802,7 +813,9 @@ class Search extends Component {
                                 </button>
                               </div>
 
-                      
+) : (
+  ""
+)}
                         </div>
                     
                       </div>
