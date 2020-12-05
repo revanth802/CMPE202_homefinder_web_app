@@ -115,6 +115,9 @@ class mylistings extends Component {
                   {msg.area} <span className="field-names">Sqft</span>
                 </div>
               </div>
+              <div className="row" style={{ marginBottom: "10px" }}>
+              <span className="field-names">{msg.addressLine1}, {msg.addressLine2},{msg.city}, {msg.state}, {msg.zipcode} </span>
+              </div>
               <div className="row">
                 <div className="col-6">
                   <div style={{ marginBottom: "10px" }}>

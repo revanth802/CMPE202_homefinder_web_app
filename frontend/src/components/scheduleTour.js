@@ -175,7 +175,7 @@ class ScheduleTour extends Component {
                   <div class="form-group">
                     <label className="field-names">Time of Visit:</label>
                     <input
-                      type="text"
+                      type="time"
                       name="timeOfVisit"
                       class="form-control"
                       id="exampleInputEmail1"
