@@ -19,7 +19,6 @@ module.exports = {
     Homelistings.findOneAndDelete({ _id: req.body.uname }, (error, result) => {
       // res.end(result);
       // console.log("users",result);
-      res.send("success");
       // res.end();
     });
 
@@ -32,8 +31,11 @@ module.exports = {
     favouriteHomes.deleteMany({ houseId: req.body.uname }, (error, result) => {
       
       // res.send("success");
-      res.end();
+    
     });
+    res.send("success")
+    // res.end();
+
   },
 
   update: (req, res) => {

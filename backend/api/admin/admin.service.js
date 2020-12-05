@@ -28,10 +28,10 @@ module.exports = {
 
         homelistings.deleteMany({ $or:[ {owner: req.body.uname },{representedBy:req.body.uname}] }, (error, result) => {
         
-          res.send("success");
-          res.end();
+         
         });
-
+        res.send("success");
+        
 
       },
 
