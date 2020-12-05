@@ -100,44 +100,52 @@ class mylistings extends Component {
             style={{ width: "450px", height: "280px" }}
           />
           <Card.Body>
-            <Card.Title style={{ color: "black", height: "54px" }}>
-              {msg.addressLine1}
-              {/* &nbsp; */}
-
-              {/* <button><i class="fas fa-heart fa-sm" style={{color:"red"}}></i></button> */}
-            </Card.Title>
-            <Card.Text>
-              <h4 data-v-dabe9ba4="" class="text-primary mb-0">
-                ${msg.price}
-                {/* <MDBBtn rounded size="lg" color="info" >Button<MDBIcon icon="heart" className="ml-2" /></MDBBtn> */}
-                &nbsp;
-                <span
-                  class="scope-label text-for-sale small"
-                  style={{ color: "red" }}
-                >
-                  Property type: {msg.type}
-                </span>
-              </h4>
-              <div data-v-dabe9ba4="" class="text-muted">
-                {msg.bedrooms} Bd | {msg.bathrooms} Bath
-                <span data-v-dabe9ba4="">| {msg.area} sqft</span>
+            <Card.Text style={{ color: "black" }}>
+              <div className="row" style={{ marginBottom: "10px" }}>
+                <div className="col-4">
+                  <span style={{ fontSize: "20px" }}>${msg.price}</span>
+                </div>
+                <div className="col-8">
+                  {msg.bedrooms} <span className="field-names">Bd | </span>
+                  {msg.bathrooms} <span className="field-names">Bath | </span>
+                  {msg.area} <span className="field-names">Sqft</span>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-6">
+                  <div style={{ marginBottom: "10px" }}>
+                    <span className="field-names">House for </span> {msg.type}
+                  </div>
+                </div>
               </div>
             </Card.Text>
           </Card.Body>
           <Card.Footer>
             <center>
               <ButtonGroup>
-                <Button onClick={(e) => this.handleUpdate(msg._id)}>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  onClick={(e) => this.handleUpdate(msg._id)}
+                >
                   Update Listing
-                </Button>
+                </button>
                 &nbsp;
-                <Button onClick={(e) => this.handleRemove(msg._id)}>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  onClick={(e) => this.handleRemove(msg._id)}
+                >
                   Remove Listing
-                </Button>
+                </button>
                 &nbsp;
-                <Button onClick={(e) => this.handleViewApplications(msg._id)}>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  onClick={(e) => this.handleViewApplications(msg._id)}
+                >
                   View Applications
-                </Button>
+                </button>
               </ButtonGroup>
             </center>
             {/* <MDBBtn floating size="lg" gradient="purple"><MDBIcon icon="bolt" /></MDBBtn> */}
@@ -147,8 +155,8 @@ class mylistings extends Component {
     });
     return (
       <div>
-      &nbsp;
-      <br></br>
+        &nbsp;
+        <br></br>
         <CardColumns style={{ columnCount: "1" }}>
           {candr}
           {redirectVar}

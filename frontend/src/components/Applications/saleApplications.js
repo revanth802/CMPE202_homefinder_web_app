@@ -14,13 +14,13 @@ class saleApplications extends Component {
       applications: [],
       changingState: true,
       owners: [],
-      role : localStorage.getItem("role")
+      role: localStorage.getItem("role"),
     };
   }
 
   async componentDidMount() {
     console.log("saleApplications componentDidMount before axios");
-   await axios
+    await axios
       .get(
         `${backendServer}/rentalApplications/rentalApplications/${this.state.listingId}`
       )
@@ -32,17 +32,13 @@ class saleApplications extends Component {
         console.log("rentalApplications componentDidMount after axios");
       });
 
-    
-      await axios
-          .get(`${backendServer}/sell/getOwners`)
-          .then((response) => {
-            console.log("Pro are::", response.data);
-            this.setState({
-              owners: response.data,
-            });
-            console.log("Pro are::", this.state.owners);
-          });
-      
+    await axios.get(`${backendServer}/sell/getOwners`).then((response) => {
+      console.log("Pro are::", response.data);
+      this.setState({
+        owners: response.data,
+      });
+      console.log("Pro are::", this.state.owners);
+    });
   }
 
   handleStatusChange = (e, id) => {
@@ -78,10 +74,11 @@ class saleApplications extends Component {
 
   render() {
     console.log("rentalApplications render" + this.state.listingId);
- 
-    let optionItems = this.state.owners.map((owner) =>
-    <option key={owner}>{owner}</option>);
-    
+
+    let optionItems = this.state.owners.map((owner) => (
+      <option key={owner}>{owner}</option>
+    ));
+
     return (
       // <h1>Heloowww</h1>
       <div className="container">
@@ -132,27 +129,24 @@ class saleApplications extends Component {
                       </div>
 
                       <div>
-             {this.state.role == "realtor" ? (
-                  
-                
-                  <div>
-                    <label for="date" style={{color:"black"}}>On behalf of Seller</label>
-                                <select
-                  name="owner"
-                  className="custom-select custom-select-sm"
-                  onChange={this.handleChange}>
-                  <option value="">Select</option>
-   {optionItems}
-                </select>
-                </div>
-                   
-                 
-              
-              ) : (
-                ""
-              )}
-            </div>
-
+                        {this.state.role == "realtor" ? (
+                          <div>
+                            <label for="date" style={{ color: "black" }}>
+                              On behalf of Seller
+                            </label>
+                            <select
+                              name="owner"
+                              className="custom-select custom-select-sm"
+                              onChange={this.handleChange}
+                            >
+                              <option value="">Select</option>
+                              {optionItems}
+                            </select>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
