@@ -122,7 +122,7 @@ class Sell extends Component {
     if (this.state.successmsg == "success")
       msgshow = <p>Listing Successfully posted</p>;
       let optionItems = this.state.owners.map((owner) =>
-      <option key={owner}>{owner}</option>
+      <option key={owner.favlabel}>{owner.favlabel}</option>
   );
     return (
       <div className="container contact-form">
