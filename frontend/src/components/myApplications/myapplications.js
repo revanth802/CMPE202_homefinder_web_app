@@ -56,6 +56,9 @@ class myapplications extends Component {
                       {msg.listingId}
                     </p>
                     <p>
+                    Applicant: {msg.firstName},{msg.lastName}
+                    </p>
+                    <p>
                       <span className="field-names">Present Status: </span>
                       {msg.status}
                     </p>
