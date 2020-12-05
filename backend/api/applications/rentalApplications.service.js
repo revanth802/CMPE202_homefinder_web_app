@@ -15,7 +15,7 @@ module.exports = {
 
   getMyApplications: (req, res) => {
     console.log("here my appns")
-    leaseApplications.find({ applicant: req.body.email }, (error, result) => {
+    leaseApplications.find({ actual_applicant: req.body.email }, (error, result) => {
       // 
       res.send(result);
       res.end();

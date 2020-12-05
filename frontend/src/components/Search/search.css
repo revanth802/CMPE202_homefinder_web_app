@@ -27,3 +27,12 @@
 	background-size: cover;
 	font:600 16px/18px 'Open Sans',sans-serif;
 }
+
+.link-style {
+    font-size: 14px;
+    overflow: hidden;
+    /* -o-text-overflow: ellipsis; */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color:#007bff;
+  }

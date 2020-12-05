@@ -34,8 +34,8 @@ class LeaseApplication extends Component {
       netIncome: this.state.netIncome,
       status: "pending",
       listingId: this.state.listingId,
-      applicant:localStorage.getItem("email"),
-      actual_applicant:localStorage.getItem("email")
+      applicant: localStorage.getItem("email"),
+      actual_applicant: localStorage.getItem("email"),
     };
     console.log("handleSubmit:::", data);
     var listingName = this.state.homes[0].addressLine1;

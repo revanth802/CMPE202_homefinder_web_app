@@ -85,18 +85,18 @@ class Navbar extends Component {
           <li class="nav-item">
             <Link class="nav-link" to="/admin-dashboard">
               <span>
-                <i className="icon-shopping-cart icon-2x">Dashboard</i>
+                <i className="icon-shopping-cart icon-2x">Search</i>
               </span>
             </Link>
           </li>
         </ul>
       );
-    } else if (localStorage.getItem("role") === "user"){
+    } else if (localStorage.getItem("role") === "user") {
       navLinks = (
         <ul className="navbar-nav mr-auto">
           <li class="nav-item">
             <Link class="nav-link" to="/search">
-              Dashboard
+              Search
             </Link>
           </li>
           <li class="nav-item">
@@ -119,25 +119,33 @@ class Navbar extends Component {
               Manage Listings
             </Link>
           </li>
-
-          <Link class="nav-link" to="/myfavorites">
-            My Favorites
-            <li
-              width="100px"
-              height="200px"
-              class="fas fa-heart fa-lg"
-              style={{ color: "red" }}
-            ></li>
-          </Link>
+          <li class="nav-item">
+            <Link class="nav-link" to="/myfavorites">
+              My Favorites{" "}
+              <svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-heart-fill"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                />
+              </svg>
+              {/* <img src="/open-iconic/svg/icon-name.svg" alt="icon name" /> */}
+            </Link>
+          </li>
         </ul>
       );
-    }
-    else{
+    } else {
       navLinks = (
         <ul className="navbar-nav mr-auto">
           <li class="nav-item">
             <Link class="nav-link" to="/search">
-              Dashboard
+              Search
             </Link>
           </li>
           <li class="nav-item">
@@ -160,11 +168,8 @@ class Navbar extends Component {
               Manage Listings
             </Link>
           </li>
-
-         
         </ul>
       );
-    
     }
 
     let redirectVar = null;
@@ -215,21 +220,24 @@ class Navbar extends Component {
           {/* <Link class="navbar-brand" to="/search">
             Home Finder
           </Link> */}
-        
 
-          <a class="navbar-brand " href="#"><i class="fas fa-home fa-lg"></i></a>
+          <a class="navbar-brand " href="#">
+            <i class="fas fa-home fa-lg"></i>
+          </a>
           {navLinks}
           {/* <li class="nav-item"> */}
-          
-            <Link class="nav-link" to="/myapplications">
-              My Applications
+          <ul className="navbar-nav ml-auto">
+            <li class="nav-item">
+              <Link class="nav-link" to="/myapplications">
+                My Applications
+              </Link>
+            </li>
+
+            <Link class="nav-link" to="/" onClick={this.handleLogout}>
+              Logout
             </Link>
-     
-          <Link class="nav-link" to="/" onClick={this.handleLogout}>
-            Logout
-          </Link>
+          </ul>
         </nav>
-      
       </div>
     );
   }

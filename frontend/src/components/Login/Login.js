@@ -130,7 +130,7 @@ class Login extends Component {
               window.location.href = "/search";
             }
              else if (response.data.role === "realtor") {
-              window.location.href = "/sell";
+              window.location.href = "/search";
             } else {
               window.location.href = "/search";
             }
