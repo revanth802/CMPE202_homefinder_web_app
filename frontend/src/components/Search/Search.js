@@ -496,6 +496,7 @@ class Search extends Component {
                                   aria-label="HomeFinder Search"
                                   className="btn btn-secondary btn-lg"
                                   onClick={this.resetfields}
+                                  style={{marginTop:"-2px"}}
                                 >
                                   <i
                                     className="icon d-inline d-md-none icon-search"
@@ -783,7 +784,7 @@ class Search extends Component {
                               type="text"
                               name="favlabel"
                               onChange={this.handleChange}
-                              placeholder="Enter Your Label"
+                              placeholder="Label"
                               style={{ height: "32px", width: "150px" }}
                             ></input>
                           </div>
