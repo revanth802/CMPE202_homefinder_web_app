@@ -12,6 +12,9 @@ class LeaseApplication extends Component {
       homes: [],
       flag1: false,
       listingId: this.props.match.params.id,
+      owners:[],
+      userrole : localStorage.getItem("role"),
+      owner : ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,7 +38,7 @@ class LeaseApplication extends Component {
       status: "pending",
       listingId: this.state.listingId,
       applicant: localStorage.getItem("email"),
-      actual_applicant: localStorage.getItem("email"),
+      actual_applicant: (this.state.owner != "")?this.state.owner : localStorage.getItem("email")
     };
     console.log("handleSubmit:::", data);
     var listingName = this.state.homes[0].addressLine1;
@@ -70,9 +73,25 @@ class LeaseApplication extends Component {
         });
         console.log("Pro are::", this.state.homes);
       });
+
+      axios
+      .get(`${backendServer}/sell/getOwners`)
+      .then((response) => {
+        console.log("Pro are::", response.data);
+        this.setState({
+          owners: response.data,
+        });
+        console.log("Pro are::", this.state.owners);
+      });
+
   }
 
   render() {
+
+    let optionItems = this.state.owners.map((owner) =>
+    <option key={owner}>{owner}</option>
+);
+
     let candr = this.state.homes.map((msg) => {
       return (
         <div className="lease-application">
@@ -204,6 +223,28 @@ class LeaseApplication extends Component {
                       onChange={this.handleChange}
                     />
                   </div>
+                  <div>
+             {this.state.userrole == "realtor" ? (
+                  
+                
+                  <div>
+                    <label for="date" style={{color:"black"}}>On behalf of Seller</label>
+                                <select
+                  name="owner"
+                  className="custom-select custom-select-sm"
+                  onChange={this.handleChange}>
+                  <option value="">Select</option>
+   {optionItems}
+                </select>
+                </div>
+                   
+                 
+              
+              ) : (
+                ""
+              )}
+            </div>
+
                   <button
                     type="submit"
                     class="btn btn-primary"

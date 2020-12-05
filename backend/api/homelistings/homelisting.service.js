@@ -53,7 +53,7 @@ module.exports = {
       status: req.body.status,
       listingId: req.body.listingId,
       applicant:req.body.applicant,
-      actual_applicant:req.body.applicant
+      actual_applicant:req.body.actual_applicant
     });
     lease.save(function (err, results) {
       console.log("error:: ", err);
