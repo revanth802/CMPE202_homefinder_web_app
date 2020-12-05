@@ -121,7 +121,7 @@ class Sell extends Component {
         }
       )
       .then((res) => {
-        localStorage.setItem("imagePath", res.data.Location);
+        //localStorage.setItem("imagePath", res.data.Location);
         console.log("response:", res);
         data.imagePath = res.data.Location;
         axios

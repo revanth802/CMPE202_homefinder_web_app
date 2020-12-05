@@ -25,7 +25,8 @@ var homelistingsSchema = new Schema({
     representedBy:{type:String,required:true},
     owner: {type:String},
     isOwnerRepresented:{type:Boolean, required:true},
-    status:{type:String}
+    status:{type:String},
+    imagePath:{type:String}
 },
 {
     versionKey: false

@@ -74,6 +74,10 @@ class ScheduleTour extends Component {
 
   render() {
     let candr = this.state.homes.map((msg) => {
+        let imgSrc = "https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620"
+      if(msg.imagePath){
+        imgSrc = msg.imagePath
+      }
       return (
         <div className="lease-application">
           <div className="container lease-app-form">
@@ -86,7 +90,7 @@ class ScheduleTour extends Component {
                   <div className="col-6">
                     <Card.Img
                       variant="top"
-                      src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620"
+                      src={imgSrc}
                       style={{
                         width: "300px",
                         height: "230px",

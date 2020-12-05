@@ -83,6 +83,10 @@ class mylistings extends Component {
       redirectVar = <Redirect push to={this.state.redirect} />;
     }
     let candr = this.state.homes.map((msg) => {
+      let imgSrc = "https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620"
+      if(msg.imagePath){
+        imgSrc = msg.imagePath
+      }
       return (
         // <CardDeck>
         <Card
@@ -96,7 +100,7 @@ class mylistings extends Component {
         >
           <Card.Img
             variant="top"
-            src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620"
+            src={imgSrc}
             style={{ width: "450px", height: "280px" }}
           />
           <Card.Body>

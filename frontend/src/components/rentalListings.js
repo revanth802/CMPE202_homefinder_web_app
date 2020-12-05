@@ -53,6 +53,10 @@ class RentalListings extends Component {
       redirectVar = <Redirect push to={this.state.redirect} />;
     }
     let candr = this.state.homes.map((msg) => {
+      let imgSrc = "https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620"
+      if(msg.imagePath){
+        imgSrc = msg.imagePath
+      }
       let isAvailable = false;
       if (msg.status == "open") isAvailable = true;
       else isAvailable = false;
@@ -67,7 +71,7 @@ class RentalListings extends Component {
                 <div className="col-3">
                   <Card.Img
                     variant="top"
-                    src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620"
+                    src={imgSrc}
                     style={{
                       width: "200px",
                       height: "130px",
