@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { Form } from "react-bootstrap";
 import axios from "axios";
-import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 import { backendServer } from "../../webconfig.js";
 import { Card, Button, ButtonGroup, ListGroupItem } from "react-bootstrap";
 
@@ -49,7 +49,10 @@ class myapplications extends Component {
           // id="avatar-image"
         /> */}
                     <p>
-                      <span className="field-names">Listing id:</span>{" "}
+                      <span className="field-names">
+                        {" "}
+                        Application for Listing id:
+                      </span>{" "}
                       {msg.listingId}
                     </p>
                     <p>
@@ -62,28 +65,12 @@ class myapplications extends Component {
               > */}
                   </div>
                   <div className="col-4">
-                    <div style={{ marginBottom: "10px" }}>
-                      <Button
-                        disabled={msg.status == "Approved"}
-                        onClick={(e) => this.handleApprove(msg.email)}
-                      >
-                        Approve
-                      </Button>
-                    </div>
-                    <div style={{ marginBottom: "10px" }}>
-                      <Button
-                        disabled={msg.status == "Rejected"}
-                        onClick={(e) => this.handleReject(msg.email)}
-                      >
-                        Reject
-                      </Button>
-                    </div>
-                    <div style={{ marginBottom: "10px" }}>
-                      <Button onClick={(e) => this.handleRemove(msg.email)}>
-                        Remove
-                      </Button>
-                    </div>
-                    {/* </ButtonGroup> */}
+                    <Link
+                      class="btn btn-primary"
+                      to={"/listingDetails/" + msg.listingId}
+                    >
+                      View details
+                    </Link>
                   </div>
                 </div>
               </Card.Text>
