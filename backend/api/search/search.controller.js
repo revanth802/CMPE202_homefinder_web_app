@@ -2,12 +2,36 @@ const Property= require("../../models/homelistings.js");
 const Favourites= require("../../models/favouriteHomes.js");
 const FavouriteSearches = require("../../models/favouriteSearches.js")
 module.exports = {
-    search: (req, res) => {
+
+  getfavsearches : (req,res) => {
+    console.log("in get fav searches controller")
+    body = req.body
+    console.log(body.email)
+    FavouriteSearches.find({email: req.body.email},{ favlabel: 1, _id: 0 } , (error,result) => {
+      console.log("my fave labels",result);
+      res.send(result);
+      res.end();
+    })
+  },
+
+  
+
+    async search(req, res) {
         console.log("in search controller")
         body = req.body
-            // console.log(body);
-           
-        Property.find({
+            console.log(body);
+           if(req.body.favsearchlabel != "")
+           {
+             await FavouriteSearches.findOne({favlabel : req.body.favsearchlabel},(error,results) => 
+             {
+               console.log("with fav label")
+               console.log(results)
+               body = results
+             })
+           }
+          console.log("after fav search added")
+           console.log(req.body)
+       await  Property.find({
             $and: [{
                 $or: [{ addressLine1: { $regex: body.term, $options: "i" } },
                 { addressLine2: { $regex:  body.term, $options: "i" } },
@@ -41,13 +65,14 @@ module.exports = {
             for(let i=0;i<ids_homes.length;i++)
             {
            
-            FavouriteSearches.updateOne(
-              {user:body.email,homeId:ids_homes[i]},
-              { $inc: { frequency: 1 }},{upsert:true},
-              (error, result) => {
+          //  await  FavouriteSearches.updateOne(
+          //     {user:body.email,homeId:ids_homes[i]},
+          //     { $inc: { frequency: 1 }},{upsert:true},
+          //     (error, result) => {
             
-              }
-            );}}
+          //     }
+          //   );
+          }}
             res.status(200).json(properties);
         });
     },
@@ -55,9 +80,21 @@ module.exports = {
     addToFavourites: (req, res) => {
         body=req.body
         console.log(body)
-        var newUserDetails = new Favourites({
-            email: body.userid,
-            houseId : body.houseid
+        var newUserDetails = new FavouriteSearches({
+          email: body.email,
+          role: body.role,
+          type:body.type,
+          term: body.term,
+          minPrice: body.minPrice,
+          maxPrice:body.maxPrice,
+          beds: body.beds,
+          baths: body.baths,
+          propertyTypes: body.propertyTypes,
+          year: body.year,
+          floor: body.floor,
+          other: body.other,
+          parking: body.parking,
+          favlabel : body.favlabel
       });
   
       newUserDetails.save((error, data) => {
@@ -73,6 +110,9 @@ module.exports = {
         }
       });
         },
+
+
+
         myfavorites: (req, res) => {
           var store_ids=null
            Favourites.find({email : req.body.email}, (error, result) => {

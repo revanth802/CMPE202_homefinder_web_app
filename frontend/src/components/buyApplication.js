@@ -52,6 +52,9 @@ class LeaseApplication extends Component {
             .then((response2) => {
               alert("Application sent");
               console.log("email sent");
+            //   this.setState({
+
+            //   })
             });
       });
   }

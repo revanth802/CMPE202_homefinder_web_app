@@ -63,6 +63,7 @@ class currentlisting extends Component {
           securityDeposit: response.data.securityDeposit,
           availableDate: response.data.availableDate,
           type: response.data.type,
+          status:response.data.status
         });
         console.log("Pro are::", this.state.homes);
       });
@@ -243,7 +244,7 @@ class currentlisting extends Component {
                   name="propertyTypes"
                   className="custom-select custom-select-sm"
                   onChange={this.handleChange}
-                  value={this.state.homes.hometype}
+                  value={this.state.propertyTypes}
                 >
                   <option value={""}>Property Type</option>
                   <option value="SFH">Single Family Home</option>
@@ -261,7 +262,7 @@ class currentlisting extends Component {
                   name="floor"
                   className="custom-select custom-select-sm"
                   onChange={this.handleChange}
-                  value={this.state.homes.flooring}
+                  value={this.state.floor}
                 >
                   <option value={""}>Flooring</option>
                   <option value={"carpet"}>Carpet</option>
@@ -274,7 +275,7 @@ class currentlisting extends Component {
                   name="parking"
                   className="custom-select custom-select-sm"
                   onChange={this.handleChange}
-                  value={this.state.homes.parking}
+                  value={this.state.parking}
                 >
                   <option value={""}>Parking Type</option>
                   <option value={"open"}>Open Parking</option>
@@ -370,7 +371,7 @@ class currentlisting extends Component {
                   name="status"
                   className="custom-select custom-select-sm"
                   onChange={this.handleChange}
-                  value={this.state.homes.status}
+                  value={this.state.status}
                 >
                   <option value={""}>Status</option>
                   <option value={"open"}>Open</option>

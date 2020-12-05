@@ -17,7 +17,12 @@ module.exports = {
   getMyApplications: (req, res) => {
     console.log("here my appns");
     leaseApplications.find(
-      { actual_applicant: req.body.email },
+      {
+        $or: [
+          { actual_applicant: req.body.email },
+          { applicant: req.body.email },
+        ],
+      },
       (error, result) => {
         //
         res.send(result);

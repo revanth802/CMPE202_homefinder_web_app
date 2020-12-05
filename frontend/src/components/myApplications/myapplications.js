@@ -68,6 +68,9 @@ class myapplications extends Component {
                       {msg.listingId}
                     </p>
                     <p>
+                    Applicant: {msg.firstName},{msg.lastName}
+                    </p>
+                    <p>
                       <span className="field-names">Present Status: </span>
                       <span style={{ color: statusColor }}>{statusNew}</span>
                     </p>

@@ -59,6 +59,7 @@ module.exports = {
         leaseTerms: body.terms,
         availableDate: body.availableDate,
         securityDeposit: body.securityDeposit,
+        status:body.status,
 
         parking: body.parking,
       },

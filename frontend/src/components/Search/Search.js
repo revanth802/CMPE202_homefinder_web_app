@@ -42,10 +42,14 @@ class Search extends Component {
       showRegistrationError: false,
       regFlag: false,
       type: "sale",
+      favlabel : "",
+      favsearchlabel:"",
+      favlabels : []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.handlefavourite = this.handlefavourite.bind(this);
+    this.resetfields = this.resetfields.bind(this);
+    this.addtofavsearch = this.addtofavsearch.bind(this);
   }
 
   async componentDidMount() {
@@ -59,8 +63,49 @@ class Search extends Component {
       });
       // console.log("Pro are::", this.state.homes);
     });
+
+  
+      axios
+        .post(`${backendServer}/search/getfavsearches`,data)
+        .then((response) => {
+          console.log("Pro are::", response.data);
+          this.setState({
+            favlabels: response.data,
+          });
+          console.log("Pro are::", this.state.favlabels);
+        });
+    
   }
 
+
+  resetfields()
+  {
+    this.setState({
+    x1: "",
+      x2: "active",
+      term: "",
+      minPrice: 500,
+      maxPrice: 10000000,
+      beds: 0,
+      baths: 0,
+      propertyTypes: "",
+      other: "",
+      year: 0,
+      floor: "",
+      parking: "",
+      listings: [],
+      loginFlag: false,
+      showerrormessage: false,
+      redirecttohome: false,
+      showRegistrationError: false,
+      regFlag: false,
+      type: "sale",
+      favlabel : "",
+      favsearchlabel:"",
+      favlabels : []
+    })
+   
+  }
   componentWillMount() {
     this.setState({
       authFlag: false,
@@ -97,12 +142,26 @@ class Search extends Component {
     });
   };
 
-  async handlefavourite(e) {
-    // console.log(e);
+
+  async addtofavsearch() {
     const data = {
-      userid: localStorage.getItem("email"),
-      houseid: e,
-    };
+     
+      email: localStorage.getItem("email"),
+      role: localStorage.getItem("role"),
+      type: this.state.type,
+      term: this.state.term,
+      minPrice: this.state.minPrice,
+      maxPrice: this.state.maxPrice,
+      beds: this.state.beds,
+      baths: this.state.baths,
+      propertyTypes: this.state.propertyTypes,
+      year: this.state.year,
+      floor: this.state.floor,
+      other: this.state.other,
+      parking: this.state.parking,
+      favlabel : this.state.favlabel
+    }
+
     await axios
       .post(`${backendServer}/search/addToFavourites`, data)
       .then((response) => {
@@ -119,6 +178,29 @@ class Search extends Component {
         }
       });
   }
+
+  // async handlefavourite(e) {
+  //   // console.log(e);
+  //   const data = {
+  //     userid: localStorage.getItem("email"),
+  //     houseid: e,
+  //   };
+  //   await axios
+  //     .post(`${backendServer}/search/addToFavourites`, data)
+  //     .then((response) => {
+  //       console.log(response);
+  //       if (response.data == "success") {
+  //         console.log("Success");
+  //         this.setState({
+  //           msgr: "User successfully removed",
+  //         });
+  //       } else {
+  //         this.setState({
+  //           showLoginError: true,
+  //         });
+  //       }
+  //     });
+  // }
 
   handleSearch = (e) => {
     //prevent page from refresh
@@ -137,6 +219,8 @@ class Search extends Component {
       floor: this.state.floor,
       other: this.state.other,
       parking: this.state.parking,
+      favlabel : this.state.favlabel,
+      favsearchlabel : this.state.favsearchlabel
     };
     //set the with credentials to true
     axios.defaults.withCredentials = true;
@@ -205,8 +289,11 @@ class Search extends Component {
   };
 
   render() {
-    let msg,
+    let msg,optionItems,
       redirectVar = null;
+       optionItems = this.state.favlabels.map((owner) =>
+      <option key={owner}>{owner.favlabel}</option>
+  );
     if (this.state.type == "sale")
       msg = (
         <p>
@@ -341,7 +428,7 @@ class Search extends Component {
                     <form
                       autoComplete="off"
                       style={{
-                        height: "180px",
+                        height: "240px",
                         width: "650px",
                         background: "#00294D80",
                         marginLeft: "100px",
@@ -400,9 +487,31 @@ class Search extends Component {
                                   </span>
                                 </button>
                               </div>
+
+                              <div className="input-group-btn" style={{margin : "2px"}} data-v-0bf4be34>
+                                <button
+                                  type="submit"
+                                  aria-label="HomeFinder Search"
+                                  className="btn btn-secondary btn-lg"
+                                  onClick={this.resetfields}
+                                >
+                                  <i
+                                    className="icon d-inline d-md-none icon-search"
+                                    data-v-0bf4be34
+                                  />
+                                  <span
+                                    className="label d-none d-md-inline"
+                                    data-v-0bf4be34
+                                  >
+                                    Reset
+                                  </span>
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
+
+                        
                         <div
                           className="filters-row form-row"
                           style={{ marginLeft: "20px", marginRight: "20px" }}
@@ -649,7 +758,53 @@ class Search extends Component {
                               style={{ height: "32px", width: "150px" }}
                             ></input>
                           </div>{" "}
+                        
+                          <div className="form-group col-auto d-none d-md-block field-select">
+                                <select
+                  name="favsearchlabel"
+                  className="custom-select custom-select-sm"
+                  onChange={this.handleChange}>
+                  <option value="">Favorite Searches</option>
+   {optionItems}
+                </select></div>
+                         {" "}
+
+                         
+
+                         <div className="form-group col-auto d-none d-md-block field-select">
+                            <input
+                              type="text"
+                              name="favlabel"
+                              onChange={this.handleChange}
+                              placeholder="Enter Your Label"
+                              style={{ height: "32px", width: "150px" }}
+                            ></input>
+                          </div>{" "}
+
+
+                          <div className="input-group-btn" data-v-0bf4be34>
+                                <button
+                                  type="submit"
+                                  aria-label="HomeFinder Search"
+                                  className="btn btn-primary btn-lg"
+                                  onClick={this.addtofavsearch}
+                                >
+                                  <i
+                                    className="icon d-inline d-md-none icon-search"
+                                    data-v-0bf4be34
+                                  />
+                                  <span
+                                    className="label d-none d-md-inline"
+                                    data-v-0bf4be34
+                                  >
+                                     Add to Favorite Search
+                                  </span>
+                                </button>
+                              </div>
+
+                      
                         </div>
+                    
                       </div>
                     </form>
                   </div>
@@ -658,7 +813,8 @@ class Search extends Component {
             </header>
           </div>
           &nbsp;
-          <CardColumns style={{ columnCount: "1" }}>{candr}</CardColumns>
+        
+          <CardColumns style={{ columnCount: "1", margin : "50px" }}>{candr}</CardColumns>
           {/* <CardDeck style={{ columnCount:"2",columnGap:"0px"}}>
           {candr}
         </CardDeck> */}
