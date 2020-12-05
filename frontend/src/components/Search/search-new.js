@@ -13,8 +13,6 @@ import {
   Button,
   CardColumns,
   CardDeck,
-  Tooltip,
-  OverlayTrigger,
 } from "react-bootstrap";
 // import { Button,Card, Image } from 'semantic-ui-react'
 
@@ -327,55 +325,58 @@ class Search extends Component {
             style={{ width: "350px", height: "280px" }}
           />
           <Card.Body>
-            <Card.Text style={{ color: "black" }}>
-              <div className="row" style={{ marginBottom: "10px" }}>
-                <div className="col-4">
-                  <span style={{ fontSize: "20px" }}>${msg.price}</span>
-                </div>
-                <div className="col-8">
-                  {msg.bedrooms} <span className="field-names">Bd | </span>
-                  {msg.bathrooms} <span className="field-names">Bath | </span>
-                  {msg.area} <span className="field-names">Sqft</span>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-6">
-                  <div style={{ marginBottom: "10px" }}>
-                    <span className="field-names">House for </span> {msg.type}
-                  </div>
-                </div>
-
-                <div className="col-6">
-                  {localStorage.getItem("role") == "user" ? (
-                    <Button
-                      className="btn btn-outline-danger"
-                      onClick={(e) => this.handlefavourite(msg._id)}
-                    >
-                      <svg
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 16 16"
-                        class="bi bi-heart-fill"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                        />
-                      </svg>
-                    </Button>
-                  ) : (
-                    ""
-                  )}
-                </div>
+            <Card.Title style={{ color: "black", height: "54px" }}>
+              {msg.addressLine1}
+              &nbsp;
+              {msg.addressLine2},<br></br>
+              {msg.city},{msg.state}
+              {/* <div> */}{" "}
+              {localStorage.getItem("role") == "user" ? (
+                <Button
+                  className="btn btn-outline-danger"
+                  onClick={(e) => this.handlefavourite(msg._id)}
+                >
+                  <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 16 16"
+                    class="bi bi-heart-fill"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                    />
+                  </svg>
+                </Button>
+              ) : (
+                ""
+              )}
+              {/* </div> */}
+            </Card.Title>
+            <Card.Text>
+              <h4 data-v-dabe9ba4="" class="text-primary mb-0">
+                ${msg.price}
+                {/* <MDBBtn rounded size="lg" color="info" >Button<MDBIcon icon="heart" className="ml-2" /></MDBBtn> */}
+                &nbsp;
+                <span
+                  class="scope-label text-for-sale small"
+                  style={{ color: "red" }}
+                >
+                  House For {msg.type}
+                </span>
+              </h4>
+              <div data-v-dabe9ba4="" class="text-muted">
+                {msg.bedrooms} Bd | {msg.bathrooms} bath
+                <span data-v-dabe9ba4="">| {msg.area} sqft</span>
               </div>
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <button type="button" class="btn btn-primary">
+            <div className="link-style">
               <Link to={"/listingDetails/" + msg._id}>View details</Link>
-            </button>
+            </div>
           </Card.Footer>
         </Card>
       );
@@ -450,35 +451,61 @@ class Search extends Component {
                                 className="input-group-prepend d-none d-md-flex"
                                 data-v-0bf4be34
                               >
-                                <i class=""></i>
+                                {/* <i class=""></i> */}
                               </div>{" "}
+                              <center>
+                                <span className="fas fa-search fa-3x" />
+                              </center>
                               <input
-                                style={{ marginRight: "5px" }}
-                                class="form-control form-control-lg"
-                                type="text"
+                                type="search"
                                 name="term"
-                                // autoComplete="off"
-                                onChange={this.handleChange}
                                 placeholder="Address, City or Zip"
-                              ></input>
-                              <button
-                                style={{ marginRight: "5px" }}
-                                type="submit"
-                                aria-label="HomeFinder Search"
-                                className="btn btn-primary btn-lg"
-                                onClick={this.handleSearch}
+                                autoComplete="off"
+                                className="form-control form-control-lg"
+                                onChange={this.handleChange}
+                              />
+                              <div className="input-group-btn" data-v-0bf4be34>
+                                <button
+                                  type="submit"
+                                  aria-label="HomeFinder Search"
+                                  className="btn btn-primary btn-lg"
+                                  onClick={this.handleSearch}
+                                >
+                                  <i
+                                    className="icon d-inline d-md-none icon-search"
+                                    data-v-0bf4be34
+                                  />
+                                  <span
+                                    className="label d-none d-md-inline"
+                                    data-v-0bf4be34
+                                  >
+                                    Search
+                                  </span>
+                                </button>
+                              </div>
+                              <div
+                                className="input-group-btn"
+                                style={{ margin: "2px" }}
+                                data-v-0bf4be34
                               >
-                                Search
-                              </button>{" "}
-                              <button
-                                style={{ marginRight: "5px" }}
-                                type="submit"
-                                aria-label="HomeFinder Search"
-                                className="btn btn-secondary btn-lg"
-                                onClick={this.resetfields}
-                              >
-                                Reset
-                              </button>
+                                <button
+                                  type="submit"
+                                  aria-label="HomeFinder Search"
+                                  className="btn btn-secondary btn-lg"
+                                  onClick={this.resetfields}
+                                >
+                                  <i
+                                    className="icon d-inline d-md-none icon-search"
+                                    data-v-0bf4be34
+                                  />
+                                  <span
+                                    className="label d-none d-md-inline"
+                                    data-v-0bf4be34
+                                  >
+                                    Reset
+                                  </span>
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -725,8 +752,8 @@ class Search extends Component {
                               type="text"
                               name="other"
                               onChange={this.handleChange}
-                              placeholder="Amenities"
-                              style={{ height: "32px", width: "100px" }}
+                              placeholder="Other Amenities"
+                              style={{ height: "32px", width: "150px" }}
                             ></input>
                           </div>{" "}
                           {this.state.userrole == "user" ? (
@@ -745,21 +772,13 @@ class Search extends Component {
                           )}
                           {this.state.userrole == "user" ? (
                             <div className="form-group col-auto d-none d-md-block field-select">
-                              {/* <input
-                                type="text"
-                                name="favlabel"
-                                onChange={this.handleChange}
-                                placeholder="Enter Your Label"
-                              ></input> */}
                               <input
                                 type="text"
                                 name="favlabel"
-                                class="form-control form-control-sm"
-                                id="exampleInputEmail1"
-                                aria-describedby="emailHelp"
-                                placeholder="Enter Your Label"
                                 onChange={this.handleChange}
-                              />
+                                placeholder="Enter Your Label"
+                                style={{ height: "32px", width: "150px" }}
+                              ></input>
                             </div>
                           ) : (
                             ""
@@ -769,7 +788,7 @@ class Search extends Component {
                               <button
                                 type="submit"
                                 aria-label="HomeFinder Search"
-                                className="btn btn-primary"
+                                className="btn btn-primary btn-lg"
                                 onClick={this.addtofavsearch}
                               >
                                 <i

@@ -32,8 +32,6 @@ class myfavorites extends Component {
         });
         console.log("Pro are::", this.state.users);
       });
-
-   
   }
 
   render() {
@@ -58,25 +56,23 @@ class myfavorites extends Component {
               style={{ width: "350px", height: "280px" }}
             />
             <Card.Body>
-              <Card.Title style={{ color: "black" }}>
-                {msg.addressLine1}
-                &nbsp;
-              </Card.Title>
-              <Card.Text>
-                <h4 data-v-dabe9ba4="" class="text-primary mb-0">
-                  ${msg.price}
-                  {/* <MDBBtn rounded size="lg" color="info" >Button<MDBIcon icon="heart" className="ml-2" /></MDBBtn> */}
-                  &nbsp;
-                  <span
-                    class="scope-label text-for-sale small"
-                    style={{ color: "red" }}
-                  >
-                    House For {msg.type}
-                  </span>
-                </h4>
-                <div data-v-dabe9ba4="" class="text-muted">
-                  {msg.bedrooms} Bd | {msg.bathrooms} bath
-                  <span data-v-dabe9ba4="">| {msg.area} sqft</span>
+              <Card.Text style={{ color: "black" }}>
+                <div className="row" style={{ marginBottom: "10px" }}>
+                  <div className="col-4">
+                    <span style={{ fontSize: "20px" }}>${msg.price}</span>
+                  </div>
+                  <div className="col-8">
+                    {msg.bedrooms} <span className="field-names">Bd | </span>
+                    {msg.bathrooms} <span className="field-names">Bath | </span>
+                    {msg.area} <span className="field-names">Sqft</span>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-6">
+                    <div style={{ marginBottom: "10px" }}>
+                      <span className="field-names">House for </span> {msg.type}
+                    </div>
+                  </div>
                 </div>
               </Card.Text>
             </Card.Body>
@@ -89,7 +85,6 @@ class myfavorites extends Component {
       );
     });
 
-    
     return (
       <div>
         <p style={{ color: "red" }}>{this.state.msgr}</p>
@@ -98,8 +93,6 @@ class myfavorites extends Component {
           <h3 style={{ color: "black" }}>Your favourites:</h3>
 
           <Carousel>{candr}</Carousel>
-
-     
         </center>
       </div>
     );
