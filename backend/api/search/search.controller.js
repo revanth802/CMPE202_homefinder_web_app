@@ -164,8 +164,29 @@ module.exports = {
             });
           
               
-            }
+            },
 
 
-
+            
+            addToFavouriteHomes : (req, res) => {
+              body=req.body
+              console.log(body)
+              var newUserDetails = new Favourites({
+                  email: body.userid,
+                  houseId : body.houseid
+            });
+        
+            newUserDetails.save((error, data) => {
+              if (error) {
+                console.log('error', error);
+                
+                res.end("error");
+              }
+              else {
+                console.log("success");
+               res.send("success")
+                res.end();
+              }
+            });
+              },
     }

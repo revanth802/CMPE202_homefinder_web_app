@@ -5,7 +5,8 @@ const {
     addToFavourites,
     myfavorites,
     myfavoriteSearches,
-    getfavsearches
+    getfavsearches,
+    addToFavouriteHomes
 } = require("./search.controller");
 
 
@@ -15,5 +16,5 @@ router.post("/addToFavourites",addToFavourites)
 router.post("/myfavorites",myfavorites)
 router.post("/myfavoriteSearches",myfavoriteSearches)
 router.post("/getfavsearches",getfavsearches)
-
+router.post("/addToFavouriteHomes",addToFavouriteHomes)
 module.exports = router;

@@ -188,7 +188,7 @@ class Search extends Component {
       houseid: e,
     };
     await axios
-      .post(`${backendServer}/search/addToFavourites`, data)
+      .post(`${backendServer}/search/addToFavouriteHomes`, data)
       .then((response) => {
         console.log(response);
         if (response.data == "success") {
@@ -760,7 +760,7 @@ class Search extends Component {
                               style={{ height: "32px", width: "150px" }}
                             ></input>
                           </div>{" "}
-                          
+
                           {this.state.userrole == "user" ? (
                           <div className="form-group col-auto d-none d-md-block field-select">
                                 <select
