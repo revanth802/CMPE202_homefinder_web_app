@@ -68,12 +68,27 @@ Discussed on the weekend over the call about the requirements to be supported, t
 
 | Owner      | Tasks Worked on/complete | Tasks Going to work on | Tasks Blocked |
 | ----------- | ----------- |----------- |----------- |
-| Revanth      | User page, Add a new listing done with appropriate flows for rent and sale too     | Search Bar along with add to favourites | None
+| Revanth      | User page, Add a new listing done with appropriate flows for rent and sale too, Initial Search bar     | Search Bar along with add to favourites | None
 | Thanmai   | Review document for discussion        |  write  | None
 | Sandeep    | Review document for discussion        |  write  | None
 | Prasanna   | Review document for discussion        |  write  | None
 
+
+XP Value applied: "Feedback":
+Discussed on the weekend over the call about the requirements to be supported, to check the progress.
+Regarding the initial search bar, feedback was collected which portrayed different opinions on approaching this problem. 
+
+
 ### Week-8
+
+| Owner      | Tasks Worked on/complete | Tasks Going to work on | Tasks Blocked |
+| ----------- | ----------- |----------- |----------- |
+| Revanth      | Search bar done successfully       |    Come up with initial Design | None
+| Thanmai   | Review document for discussion        |  write  | None
+| Sandeep    | Review document for discussion        |  write  | None
+| Prasanna   | Review document for discussion        |  write  | None
+
+### Week-9
 
 | Owner      | Tasks Worked on/complete | Tasks Going to work on | Tasks Blocked |
 | ----------- | ----------- |----------- |----------- |
