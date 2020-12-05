@@ -132,7 +132,7 @@ class Navbar extends Component {
           <Link class="nav-link" to="/myapplications">
               My Applications
             </Link>
-          <li class="nav-item">
+          {/* <li class="nav-item">
             <Link class="nav-link" to="/myfavorites">
               My Favorites{" "}
               <svg
@@ -148,9 +148,9 @@ class Navbar extends Component {
                   d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                 />
               </svg>
-              {/* <img src="/open-iconic/svg/icon-name.svg" alt="icon name" /> */}
+         
             </Link>
-          </li>
+          </li> */}
         </ul>
       );
     } else {
@@ -247,9 +247,9 @@ class Navbar extends Component {
           
           
      
-          <Link class="nav-link" to="/" onClick={this.handleLogout}>
+          {/* <Link class="nav-link" to="/" onClick={this.handleLogout}>
             Logout
-          </Link>
+          </Link> */}
           {/* <li class="nav-item"> */}
           <ul className="navbar-nav ml-auto">
             {/* <li class="nav-item">
