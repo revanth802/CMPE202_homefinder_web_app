@@ -6,15 +6,13 @@ module.exports = {
         body = req.body
         console.log(body);
             User.findOne({email: body.remail}, (error, result) => {
-                if (error) {
+                if (result) {
                   console.log(error);
                   //callBack(error);
                   console.log("User already registered");
+                  res.end("exists");
                 }
-                else if (result && result != null){
-                  console.log('Registration Successfull');
-                  res.end("success");
-                }
+              
                 else {
                   var newUserDetails = new User({
                       email: body.remail, password: body.rpassword, name:body.rname, role:body.role,status:"Approved"
@@ -29,7 +27,7 @@ module.exports = {
                     else {
                       console.log('data', data);
                      
-                      res.end();
+                      res.end("success");
                     }
                   });
                 }
