@@ -13,6 +13,8 @@ import {
   Button,
   CardColumns,
   CardDeck,
+  Tooltip,
+  OverlayTrigger
 } from "react-bootstrap";
 // import { Button,Card, Image } from 'semantic-ui-react'
 
@@ -295,6 +297,11 @@ class Search extends Component {
       redirectVar = null;
        optionItems = this.state.favlabels.map((owner) =>
       <option key={owner}>{owner.favlabel}</option>
+  );
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Add to Favourite Searches
+    </Tooltip>
   );
     if (this.state.type == "sale")
       msg = (
@@ -779,7 +786,7 @@ class Search extends Component {
 
                          
 {this.state.userrole == "user" ? (
-                         <div className="form-group col-auto d-none d-md-block field-select">
+                         <div style= {{paddingLeft : "200px"}} className="form-group col-auto d-none d-md-block field-select">
                             <input
                               type="text"
                               name="favlabel"
@@ -795,8 +802,8 @@ class Search extends Component {
 )}
 
 {this.state.userrole == "user" ? (
-                          <div className="input-group-btn" data-v-0bf4be34>
-                                <button
+                          <div className="input-group-btn" style={{paddingLeft:"20px"}} data-v-0bf4be34>
+                                {/* <button
                                   type="submit"
                                   aria-label="HomeFinder Search"
                                   className="btn btn-primary btn-lg"
@@ -812,8 +819,35 @@ class Search extends Component {
                                   >
                                      Add to Favorite Search
                                   </span>
-                                </button>
+                                </button> */}
+                                 <OverlayTrigger
+    placement="right"
+    delay={{ show: 250, hide: 400 }}
+    overlay={renderTooltip}
+  >
+                                 <Button title="Hello World!"
+                  className="btn btn-outline-danger"
+                  onClick={this.addtofavsearch}
+                >
+                  <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 16 16"
+                    class="bi bi-heart-fill"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                    />
+                  </svg>
+                </Button>
+              
+                </OverlayTrigger>
+             
                               </div>
+                           
 
 ) : (
   ""
