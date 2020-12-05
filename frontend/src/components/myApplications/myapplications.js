@@ -33,6 +33,18 @@ class myapplications extends Component {
     let redirectVar = null;
 
     let candr = this.state.users.map((msg) => {
+      let statusColor = "";
+      let statusNew = "";
+      if (msg.status == "approve") {
+        statusColor = "green";
+        statusNew = "Approved";
+      } else if (msg.status == "reject") {
+        statusColor = "red";
+        statusNew = "Rejected";
+      } else if (msg.status == "pending") {
+        statusColor = "grey";
+        statusNew = "Pending";
+      }
       return (
         <div>
           &nbsp;
@@ -57,7 +69,7 @@ class myapplications extends Component {
                     </p>
                     <p>
                       <span className="field-names">Present Status: </span>
-                      {msg.status}
+                      <span style={{ color: statusColor }}>{statusNew}</span>
                     </p>
                     {/* <ButtonGroup
                 style={{ marginLeft: "450px", marginTop: "-80px" }}

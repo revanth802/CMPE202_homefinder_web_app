@@ -37,6 +37,7 @@ class rentalApplications extends Component {
     const data = {
       id: id,
       status: e.target.value,
+      listingId: this.state.listingId,
     };
     axios
       .post(`${backendServer}/rentalApplications/updateStatus/`, data)
@@ -66,8 +67,8 @@ class rentalApplications extends Component {
     return (
       // <h1>Heloowww</h1>
       <div className="container">
-      <br></br>
-      &nbsp;
+        <br></br>
+        &nbsp;
         <div className="applications-list">
           {/* <div>Heloowww</div>
         <pre>{JSON.stringify(this?.state?.applications, null, 2)}</pre> */}
@@ -92,6 +93,7 @@ class rentalApplications extends Component {
                             <div>{application.empName}</div>
                             <div>{application.netIncome}</div>
                             <div>{application.creditScore}</div>
+                            <div>{application.status}</div>
                           </div>
                         </div>
                         {/* <div>

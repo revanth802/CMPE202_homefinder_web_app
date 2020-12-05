@@ -51,6 +51,9 @@ class HomeListings extends Component {
       redirectVar = <Redirect push to={this.state.redirect} />;
     }
     let candr = this.state.homes.map((msg) => {
+      let isAvailable = false;
+      if (msg.status == "open") isAvailable = true;
+      else isAvailable = false;
       return (
         <div>
           {/* &nbsp; */}
@@ -91,18 +94,59 @@ class HomeListings extends Component {
                         View Details
                       </Button>
                     </div>
-                    {/* &nbsp; */}
+
                     <div style={{ marginBottom: "10px" }}>
+                      {isAvailable ? (
+                        <div>
+                          <Button onClick={(e) => this.scheduleTour(msg._id)}>
+                            Schedule Tour
+                          </Button>
+                        </div>
+                      ) : (
+                        <div>
+                          <button
+                            type="button"
+                            class="btn btn-primary"
+                            disabled
+                            onClick={(e) => this.scheduleTour(msg._id)}
+                          >
+                            {" "}
+                            Schedule Tour
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                    {isAvailable ? (
+                      <div>
+                        <Button onClick={(e) => this.handleRemove(msg._id)}>
+                          Buy
+                        </Button>
+                      </div>
+                    ) : (
+                      <div>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          disabled
+                          onClick={(e) => this.handleRemove(msg._id)}
+                        >
+                          {" "}
+                          Buy
+                        </button>
+                      </div>
+                    )}
+
+                    {/* <div style={{ marginBottom: "10px" }}>
                       <Button onClick={(e) => this.scheduleTour(msg._id)}>
                         Schedule Tour
                       </Button>
                     </div>
-                    {/* &nbsp; */}
+
                     <div style={{ marginBottom: "10px" }}>
                       <Button onClick={(e) => this.handleRemove(msg._id)}>
                         Buy
                       </Button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </Card.Text>

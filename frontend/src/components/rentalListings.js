@@ -53,6 +53,9 @@ class RentalListings extends Component {
       redirectVar = <Redirect push to={this.state.redirect} />;
     }
     let candr = this.state.homes.map((msg) => {
+      let isAvailable = false;
+      if (msg.status == "open") isAvailable = true;
+      else isAvailable = false;
       return (
         // <div className="container lease-application">
         // {/* &nbsp; */}
@@ -91,19 +94,59 @@ class RentalListings extends Component {
                       View Details
                     </Button>
                   </div>
-                  <div style={{ marginBottom: "10px" }}>
+                  {/* <div style={{ marginBottom: "10px" }}>
                     <Button
                       margin-bottom="20px"
                       onClick={(e) => this.scheduleTour(msg._id)}
                     >
                       Schedule Tour
                     </Button>
+                  </div> */}
+                  <div style={{ marginBottom: "10px" }}>
+                    {isAvailable ? (
+                      <div>
+                        <Button onClick={(e) => this.scheduleTour(msg._id)}>
+                          Schedule Tour
+                        </Button>
+                      </div>
+                    ) : (
+                      <div>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          disabled
+                          onClick={(e) => this.scheduleTour(msg._id)}
+                        >
+                          {" "}
+                          Schedule Tour
+                        </button>
+                      </div>
+                    )}
                   </div>
-                  <div>
+                  {isAvailable ? (
+                    <div>
+                      <Button onClick={(e) => this.loadRent(msg._id)}>
+                        Rent
+                      </Button>
+                    </div>
+                  ) : (
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        disabled
+                        onClick={(e) => this.loadRent(msg._id)}
+                      >
+                        {" "}
+                        Rent
+                      </button>
+                    </div>
+                  )}
+                  {/* <div>
                     <Button onClick={(e) => this.loadRent(msg._id)}>
                       Rent
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </Card.Text>

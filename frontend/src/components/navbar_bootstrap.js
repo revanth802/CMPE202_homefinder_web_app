@@ -122,16 +122,23 @@ class Navbar extends Component {
 
           <Link class="nav-link" to="/myfavorites">
             My Favorites
-            <li
-              width="100px"
-              height="200px"
-              class="fas fa-heart fa-lg"
-              style={{ color: "red" }}
-            ></li>
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-heart-fill"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+              />
+            </svg>
           </Link>
           <Link class="nav-link" to="/myapplications">
-              My Applications
-            </Link>
+            My Applications
+          </Link>
           {/* <li class="nav-item">
             <Link class="nav-link" to="/myfavorites">
               My Favorites{" "}
@@ -182,10 +189,8 @@ class Navbar extends Component {
             </Link>
           </li>
           <Link class="nav-link" to="/myapplications">
-              My Applications
-            </Link>
-
-         
+            My Applications
+          </Link>
         </ul>
       );
     }
@@ -243,10 +248,7 @@ class Navbar extends Component {
             <i class="fas fa-home fa-lg"></i>
           </a>
           {navLinks}
-          
-          
-          
-     
+
           {/* <Link class="nav-link" to="/" onClick={this.handleLogout}>
             Logout
           </Link> */}

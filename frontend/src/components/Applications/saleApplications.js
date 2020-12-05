@@ -37,6 +37,7 @@ class saleApplications extends Component {
     const data = {
       id: id,
       status: e.target.value,
+      listingId: this.state.listingId,
     };
     axios
       .post(`${backendServer}/rentalApplications/updateStatus/`, data)

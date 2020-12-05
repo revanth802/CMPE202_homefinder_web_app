@@ -21,7 +21,6 @@ class ListingDetails extends Component {
     });
   }
 
- 
   async componentDidMount() {
     axios
       .get(
@@ -40,7 +39,7 @@ class ListingDetails extends Component {
     let candr = this.state.homes.map((msg) => {
       return (
         <div className="lease-application">
-        <br></br>
+          <br></br>
           <div className="container lease-app-form">
             <div className="card applications-end">
               <div className="card-head">
@@ -60,7 +59,7 @@ class ListingDetails extends Component {
                     />
                   </div>
                   <div className="col-6">
-                  <p>
+                    <p>
                       {" "}
                       <span className="field-names">House Type: </span>
                       {msg.type}
@@ -106,12 +105,16 @@ class ListingDetails extends Component {
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">Number of bedrooms: </span>{" "}
+                      <span className="field-names">
+                        Number of bedrooms:{" "}
+                      </span>{" "}
                       {msg.bedrooms}
                     </p>
                     <p>
                       {" "}
-                      <span className="field-names">Number of bathrooms: </span>{" "}
+                      <span className="field-names">
+                        Number of bathrooms:{" "}
+                      </span>{" "}
                       {msg.bathrooms}
                     </p>
                     <p>
@@ -134,11 +137,21 @@ class ListingDetails extends Component {
                       <span className="field-names">Amenities: </span>{" "}
                       {msg.amenities}
                     </p>
-                   
+                    <p>
+                      {" "}
+                      <span className="field-names">Remove this ID: </span>{" "}
+                      {msg._id}
+                    </p>
+                    <p>
+                      {" "}
+                      <span className="field-names">
+                        Remove This Status:{" "}
+                      </span>{" "}
+                      {msg.status}
+                    </p>
                   </div>
                 </div>
                 {/* <div className="row"> */}
-               
               </div>
             </div>
           </div>
