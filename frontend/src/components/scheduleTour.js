@@ -35,12 +35,26 @@ class ScheduleTour extends Component {
       type: this.state.homes[0].type,
     };
     console.log("handleSubmit:::", data);
-
+    var listingName = this.state.homes[0].addressLine1;
+    var toEmail = localStorage.getItem("email");
+    toEmail = toEmail +","+ this.state.homes[0].representedBy
     axios
       .post(`${backendServer}/homelistings/scheduleTour`, data)
       .then(async function (response) {
         console.log("Pro are::", response.data);
-        alert("Appointment Fixed");
+        //alert("Appointment Fixed");
+        var emailData = {
+            toEmail: toEmail,
+            emailType: "House Appointment",
+            listingName: listingName,
+          };
+  
+            await axios
+              .post(`${backendServer}/email/sendEmail`, emailData)
+              .then((response2) => {
+                alert("Appointment Fixed! Check your email");
+                console.log("email sent");
+              });
         console.log("email sent");
       });
   }
