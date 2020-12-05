@@ -4,6 +4,7 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { backendServer } from "../../webconfig.js";
 import "../Login/login.css";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -20,12 +21,16 @@ class Login extends Component {
       redirecttohome: false,
       showRegistrationError:false,
       regFlag : false,
-      rejectstatus:""
+      rejectstatus:"",
+      invalidEmail: false,
+      showerror : false
+
     };
     this.emailChangeHandler = this.emailChangeHandler.bind(this);
     this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.validateDetails = this.validateDetails.bind(this);
 
   }
 
@@ -38,6 +43,14 @@ class Login extends Component {
       showRegistrationError : false
     });
   }
+
+  validateDetails = (event) => {
+    if (!this.state.invalidEmail && this.state.role.length > 0 ) 
+    {
+   return false 
+    }
+    else return true
+}
 
   emailChangeHandler = (e) => {
     this.setState({
@@ -69,6 +82,22 @@ class Login extends Component {
       [e.target.name]: e.target.value,
     });
   };
+
+  
+  emailChangeHandler = (event) => {
+    if (/.+@.+\.[A-Za-z]+$/.test(event.target.value)) {
+        this.setState({
+            invalidEmail: false,
+            remail: event.target.value
+        })
+    } else {
+        this.setState({
+            invalidEmail: true,
+            remail: event.target.value
+        })
+    }
+}
+
 
   handleLogin = (e) => {
     const form = document.getElementById("signIn");
@@ -128,9 +157,10 @@ class Login extends Component {
   handleRegister = (e) => {
     this.setState({
       showLoginError: false,
-      showRegistrationError : false
+      showRegistrationError : false,
+      showerror : false
     });
-
+console.log("in handle register")
       //prevent page from refresh
       e.preventDefault();
       const data = {
@@ -156,12 +186,11 @@ class Login extends Component {
         .post(`${backendServer}/register/`, data)
         .then((response) => {
           console.log(response);
-          if (response.data === "error") {
-            console.log("error")
+          if (response.data === "exists") {
+            console.log("email already exists")
             this.setState({
-              showRegistrationError: true,
+              showerror: true,
             });
-           
           } else if("success") {
             this.setState({
               regFlag: true,
@@ -201,12 +230,12 @@ class Login extends Component {
         {this.state.regFlag && (
             <div>
               <center>
-              <li>
              
-                    <span style={{color:"black"}}>
+             
+                    <h3 style={{color:"green"}}>
                       Registration Successfull!!
-                    </span>
-                  </li>
+                    </h3>
+                
                </center>
             </div>
           )}
@@ -218,7 +247,7 @@ class Login extends Component {
               <i></i>
               <div>
                 
-                    <span  style={{color:"black"}}>
+                    <span  style={{color:"red"}}>
                       Registration Unsuccessful!!Please Try Again
                     </span>
                   
@@ -226,7 +255,21 @@ class Login extends Component {
               </center>
             </div>
           )}
-          
+            {this.state.showerror && (
+            <div>
+              <center>
+              <h4 style={{color:"black"}}>Important Message!</h4>
+              <i></i>
+              <div>
+                
+                    <span  style={{color:"red"}}>
+                      Email Already Exists!!Please Try Signing in
+                    </span>
+                  
+              </div>
+              </center>
+            </div>
+          )}
 
         <div>
           {this.state.showLoginError && (
@@ -279,17 +322,20 @@ class Login extends Component {
                             <option style={{color:"black"}} value="admin" >Admin </option>
                           </select>              
                           </div>
-            
+                          {this.state.role.length <= 0 && <p class="text-sm font-bold italic text-red-500">Please select a valid role.</p>}
+
               <div className="group">
                 <label htmlFor="user" className="label">Username or Email</label>
-                <input id="user" type="text" className="input" name="remail" onChange={this.handleChange} />
+                <input id="user" type="text" className="input" name="remail" onChange={this.emailChangeHandler} />
+                {this.state.invalidEmail && <p style={{color:"red"}}>Please enter a valid Email.</p>}
+
               </div>
               <div className="group">
                 <label htmlFor="user" className="label">Password</label>
                 <input id="user" type="password" className="input" name="rpassword" onChange={this.handleChange} />
               </div>
               <div className="group">
-                <input type="submit" className="button" defaultValue="Reset Password" onClick={this.handleRegister} />
+                <input type="submit" className="button" defaultValue="Reset Password" disabled={this.validateDetails()} onClick={this.handleRegister} />
               </div>
               <div className="hr" />
             </div>

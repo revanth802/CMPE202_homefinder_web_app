@@ -26,10 +26,10 @@ class HomeListings extends Component {
     });
   }
 
-  loadDetails(id){
+  loadDetails(id) {
     this.setState({
-      redirect:`/listingDetails/${id}`
-  })
+      redirect: `/listingDetails/${id}`,
+    });
   }
 
   async componentDidMount() {
@@ -53,43 +53,69 @@ class HomeListings extends Component {
     let candr = this.state.homes.map((msg) => {
       return (
         <div>
-          &nbsp;
-          <Card style={{ width: "50%", marginLeft: "100px", height: "80%" }}>
+          {/* &nbsp; */}
+          <Card style={{ marginBottom: "20px" }}>
             <Card.Header style={{ color: "black" }}>{msg.name}</Card.Header>
             <Card.Body>
               <Card.Text>
-                <img
-                  alt="AZ"
-                  src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
-                  style={{ width: "100px", height: "120px" }}
-                  // id="avatar-image"
-                />
-                <p style={{ color: "black" }}>Address: {msg.addressLine1}</p>
-                <p style={{ color: "black" }}>Type : {msg.type}</p>
-                <p style={{ color: "black" }}>Price : {msg.price}</p>
-                <p style={{ color: "black" }}>Area : {msg.area}</p>
+                <div className="row">
+                  <div className="col-3">
+                    <Card.Img
+                      variant="top"
+                      src="https://img2.homefinder.com/_img_/453961815/0b6cb9b1beb6691f05e9c45925d82bf9e27043a4/620"
+                      style={{
+                        width: "200px",
+                        height: "130px",
+                      }}
+                    />
+                  </div>
+                  <div className="col-6">
+                    <p style={{ color: "black" }}>
+                      Address: {msg.addressLine1}
+                    </p>
+                    <p>
+                      <span className="field-names">Type : </span>
+                      {msg.type}
+                    </p>
+                    <p>
+                      <span className="field-names"> Price :</span> {msg.price}
+                    </p>
+                    <p>
+                      <span className="field-names"> Area : </span>
+                      {msg.area}
+                    </p>
+                  </div>
+                  <div className="col-3">
+                    <div style={{ marginBottom: "10px" }}>
+                      <Button onClick={(e) => this.loadDetails(msg._id)}>
+                        View Details
+                      </Button>
+                    </div>
+                    {/* &nbsp; */}
+                    <div style={{ marginBottom: "10px" }}>
+                      <Button onClick={(e) => this.scheduleTour(msg._id)}>
+                        Schedule Tour
+                      </Button>
+                    </div>
+                    {/* &nbsp; */}
+                    <div style={{ marginBottom: "10px" }}>
+                      <Button onClick={(e) => this.handleRemove(msg._id)}>
+                        Buy
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </Card.Text>
-              <ButtonGroup
-                style={{ marginLeft: "450px", marginTop: "-80px" }}
-                className="mb-2"
-              >
-                <Button onClick={(e)=> this.loadDetails(msg._id)}>View Details</Button>
-                  &nbsp;
-                <Button onClick={(e) => this.scheduleTour(msg._id)}>
-                  Schedule Tour
-                </Button>
-                &nbsp;
-                <Button onClick={(e) => this.handleRemove(msg._id)}>Buy</Button>
-              </ButtonGroup>
             </Card.Body>
           </Card>
-          &nbsp;
+          {/* &nbsp; */}
         </div>
       );
     });
     return (
-      <div>
+      <div className="container lease-application">
         {redirectVar}
+        <h1 className="page-title"> Sale Listings</h1>
         {candr}
         {/* </div> */}
       </div>
