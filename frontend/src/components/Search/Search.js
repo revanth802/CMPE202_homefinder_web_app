@@ -825,7 +825,7 @@ class Search extends Component {
     delay={{ show: 250, hide: 400 }}
     overlay={renderTooltip}
   >
-                                 <Button title="Hello World!"
+                                 <Button
                   className="btn btn-outline-danger"
                   onClick={this.addtofavsearch}
                 >
