@@ -292,6 +292,10 @@ class Search extends Component {
     optionItems = this.state.favlabels.map((owner) => (
       <option key={owner}>{owner.favlabel}</option>
     ));
+    const renderTooltip = (props) => (
+      <Tooltip id="button-tooltip" {...props}>
+        Add to Favourite Searches
+      </Tooltip>);
     if (this.state.type == "sale")
       msg = (
         <p>
@@ -342,6 +346,9 @@ class Search extends Component {
                   {msg.bathrooms} <span className="field-names">Bath | </span>
                   {msg.area} <span className="field-names">Sqft</span>
                 </div>
+              </div>
+               <div className="row" style={{ marginBottom: "10px" }}>
+        <span className="field-names">{msg.addressLine1}, {msg.addressLine2},{msg.city}, {msg.state}, {msg.zipcode} </span>
               </div>
               <div className="row">
                 <div className="col-6">
@@ -749,7 +756,7 @@ class Search extends Component {
                             ""
                           )}
                           {this.state.userrole == "user" ? (
-                            <div className="form-group col-auto d-none d-md-block field-select">
+                            <div style= {{paddingLeft : "200px"}} className="form-group col-auto d-none d-md-block field-select">
                               {/* <input
                                 type="text"
                                 name="favlabel"
@@ -770,24 +777,28 @@ class Search extends Component {
                             ""
                           )}
                           {this.state.userrole == "user" ? (
-                            <div className="input-group-btn" data-v-0bf4be34>
-                              <button
-                                type="submit"
-                                aria-label="HomeFinder Search"
-                                className="btn btn-primary"
-                                onClick={this.addtofavsearch}
-                              >
-                                <i
-                                  className="icon d-inline d-md-none icon-search"
-                                  data-v-0bf4be34
-                                />
-                                <span
-                                  className="label d-none d-md-inline"
-                                  data-v-0bf4be34
-                                >
-                                  Add to Favorite Search
-                                </span>
-                              </button>
+                            <div style={{paddingLeft:"20px"}} className="input-group-btn" data-v-0bf4be34>
+                              
+
+<Button title="Add to Favourite Search"
+                  className="btn btn-outline-danger"
+                  onClick={this.addtofavsearch}
+                >
+                  <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 16 16"
+                    class="bi bi-heart-fill"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                    />
+                  </svg>
+                </Button>
+
                             </div>
                           ) : (
                             ""
