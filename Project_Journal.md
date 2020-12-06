@@ -12,7 +12,7 @@
 | Prasanna   | Review document for discussion        |  Come up with the initial user Stories , Create admin stories | None
 
 XP Value applied: "Communication":
-Discussed on the weekend over the call about the requirements to be supported, to check the team mates opinions and discussed feasible approaches to proceed along the project
+Discussed on the weekend over the call about the requirements to be supported, to check the team mates opinions and discussed feasible approaches to proceed along the project.
 
 ### Week-2
 
@@ -24,14 +24,14 @@ Discussed on the weekend over the call about the requirements to be supported, t
 | Prasanna   | Favourite Homes Model done    |  UI Wireframes for Admin dashboard  | None
 
 XP Value applied: "Communication":
-Discussed on the weekend over the call about the requirements to be supported, to check the team mates opinions and discussed feasible approaches to proceed along the project
+Discussed over the weekend on a sprint to check if all the group members were on the same page in the project workflow. Worked on any tasks required-to finish it to avoid carrying it to the next week. Came to a decision and Created Objects in the Entities for any dependencies of a particular model on other model. Discussed to-do tasks for the next sprint.
 
 ### Week-3
 
 
 | Owner      | Tasks Worked on/complete | Tasks Going to work on | Tasks Blocked |
 | ----------- | ----------- |----------- |----------- |
-| Revanth      | Database Design, user stories       |    Design Home Listings Model  | None
+| Revanth      | Database Design, user stories       |    Design Home Listings Model  | User Login, Signup
 | Thanmai   | Backend Integration with MongoDb        |  Design user model  | None
 | Sandeep   | Tech Stack Finalized        |  Setup Starter code of backend  | None
 | Prasanna   | Structure for the Project     |  Setup Starter code of UI  | Creation of database Models
@@ -42,8 +42,8 @@ Discussed on the weekend over the call about the requirements to be supported, t
 
 | Owner      | Tasks Worked on/complete | Tasks Going to work on | Tasks Blocked |
 | ----------- | ----------- |----------- |----------- |
-| Revanth      | Create Schema for homelistings,rentallistings       |    Gain Knowledge of Frontend Stack, | None
-| Thanmai   |  User Login / Register Design  |  Navbar Design  | None
+| Revanth      | Create Schema for homelistings,rentallistings, Login       |    Gain Knowledge of Frontend Stack | None
+| Thanmai   |   Register Design  |  Navbar Design  | None
 | Sandeep    | Styled Login Page       |  Styling Register  | None
 | Prasanna   | Created APIs for Login         |  Login Validation  | None
 
