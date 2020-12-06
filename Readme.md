@@ -1,3 +1,5 @@
+## CMPE 202: HomeFinder Web Application
+
 ### Team members
 
 Revanth Krishna Maddula         
@@ -52,7 +54,6 @@ https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_13/tree/m
 - *File handling:* We had to decide whether to store files on the machine or cloud. After putting a thought to it, figured out having the files stored on cloud and just storing imagePath in the database is the best possible design to have. 
 
 - *Deployment:* There were different ways to deploy the application into the cloud. We decided to use AMI(Amazon Machine Instance) with a configuration at the startup. We used this AMI as a target group for an Auto scaling cluster group that is based on the classic load balancer. 
-
 
 
 
