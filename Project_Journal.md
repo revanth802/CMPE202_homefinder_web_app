@@ -96,7 +96,7 @@ Discussed over the weekend on a sprint to check if all the group members were on
 | Revanth      |   Search APIs   |   Testing the APIs using Post Man | None
 | Thanmai   | End to End Testing       |  Bug Fixing  | None
 | Sandeep    | End to End Testing |  Bug Fixing  | None
-| Prasanna   | End to Testing     |  Bug Fixing  | None
+| Prasanna   | End to End Testing     |  Bug Fixing  | None
 
 XP Value applied: "Communication":
 Discussed over the weekend on a sprint to check if all the group members were on the same page in the project workflow. As all the functionalities were completed in development phase, every one moved on to end and end testing and finding bugs and fixing them.
