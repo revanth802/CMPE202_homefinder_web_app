@@ -1,5 +1,7 @@
 This is the readme file of the project. This is supposed to contain the setup and steps for the project. 
 
+### Overall Architecture
+
 ![202_arch](https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_13/blob/master/images/Architecture.jpg?raw=true)
 
 ### Technology stack:
@@ -17,6 +19,10 @@ This is the readme file of the project. This is supposed to contain the setup an
 
 ### Entity-Relationship Diagram:
 ![202_arch](https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_13/blob/master/images/Er_diagram.jpg?raw=true)
+
+### Wireframes: 
+
+https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_13/tree/master/wireframes
 
 ### Summary of Contributions:
 - Revanth - Worked on Authentication, Listings , Search bar, Add a new Listing, Admin dashboard Components.
@@ -67,6 +73,7 @@ https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_13/projec
 
 ### Team Project Journal:
 [GO TO PROJECT JOURNAL ](Project_Journal.md)
+
 
 ### Team Project Google Sprint Task Sheet:
 Sprint Task sheet and burndown charts included:
