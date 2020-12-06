@@ -17,11 +17,11 @@ Discussed on the weekend over the call about the requirements to be supported, t
 ### Week-2
 
 | Owner      | Tasks Worked on/complete | Tasks Going to work on | Tasks Blocked |
-| ----------- | ----------- |----------- |----------- |
+| ----------- | ---------- |----------- |----------- |
 | Revanth      | homelistings model done       |    Come up with user Flow, UI Wireframes for login & signup | None
 | Thanmai   | LeaseApplications model done     |  Schedule tour model, UI wireframes for homelistings  | None
-| Sandeep    | Favourites Searches Model done       |  User Model, UI wireframes for Manage Listing   | None
-| Prasanna   | Favourite Homes Model done    |  UI Wireframes for Admin dashboard  | None
+| Sandeep    |Favourite Homes Model done       |  User Model, UI wireframes for Manage Listing   | None
+| Prasanna   |   Favourites Searches Model done|  UI Wireframes for Admin dashboard  | None
 
 XP Value applied: "Communication":
 Discussed over the weekend on a sprint to check if all the group members were on the same page in the project workflow. Worked on any tasks required-to finish it to avoid carrying it to the next week. Came to a decision and Created Objects in the Entities for any dependencies of a particular model on other model. Discussed to-do tasks for the next sprint.
@@ -82,7 +82,7 @@ Discussed over the weekend on a sprint to check if all the group members were on
 | ----------- | ----------- |----------- |----------- |
 | Revanth      | User page, Add a new listing done with appropriate flows for rent and sale too, Initial Search bar     | Search Bar along with add to favourites | None
 | Thanmai   | Interactive UI for rental listing   |  Testing the UI and functionality  | None
-| Sandeep    | Interactive UI for Email in Applictaions      |  Testing the UI   | None
+| Sandeep    | Interactive UI for Email in Applictaions      |  Testing the UI   | Had to wait for all the applications to be done. 
 | Prasanna   | Interactive UI for Search in Dashboard        |  Testing the UI and functionality  | None
 
 XP Value applied: "Communication":
