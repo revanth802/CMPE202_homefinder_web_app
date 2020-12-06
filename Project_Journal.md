@@ -61,6 +61,9 @@ Discussed over the weekend on a sprint to check if all the group members were on
 | Sandeep    | Email API       |  UI for Lease Application  | None
 | Prasanna   | Testing Login API using Postman      |  Login Page integration with backend  | None
 
+XP Value applied: "Communication" and "Feedback":
+Discussed over the weekend on a sprint to check if all the group members were on the same page in the project workflow. Ensured that we are going as per the plan and had a retrospect on how we can imporve in the upcoming weeks and deliver the project on time. 
+
 ### Week-6
 
 | Owner      | Tasks Worked on/complete | Tasks Going to work on | Tasks Blocked |
@@ -69,6 +72,9 @@ Discussed over the weekend on a sprint to check if all the group members were on
 | Thanmai   | Testing the rental APIs using postman       |  Integration of rental aPIs with fronend  | None
 | Sandeep    | Testing the email APIs using postman       |  Integration of email APIs with frontend  | None
 | Prasanna   | Testing the homelisting APIs using postman        |  Integration of homelisting API with frontend  | None
+
+XP Value applied: "Communication":
+Discussed over the weekend on a sprint to check if all the group members were on the same page in the project workflow. All the flow was in correct place. Had some design decisions to be made like file handling, deployment strategy
 
 ### Week-7
 
@@ -79,10 +85,8 @@ Discussed over the weekend on a sprint to check if all the group members were on
 | Sandeep    | Interactive UI for Email in Applictaions      |  Testing the UI   | None
 | Prasanna   | Interactive UI for Search in Dashboard        |  Testing the UI and functionality  | None
 
-
-XP Value applied: "Feedback":
-Discussed on the weekend over the call about the requirements to be supported, to check the progress.
-Regarding the initial search bar, feedback was collected which portrayed different opinions on approaching this problem. 
+XP Value applied: "Communication":
+Discussed over the weekend on a sprint to check if all the group members were on the same page in the project workflow. Finishing the developemnt and minor things, so that we have enough time to test the entire application. 
 
 
 ### Week-8
@@ -94,6 +98,9 @@ Regarding the initial search bar, feedback was collected which portrayed differe
 | Sandeep    | End to End Testing |  Bug Fixing  | None
 | Prasanna   | End to Testing     |  Bug Fixing  | None
 
+XP Value applied: "Communication":
+Discussed over the weekend on a sprint to check if all the group members were on the same page in the project workflow. As all the functionalities were completed in development phase, every one moved on to end and end testing and finding bugs and fixing them.
+
 ### Week-9
 
 | Owner      | Tasks Worked on/complete | Tasks Going to work on | Tasks Blocked |
@@ -102,3 +109,6 @@ Regarding the initial search bar, feedback was collected which portrayed differe
 | Thanmai   | Code set up for Deployment       |  Code Cleanup and Github Maintainence  | None
 | Sandeep    | Deployment in EC2 with script   | Auto Scaling and Final Testing  | None
 | Prasanna   |  End to End Testing      |  Code Cleanup  | None
+
+XP Value applied: "Communication":
+Discussed over the weekend on a sprint to check if all the group members were on the same page in the project workflow. All the project was finished in testing phase and deployed it and presented it on the demo
