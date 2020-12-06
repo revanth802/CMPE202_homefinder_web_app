@@ -105,7 +105,7 @@ Discussed over the weekend on a sprint to check if all the group members were on
 
 | Owner      | Tasks Worked on/complete | Tasks Going to work on | Tasks Blocked |
 | ----------- | ----------- |----------- |----------- |
-| Revanth      | Search Testing      |    Come up with initial Design | None
+| Revanth      | Search Testing      |    Code cleanup| None
 | Thanmai   | Code set up for Deployment       |  Code Cleanup and Github Maintainence  | None
 | Sandeep    | Deployment in EC2 with script   | Auto Scaling and Final Testing  | None
 | Prasanna   |  End to End Testing      |  Code Cleanup  | None
