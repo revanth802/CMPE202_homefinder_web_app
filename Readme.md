@@ -9,6 +9,11 @@ Thanmai Gajam
 
 ![202_arch](https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_13/blob/master/images/Architecture.jpg?raw=true)
 
+### Component Level Architecture Diagram
+
+![202_arch](https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_13/blob/master/images/Architecture%20Diagram%20-%20Components.PNG?raw=true)
+
+
 ### Technology stack:
 - UI - ReactJS,CSS,Bootstrap, Material-UI
 - Backend - NodeJS
