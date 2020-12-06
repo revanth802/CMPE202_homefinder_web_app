@@ -1,4 +1,9 @@
-This is the readme file of the project. This is supposed to contain the setup and steps for the project. 
+### Team members
+
+Revanth Krishna Maddula         
+Sandeep Reddy Bhimireddy      
+Laxmi Prasanna Palle              
+Thanmai Gajam			   
 
 ### Overall Architecture
 
