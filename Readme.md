@@ -23,3 +23,12 @@ This is the readme file of the project. This is supposed to contain the setup an
 - Prasanna - Worked on Favourite Searches, Favourite Homes, Homelisting  and role functionality behaviour.
 - Thanmai - Worked on Lease and Sale Applications, covering the roles of realtor and user.
 - Sandeep - Worked on Schedule Tours/visits components,S3 storage for homelisting images, handling of Email API and cloud deployment.
+
+### Team Project board:
+
+### Team Project Journal:
+[GO TO PROJECT JOURNAL ](Project_Journal.md)
+
+### Team Project Google Sprint Task Sheet:
+Sprint Task sheet and burndown charts included:
+https://docs.google.com/spreadsheets/d/1mbZJFJDb_U9asAb0lnBsGHogBCdr6Qy0GHGnliVzB7E/edit?usp=sharing
