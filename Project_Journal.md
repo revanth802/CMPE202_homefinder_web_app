@@ -36,6 +36,8 @@ Discussed over the weekend on a sprint to check if all the group members were on
 | Sandeep   | Tech Stack Finalized        |  Setup Starter code of backend  | None
 | Prasanna   | Structure for the Project     |  Setup Starter code of UI  | Creation of database Models
 
+XP Value applied: "Communication":
+Discussed over the weekend on a sprint to check if all the group members were on the same page in the project workflow. Worked on any tasks required-to finish it to avoid carrying it to the next week. Came to a decision and Created Objects in the Entities for any dependencies of a particular model on other model. Discussed to-do tasks for the next sprint.
 
 
 ### Week-4
@@ -46,6 +48,9 @@ Discussed over the weekend on a sprint to check if all the group members were on
 | Thanmai   |   Register Design  |  Navbar Design  | None
 | Sandeep    | Styled Login Page       |  Styling Register  | None
 | Prasanna   | Created APIs for Login         |  Login Validation  | None
+
+XP Value applied: "Communication":
+Discussed over the weekend on a sprint to check if all the group members were on the same page in the project workflow. After we started with the code development, we ensured that there is clear communication in place while creating models and common pages. 
 
 ### Week-5
 
